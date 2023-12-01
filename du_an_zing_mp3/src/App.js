@@ -41,7 +41,6 @@ function App() {
           <Route path={path.HOME__SINGER} element={<Singer />} />
           <Route path={path.HOME_ARTIST} element={<Singer />} />
           <Route path={path.WEEK_TITLE_PID} element={<BXHWeek weekData={weekData && Object.values(weekData)}/>} />
-
           <Route path={path.SEARCH} element={<Searchs />} >
             <Route path={path.ALL} element={<SearchAll />} />
             <Route path={path.SONG} element={<SearchSong />} />
