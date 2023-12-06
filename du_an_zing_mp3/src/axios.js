@@ -1,3 +1,4 @@
+
 import axios from "axios";
 
 const instance = axios.create({
@@ -25,3 +26,4 @@ axios.interceptors.response.use(function (response) {
     return Promise.reject(error);
 });
 export default instance
+

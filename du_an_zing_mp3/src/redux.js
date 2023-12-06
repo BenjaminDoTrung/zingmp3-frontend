@@ -1,3 +1,4 @@
+
 import rootReducer from "./store/reducer/rootReducer";
 import {createStore, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
@@ -8,4 +9,5 @@ const reduxConfig = () =>{
     const persistor = persistStore(store)
     return {store,persistor}
 }
+
 export default reduxConfig

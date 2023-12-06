@@ -1,3 +1,4 @@
+
 import {useDispatch, useSelector} from "react-redux";
 import {getArrSlider} from "../untis/fn";
 import {useNavigate} from "react-router-dom";
@@ -70,3 +71,4 @@ const Slider = () =>{
     )
 }
 export default Slider
+
