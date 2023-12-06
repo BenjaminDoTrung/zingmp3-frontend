@@ -1,10 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
-
 import {ToastContainer} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
 import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
 import {Route, Routes} from "react-router-dom";
 import Public from "./page/public/Public";
 import path from "./untis/path";
