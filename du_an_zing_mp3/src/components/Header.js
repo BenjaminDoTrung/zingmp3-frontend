@@ -13,8 +13,8 @@ const Header = () => {
                <div className={'w-1/2'}>
                     <Search/>
                </div>
-           </div>
-           <div>
+           </div >
+           <div className={'p-2 border border-gray-700 rounded-full  '}>
                Login
            </div>
 
