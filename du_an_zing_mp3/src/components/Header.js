@@ -1,6 +1,7 @@
 
 import icons from "../untis/icons";
 import Search from "./Search";
+import {Link} from "react-router-dom";
 const {IoIosArrowRoundBack,IoIosArrowRoundForward,AiOutlineSearch} =icons
 const Header = () => {
     return(
@@ -14,11 +15,8 @@ const Header = () => {
                     <Search/>
                </div>
            </div>
-           <div>
-               Login
-           </div>
-
-
+           <button><Link to={'login'} type={"button"} className={"btn btn-default"}
+                         data-dismiss={"modal"} value={"Cancel"}> Login </Link></button>
        </div>
     )
 }

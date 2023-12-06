@@ -8,6 +8,7 @@ import path from "./untis/path";
 import Home from "./page/public/Home";
 import Login from "./page/public/Login";
 import * as actions from './store/actions'
+import Register from "./page/public/Register";
 
 function App() {
     const dispatch = useDispatch()
@@ -21,6 +22,7 @@ function App() {
                   <Route path={path.PUBLIC} element={<Public/>}>
                       <Route path={path.HOME} element={<Home/>}></Route>
                       <Route path={path.LOGIN} element={<Login/>}></Route>
+                      <Route path={path.REGISTER} element={<Register/>}></Route>
                   </Route>
               </Routes>
           </div>
