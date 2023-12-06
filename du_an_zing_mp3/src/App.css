@@ -1,3 +1,7 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 * {
   padding: 0;
   margin: 0;
@@ -1608,3 +1612,4 @@ span.from {
 .week_title h1{
   font-size : 35px;
 }
+

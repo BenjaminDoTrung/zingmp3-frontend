@@ -1,33 +1,28 @@
-import React from 'react'
-import logo from '../assets/img/logo.svg';
-import { sidebarMenu } from '../ultil/menu';
-import { NavLink } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import path from '../ultil/path'
+
+import logo from '../accsets/logo.svg'
+import {NavLink} from "react-router-dom";
+import {sidebarMenu} from "../untis/menu";
+const notActiveStyle = 'py-2 px-[25px] font-bold text-[#32323D] text-[13px]  flex gap-[12px] items-center'
+const activeStyle ='py-2 px-[25px] font-bold text-[#0F7070] text-[13px]  flex gap-[12px] items-center'
 const SidebarLeft = () => {
-    const navi = useNavigate()
-  return (
-    <div className='left'>
-        <div onClick={()=> navi(path.HOME)} className='logo'>
-            <img src={logo} alt="Logo" className='img_logo'/>
+    return (
+        <div className={'flex h-full flex-col bg-[#DDE4E4]'}>
+            <div className={'w-full h-[70px] py-[15px] px-[25px] flex justify-start items-center'}>
+                <img src={logo} alt="" className={'w-[120px] h-10'}/>
+            </div>
+            <div className={'flex flex-col'}>
+                {sidebarMenu.map(item => (
+                    <NavLink to={item.path}
+                             key={item.path}
+                             end={item.end}
+                             className= {({isActive}) => isActive ? activeStyle : notActiveStyle } >
+                        {item.icons}
+                        <span>{item.text}</span>
+                    </NavLink>
+                ))}
+            </div>
         </div>
-        <div className='nav_menu'>
-            
-            {
-                sidebarMenu.map(item =>(
-                    <NavLink
-             to={item.path} 
-             className={'nav_menu_items'}
-             key={item.path}
-             >
-                {item.icons}
-                <span style={{fontWeight: 'bold',fontSize: '14px'} }>{item.text}</span>
-            </NavLink>
-                ))
-            }
-        </div>
-    </div>
-  )
+    )
 }
 
 export default SidebarLeft

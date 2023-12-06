@@ -1,45 +1,19 @@
-import React , {useState } from 'react'
-import icons from '../ultil/icon';
-import * as actions from '../store/action'
-import { useDispatch } from 'react-redux';
-import { useNavigate,createSearchParams } from 'react-router-dom';
-import path from '../ultil/path';
+
+import icons from "../untis/icons";
+const {AiOutlineSearch} =icons
 const Search = () => {
-  const navigate = useNavigate()
-  const dispath = useDispatch()
-
-    const {AiOutlineSearch} = icons
-    const [keyword, setKeyword] = useState('')
-
-    const handleSearch = async(e) =>{
-      // setKeyword(e.target.value)
-      if(e.keyCode === 13){
-        dispath(actions.search(keyword))
-        navigate({
-          pathname : `/${path.SEARCH}/${path.ALL}`,
-          search : createSearchParams({
-            q: keyword
-          }).toString().replace(' ', '%20')
-        })
-      }
-    }
-
-
-  return (
-    <div className='search_zone'>
-    <span className='icon_search'>
-        <AiOutlineSearch size={27}/>
-    </span>
-        <input 
-        type="text"
-        className='ipt_search'
-        placeholder='Tìm kiếm bài hát, nghệ sĩ, lời bài hát...'
-        value={keyword}
-        onChange={e => setKeyword(e.target.value)}
-        onKeyUp={handleSearch}
-        />
-    </div>
-  )
+    return (
+        <div className='w-full flex items-center'>
+            <span className='h-10 pl-4 bg-[#DDE4E4] flex items-center justify-center rounded-l-[20px] text-gray-500'>
+                <AiOutlineSearch size={24} />
+            </span>
+            <input
+                type="text"
+                className='outline-none px-4 bg-[#DDE4E4] py-2 w-full rounded-r-[20px] h-10 text-gray-500'
+                placeholder='Tìm kiếm bài hát, nghệ sĩ, lời bài hát...'
+            />
+        </div>
+    )
 }
 
 export default Search
