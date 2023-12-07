@@ -48,7 +48,7 @@ const Player = () => {
                 <div className={'gap-8 flex items-center justify-center'}>
                     <span className={'cursor-pointer'}><CiShuffle size={20}/></span>
                     <span className={'cursor-pointer'}><IoMdSkipBackward size={18}/></span>
-                    <span className={'p-2 border border-gray-700 rounded-full hover:text-main-500 cursor-pointer'}>
+                    <span className={'p-2 border border-gray-700 rounded-full hover:text-main-500 cursor-pointer'}></span>
                        {isPlaying }
                     <span className={'cursor-pointer'}><MdSkipNext size={24}/></span>
                     <span className={'cursor-pointer'}><IoRepeatOutline size={24}/></span>
