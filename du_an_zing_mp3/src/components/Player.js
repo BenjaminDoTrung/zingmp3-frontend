@@ -28,6 +28,7 @@ const Player = () => {
     }, [curSongId]);
 
     return (
+
         <div className={'bg-main-400 px-5 h-full flex ' }>
             <div className={'w-[30%] flex-auto gap-4  flex items-center '}>
                 <img src={songInfo?.thumbnail} alt="" className='w-16 h-16 object-cover rounded-md'/>
@@ -48,7 +49,7 @@ const Player = () => {
                 <div className={'gap-8 flex items-center justify-center'}>
                     <span className={'cursor-pointer'}><CiShuffle size={20}/></span>
                     <span className={'cursor-pointer'}><IoMdSkipBackward size={18}/></span>
-                    <span className={'p-2 border border-gray-700 rounded-full hover:text-main-500 cursor-pointer'}>
+                    <span className={'p-2 border border-gray-700 rounded-full hover:text-main-500 cursor-pointer'}></span>
                        {isPlaying }
                     <span className={'cursor-pointer'}><MdSkipNext size={24}/></span>
                     <span className={'cursor-pointer'}><IoRepeatOutline size={24}/></span>
@@ -63,5 +64,5 @@ const Player = () => {
         </div>
     )
  }
- export default Player
+ export default Player;
 
