@@ -20,12 +20,12 @@ const Slider = () =>{
         const intervalId = setInterval(() => {
             const list = getArrSlider(min, max, sliderEls.length - 1)
             for (let i = 0; i < sliderEls.length; i++) {
-
+                // Delete classnames (css)
                 sliderEls[i]?.classList?.remove('animate-slide-right', 'order-last', 'z-20')
                 sliderEls[i]?.classList?.remove('animate-slide-left', 'order-first', 'z-10')
                 sliderEls[i]?.classList?.remove('animate-slide-left2', 'order-2', 'z-10')
 
-
+                // Hide or Show images
                 if (list.some(item => item === i)) {
                     sliderEls[i].style.cssText = `display: block`
                 } else {

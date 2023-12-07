@@ -9,6 +9,8 @@ import Home from "./page/public/Home";
 import Login from "./page/public/Login";
 import * as actions from './store/actions'
 import Register from "./page/public/Register";
+import UserList from "./page/public/UserList";
+import UpdateUser from "./page/public/UpdateUser";
 
 function App() {
     const dispatch = useDispatch()
@@ -23,6 +25,8 @@ function App() {
                       <Route path={path.HOME} element={<Home/>}></Route>
                       <Route path={path.LOGIN} element={<Login/>}></Route>
                       <Route path={path.REGISTER} element={<Register/>}></Route>
+                      <Route path={path.LISTUSER} element={<UserList/>}></Route>
+                      <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>
                   </Route>
               </Routes>
           </div>
