@@ -9,9 +9,11 @@ import {PiFlag} from "react-icons/pi";
 import {CiStopSign1} from "react-icons/ci";
 import {FiPhone} from "react-icons/fi";
 import {SlArrowRight} from "react-icons/sl";
+import "../css_component/menuSetting.css"
 
 
-const MenuSetting = props => {
+const MenuSetting = (props) => {
+    console.log(props.name)
     return (
         <>
             <div className="menu_setting">
@@ -23,21 +25,22 @@ const MenuSetting = props => {
                         <div className="content">
                             Trình phát nhạc
                         </div>
-                        <div className="icon">
+                        <div className="icon" style={{marginLeft:"auto"}}>
                             <SlArrowRight />
                         </div>
                     </li>
-                    <li>
-                        <div className="icon">
-                            <VscSymbolInterface />
-                        </div>
-                        <div className="content">
-                            Giao diện
-                        </div>
-                        <div className="icon">
-                            <SlArrowRight />
-                        </div>
+                    <li className= "li-form">
+                            <div className="icon">
+                                <VscSymbolInterface />
+                            </div>
+                            <div className="content" style={{}}>
+                                Giao diện
+                            </div>
+                            <div className="icon" style={{marginLeft:"auto"}}>
+                                <SlArrowRight />
+                            </div>
                     </li>
+                    <div className= "vach"></div>
                     <li>
                         <div className="icon">
                             <GrCircleInformation />
@@ -53,7 +56,7 @@ const MenuSetting = props => {
                         <div className="content">
                             Tỏa thuận sử dụng
                         </div>
-                        <div className="icon">
+                        <div className="icon" style={{marginLeft:"auto"}}>
                             <GoArrowUpRight />
                         </div>
                     </li>
@@ -64,7 +67,7 @@ const MenuSetting = props => {
                         <div className="content">
                             Chính sách bảo mật
                         </div>
-                        <div className="icon">
+                        <div className="icon" style={{marginLeft:"auto"}}>
                             <GoArrowUpRight />
                         </div>
                     </li>
@@ -75,7 +78,7 @@ const MenuSetting = props => {
                         <div className="content">
                             Báo cáo vi phạm bản quyền
                         </div>
-                        <div className="icon">
+                        <div className="icon" style={{marginLeft:"auto"}}>
                             <GoArrowUpRight />
                         </div>
                     </li>
@@ -86,7 +89,7 @@ const MenuSetting = props => {
                         <div className="content">
                             Quảng cáo
                         </div>
-                        <div className="icon">
+                        <div className="icon" style={{marginLeft:"auto"}}>
                             <GoArrowUpRight />
                         </div>
                     </li>
@@ -97,7 +100,7 @@ const MenuSetting = props => {
                         <div className="content">
                             Liên hệ
                         </div>
-                        <div className="icon">
+                        <div className="icon" style={{marginLeft:"auto"}}>
                             <GoArrowUpRight />
                         </div>
                     </li>

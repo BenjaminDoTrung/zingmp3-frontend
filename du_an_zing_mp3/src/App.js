@@ -12,6 +12,7 @@ import * as actions from './store/actions'
 // import UserList from "./page/public/UserList";
 // import UpdateUser from "./page/public/UpdateUser";
 import MenuSetting from "./components/MenuSetting";
+import MenuLogin from "./components/MenuLogin";
 
 function App() {
     const dispatch = useDispatch()
@@ -29,7 +30,7 @@ function App() {
                   {/*    <Route path={path.LISTUSER} element={<UserList/>}></Route>*/}
                   {/*    <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>*/}
                   {/*</Route>*/}
-                  <Route path={""} element={<MenuSetting></MenuSetting>}></Route>
+                  <Route path={""} element={<MenuLogin></MenuLogin>}></Route>
               </Routes>
           </div>
           <ToastContainer
