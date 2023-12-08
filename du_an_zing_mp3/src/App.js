@@ -23,14 +23,13 @@ function App() {
       <>
           <div>
               <Routes>
-                  {/*<Route path={path.PUBLIC} element={<Public/>}>*/}
-                  {/*    <Route path={path.HOME} element={<Home/>}></Route>*/}
-                  {/*    <Route path={path.LOGIN} element={<Login/>}></Route>*/}
-                  {/*    <Route path={path.REGISTER} element={<Register/>}></Route>*/}
-                  {/*    <Route path={path.LISTUSER} element={<UserList/>}></Route>*/}
-                  {/*    <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>*/}
-                  {/*</Route>*/}
-                  <Route path={""} element={<MenuLogin></MenuLogin>}></Route>
+                  <Route path={path.PUBLIC} element={<Public/>}>
+                      <Route path={path.HOME} element={<Home/>}></Route>
+                      <Route path={path.LOGIN} element={<Login/>}></Route>
+                      <Route path={path.REGISTER} element={<Register/>}></Route>
+                      <Route path={path.LISTUSER} element={<UserList/>}></Route>
+                      <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>
+                  </Route>
               </Routes>
           </div>
           <ToastContainer
