@@ -19,15 +19,14 @@ export default function Login() {
                     enableReinitialize={true}
                     onSubmit={(values) => {
                         console.log(values)
-                        axios.post("http://localhost:8080/users/login", values).then((res)=>{
-                            console.log(res)
-                            // document.getElementById("modal").style.display = "none";
-                            toast.success("Đăng nhập thành công", {
-                                position: toast.POSITION.BOTTOM_RIGHT,
-                                className: "foo-bar",
-                            })
-                        }).catch(()=>{
-                            toast.success('Đăng nhập thất bại')
+                        axios.post('http://localhost:8080/users/login',values).then((res) => {
+                            localStorage.setItem("idUser", res.data.id)
+                            localStorage.setItem("user", res.data.username)
+                            alert("Đăng nhập thành công")
+                            navigate("/")
+                        }).catch(()=> {
+                            alert('Không thành công')
+                            navigate("/login")
                         })
                     }}>
                 <Form>
