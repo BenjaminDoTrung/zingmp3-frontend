@@ -3,6 +3,9 @@ import {Outlet} from "react-router-dom";
 import SidebarLeft from "../../components/SidebarLeft";
 import SidebarRight from "../../components/SidebarRight";
 import Player from "../../components/Player";
+import { Scrollbars } from 'react-custom-scrollbars-2';
+import Header from "../../components/Header";
+
 
 const Public = () => {
     return (
@@ -11,10 +14,18 @@ const Public = () => {
                 <div className='w-[240px] h-full flex-none border border-blue-500'>
                     <SidebarLeft />
                 </div>
-                <div className='flex-auto border border-red-500'>
-                    <Outlet />
+                <div className='flex-auto flex flex-column border border-blue-500'>
+                    <div className={'h-[70px] flex-none px-[59px] flex items-center '}>
+                        <Header/>
+                    </div >
+                    <div className={'flex-auto w-full'}>
+                        <Scrollbars autoHide style={{width:'100%', height:'100%'}}>
+                            <Outlet />
+                        </Scrollbars>
+                    </div>
+
                 </div>
-                <div className='w-[329px]  flex-none border border-green-500 animate-slide-left '>
+                <div className='w-[329px] flex  flex-none  animate-slide-left '>
                     <SidebarRight />
                 </div>
             </div>

@@ -11,6 +11,7 @@ import * as actions from './store/actions'
 import Register from "./page/public/Register";
 import UserList from "./page/public/UserList";
 import UpdateUser from "./page/public/UpdateUser";
+import Album from "./page/public/Album";
 
 function App() {
     const dispatch = useDispatch()
@@ -27,6 +28,7 @@ function App() {
                       <Route path={path.REGISTER} element={<Register/>}></Route>
                       <Route path={path.LISTUSER} element={<UserList/>}></Route>
                       <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>
+                      <Route path={path.AlBUM_TITLE_PID} element={<Album/>}></Route>
                   </Route>
               </Routes>
           </div>
