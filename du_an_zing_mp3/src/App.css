@@ -1612,13 +1612,4 @@ span.from {
 .week_title h1{
   font-size : 35px;
 }
-.header-setting{
-  /*margin-left: 15px;*/
-  /*margin-right: 20px;*/
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  float: right;
-  background-color: #230756;
-  color: #FFFFFF;
-}
+
