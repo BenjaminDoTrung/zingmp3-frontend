@@ -3,13 +3,18 @@ import {useEffect, useState} from "react";
 import * as apis from '../../apis'
 import moment from 'moment'
 import Lists from "../../components/Lists";
+import {useDispatch} from "react-redux";
+import * as actions from '../../store/actions'
 
 const Album = () => {
 
     const { pid} = useParams()
     const [playlistData, setPlaylistData] = useState([])
+    const dispatch = useDispatch()
     useEffect(() => {
+        dispatch(actions.setCurAlbumId(pid))
         const fetchDetailPlaylist = async () =>{
+
             const response = await apis.apiGetDetailPlaylist(pid)
             if(response?.data.err ===0) {
                 setPlaylistData(response.data?.data)

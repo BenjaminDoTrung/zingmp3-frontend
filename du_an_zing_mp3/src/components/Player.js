@@ -80,7 +80,7 @@ const Player = () => {
             </div>
 
                 <div className={'w-[30%] flex-auto'}>
-                    Volume
+                    <input type={"range"} step={1} min={0} max={100}/>
                 </div>
             </div>
 
