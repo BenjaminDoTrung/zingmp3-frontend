@@ -4,6 +4,7 @@ const path = {
     LOGIN: "login",
     REGISTER: "register",
     LISTUSER: "userList",
-    UPDATEUSER: "updateProfile"
+    UPDATEUSER: "updateProfile",
+    UPDATEPASS: "updatePassword"
 }
 export default path

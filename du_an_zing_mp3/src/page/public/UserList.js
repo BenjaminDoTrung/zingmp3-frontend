@@ -6,14 +6,24 @@ import Header from "../../components/Header";
 export default function UserList() {
     const [list, setList] = useState([]);
     const [check, setCheck] = useState(false);
-
     useEffect(() => {
-        findAllUsers()
+        axios.get('http://localhost:8080/users').then(res => {
+            setList(listNew(res.data))
+        }).catch(()=>{setList([])})
     }, [check])
 
-    function changeStatus(id,email, event) {
-        console.log(list)
-        axios.post('http://localhost:8080/users/' + id + email).then(()=>{})
+    function listNew(list) {
+        let listNe = [] ;
+        for (let i = 0; i < list.length; i++) {
+            if(list[i].userName !== "admin"){
+                listNe.push(list[i])
+            }
+        }
+        return listNe ;
+    }
+
+    function changeStatus(email) {
+        axios.put('http://localhost:8080/users/account_lockout/'+email).then(()=>{})
     }
         return (
             <>
@@ -25,28 +35,28 @@ export default function UserList() {
                                   data-dismiss={"modal"} value={"Cancel"}> Logout</Link></button>
                 </div>
 
-                <table>
+                <table className="table table-striped">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Email</th>
-                        <th>url_img</th>
-                        <th>DayOfBirth</th>
-                        <th>Phone</th>
-                        <th>Status</th>
-                        <th>User Name</th>
+                        <th scope="col">#</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">url_img</th>
+                        <th scope="col">DayOfBirth</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">User Name</th>
                     </tr>
                     </thead>
                     <tbody>
                     {list.map((i, key) => (
                             <tr>
-                                <td>{key + 1}</td>
+                                <th scope="row">{key + 1}</th>
                                 <td>{i.email}</td>
                                 <td>{i.url_img}</td>
                                 <td>{i.dayOfBirth}</td>
                                 <td>{i.phone}</td>
                                 <td>
-                                    <select onChange={(event) =>{changeStatus(i.id,i.email, event)}}>
+                                    <select onChange={(event) =>{changeStatus(i.email)}}>
                                         {i.enabled === true ? <>
                                             <option>true</option>
                                             <option>false</option>
@@ -67,9 +77,7 @@ export default function UserList() {
         )
 
         function findAllUsers() {
-            axios.get('http://localhost:8080/users').then(res => {
-                setList(res.data)
-            }).catch(()=>{setList([])})
+
         }
 
     }
