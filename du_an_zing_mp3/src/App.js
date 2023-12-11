@@ -8,10 +8,11 @@ import path from "./untis/path";
 import Home from "./page/public/Home";
 import Login from "./page/public/Login";
 import * as actions from './store/actions'
-import Register from "./page/public/Register";
 import UserList from "./page/public/UserList";
 import UpdateUser from "./page/public/UpdateUser";
 import Album from "./page/public/Album";
+import UpdatePass from "./page/public/UpdatePassword";
+import Register from "./page/public/Register";
 
 function App() {
     const dispatch = useDispatch()
@@ -21,6 +22,8 @@ function App() {
   return (
       <>
           <div>
+
+
               <Routes>
                   <Route path={path.PUBLIC} element={<Public/>}>
                       <Route path={path.HOME} element={<Home/>}></Route>
@@ -29,8 +32,12 @@ function App() {
                       <Route path={path.LISTUSER} element={<UserList/>}></Route>
                       <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>
                       <Route path={path.AlBUM_TITLE_PID} element={<Album/>}></Route>
+                      <Route path={path.UPDATEPASS} element={<UpdatePass/>}></Route>
+
                   </Route>
+
               </Routes>
+              <ToastContainer />
           </div>
 
       </>
