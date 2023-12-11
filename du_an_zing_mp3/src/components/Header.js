@@ -57,8 +57,9 @@ const Header = () => {
                     <Search/>
                </div>
            </div>
-           <button><Link to={'login'} type={"button"} className={"btn btn-default"}
-                         data-dismiss={"modal"} value={"Cancel"}> Login </Link></button>
+           <button onClick={()=>{
+               navigate("/login")
+           }}>Login</button>
        </div>
     )}
 }
