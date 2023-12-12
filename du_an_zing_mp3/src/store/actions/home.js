@@ -5,7 +5,7 @@ import axios from "axios";
 
 export const getHome = () => async (dispatch) => {
     try {
-        const response = await axios.get("http://localhost:5000/api/home")
+        const response = await apis.getHome()
 
         if (response?.data.err ===0){
             dispatch({
