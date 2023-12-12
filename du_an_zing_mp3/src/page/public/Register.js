@@ -61,26 +61,26 @@ export default function Register() {
                     email: '',
                     confirmedPassword: ''
                 }}
-                validationSchema={
-                    require("yup").object().shape({
-                        userName: require("yup")
-                            .string()
-                            .matches(/^[a-zA-Z0-9_]+$/, "Tên tài khoản không hợp lệ")
-                            .required("Vui lòng nhập tên tài khoản").test('unique', 'Tài khoản đã tồn tại', (value) => {
-                                return !listUserCheck.includes(value);
-                            }),
-                        password: require("yup")
-                            .string()
-                            .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/, "Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm số, chữ thường và chữ hoa")
-                            .required("Vui lòng nhập mật khẩu."),
-                        email: require("yup")
-                            .string()
-                            .email("Email không hợp lệ.")
-                            .required("Vui lòng nhập email.").test('unique', 'Email đã tồn tại', (value) => {
-                                return !listMailCheck.includes(value);
-                            }),
-                    })
-                }
+                // validationSchema={
+                //     require("yup").object().shape({
+                //         userName: require("yup")
+                //             .string()
+                //             .matches(/^[a-zA-Z0-9_]+$/, "Tên tài khoản không hợp lệ")
+                //             .required("Vui lòng nhập tên tài khoản").test('unique', 'Tài khoản đã tồn tại', (value) => {
+                //                 return !listUserCheck.includes(value);
+                //             }),
+                //         password: require("yup")
+                //             .string()
+                //             .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/, "Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm số, chữ thường và chữ hoa")
+                //             .required("Vui lòng nhập mật khẩu."),
+                //         email: require("yup")
+                //             .string()
+                //             .email("Email không hợp lệ.")
+                //             .required("Vui lòng nhập email.").test('unique', 'Email đã tồn tại', (value) => {
+                //                 return !listMailCheck.includes(value);
+                //             }),
+                //     })
+                // }
                 onSubmit={onSubmit}
                 enableReinitialize={true}
             >
