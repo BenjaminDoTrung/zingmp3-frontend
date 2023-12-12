@@ -27,9 +27,6 @@ export default function UserList() {
     }
         return (
             <>
-                <div className={'h-[70px] px-[59px] flex items-center'}>
-                    <Header/>
-                </div>
                 <div>
                     <button><Link to={'/Login'} type={"button"} className={"btn btn-default"}
                                   data-dismiss={"modal"} value={"Cancel"}> Logout</Link></button>

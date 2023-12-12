@@ -9,14 +9,20 @@ export default function Login() {
     let navigate = useNavigate();
     function setAcc(value) {
         axios.post('http://localhost:8080/users/login', value).then((res) => {
-            localStorage.setItem("idUser", res.data.id)
-            localStorage.setItem("user", res.data.userName)
-            navigate("/")
-            toast.success("Đăng nhập thành công",{
-                position: toast.POSITION.BOTTOM_RIGHT
-            })
+            console.log(res.data);
+            if (res.data === false){
+                alert("tk bi khoa");
+            }
+            else{
+                localStorage.setItem("idUser", res.data.id)
+                localStorage.setItem("user", res.data.username)
+                navigate("/")
+                toast.success("Đăng nhập thành công", {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                })
+            }
         }).catch(() => {
-            toast.error('Đăng nhập thất bại')
+            toast.error('Thông tin sai')
             navigate("/login")
         })
     }
@@ -28,9 +34,6 @@ export default function Login() {
 
     return (
         <>
-            <div className={'h-[70px] px-[59px] flex items-center'}>
-                <Header/>
-            </div>
             <Formik initialValues={{
                 userName: "",
                 password: ""
@@ -56,12 +59,12 @@ export default function Login() {
                                                         </div>
                                                         <div className="login100-form validate-form">
 					<span className="login100-form-title">
-						MP3 Login
+						Đăng nhập Zingmp3
 					</span>
                                                             <div className="wrap-input100 validate-input"
                                                                  data-validate="Valid email is required: ex@abc.xyz">
                                                                 <Field className="input100" type="text" name="userName"
-                                                                       placeholder="Name"/>
+                                                                       placeholder="Tên đăng nhập"/>
                                                                 <span className="focus-input100"></span>
                                                                 <span className="symbol-input100">
 							<i className="fa fa-envelope" aria-hidden="true"></i>
@@ -70,7 +73,7 @@ export default function Login() {
                                                             <div className="wrap-input100 validate-input"
                                                                  data-validate="Password is required">
                                                                 <Field className="input100" type="password"
-                                                                       name="password" placeholder="Password"/>
+                                                                       name="password" placeholder="Mật khẩu"/>
                                                                 <span className="focus-input100"></span>
                                                                 <span className="symbol-input100">
 							<i className="fa fa-lock" aria-hidden="true"></i>
@@ -79,7 +82,7 @@ export default function Login() {
 
                                                             <div className="container-login100-form-btn">
                                                                 <button className="login100-form-btn">
-                                                                    Login
+                                                                    Đăng nhập
                                                                 </button>
                                                             </div>
 
