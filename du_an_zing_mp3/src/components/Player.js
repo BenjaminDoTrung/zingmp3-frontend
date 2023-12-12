@@ -8,11 +8,12 @@ import {MdSkipNext} from "react-icons/md";
 import {IoRepeatOutline} from "react-icons/io5";
 import {BsThreeDots} from "react-icons/bs";
 import {FaPause, FaPlay} from "react-icons/fa";
+import {RiPlayListLine} from "react-icons/ri";
 
 
 
 
-const Player = () => {
+const Player = ({setIsShowRightSidebar}) => {
     const audio = new Audio()
     const {curSongId, isPlaying} = useSelector(state => state.music)
     const [songInfo, setSongInfo] = useState(null)
@@ -79,8 +80,9 @@ const Player = () => {
                 </div>
             </div>
 
-                <div className={'w-[30%] flex-auto'}>
+                <div className={'w-[30%] flex-auto flex items-center justify-end gap-4'}>
                     <input type={"range"} step={1} min={0} max={100}/>
+                    <span onClick={() => setIsShowRightSidebar(prev => !prev)} className={'p-1 rounded-sm cursor-pointer bg-main-500 opacity-90 hover:opacity-100'}><RiPlayListLine size={20}/></span>
                 </div>
             </div>
 

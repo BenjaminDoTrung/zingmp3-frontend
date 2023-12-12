@@ -11,6 +11,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
+import { RiPlayListLine } from "react-icons/ri";
 const icons = {
     MdOutlineLibraryMusic,
     LiaChartPieSolid,
@@ -24,7 +25,8 @@ const icons = {
     BsThreeDots,
     FaPlay,
     FaPause,
-    IoTrashBin
+    IoTrashBin,
+    RiPlayListLine
 
 
 }
