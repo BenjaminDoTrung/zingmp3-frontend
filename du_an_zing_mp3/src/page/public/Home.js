@@ -16,8 +16,8 @@ const Home = () =>{
         <div className={'overflow-y-auto w-full'}>
 
             <Slider/>
-            <Sections data={friday}/>
-            <Sections data={newEveryday}/>
+            {/*<Sections data={friday}/>*/}
+            {/*<Sections data={newEveryday}/>*/}
             <NewRelease/>
             <Sections data={top100}/>
             <Sections data={xone}/>

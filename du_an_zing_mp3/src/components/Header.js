@@ -2,6 +2,7 @@
 import icons from "../untis/icons";
 import Search from "./Search";
 import {Link, useNavigate} from "react-router-dom";
+import user from '../accsets/user.png'
 const {IoIosArrowRoundBack,IoIosArrowRoundForward,AiOutlineSearch} =icons
 const Header = () => {
     const navigate = useNavigate()
@@ -57,10 +58,17 @@ const Header = () => {
                     <Search/>
                </div>
            </div>
-           <button onClick={()=>{
-               navigate("/login")
-           }}>Login</button>
+           <div>
+               <button
+                   onClick={()=>{
+                   navigate("/login")
+               }}><img
+                   src={user} alt=''
+                   className={'w-[40px] h-[40px]'}
+               /></button>
+           </div>
        </div>
+
     )}
 }
 
