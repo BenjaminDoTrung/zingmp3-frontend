@@ -102,7 +102,7 @@ export default function Register() {
                                                             </div>
                                                             <div className="login100-form validate-form">
 					<span className="login100-form-title">
-						MP3 Login
+						Đăng ký Zingmp3
 					</span>
                                                                 <ErrorMessage  className={'formik-error-message'} name="userName" component="div"/>
                                                                 <div className="wrap-input100 validate-input">
@@ -122,7 +122,7 @@ export default function Register() {
                                                                 </div>
                                                                 <ErrorMessage  className={'formik-error-message'} name="confirmedPassword" component="div"/>
                                                                 <div className="wrap-input100 validate-input">
-                                                                    <Field className="input100" type="password" name="confirmedPassword" placeholder="password"/>
+                                                                    <Field className="input100" type="password" name="confirmedPassword" placeholder="Nhập lại mật khẩu"/>
                                                                     <span className="focus-input100"></span>
                                                                     <span className="symbol-input100">
 							<i className="fa fa-envelope" aria-hidden="true"></i>
@@ -138,7 +138,7 @@ export default function Register() {
                                                                 </div>
                                                                 <div className="container-login100-form-btn">
                                                                     <button className="login100-form-btn">
-                                                                        Login
+                                                                        Đăng ký
                                                                     </button>
                                                                 </div>
 

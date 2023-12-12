@@ -59,12 +59,12 @@ export default function Login() {
                                                         </div>
                                                         <div className="login100-form validate-form">
 					<span className="login100-form-title">
-						MP3 Login
+						Đăng nhập Zingmp3
 					</span>
                                                             <div className="wrap-input100 validate-input"
                                                                  data-validate="Valid email is required: ex@abc.xyz">
                                                                 <Field className="input100" type="text" name="userName"
-                                                                       placeholder="Name"/>
+                                                                       placeholder="Tên đăng nhập"/>
                                                                 <span className="focus-input100"></span>
                                                                 <span className="symbol-input100">
 							<i className="fa fa-envelope" aria-hidden="true"></i>
@@ -73,7 +73,7 @@ export default function Login() {
                                                             <div className="wrap-input100 validate-input"
                                                                  data-validate="Password is required">
                                                                 <Field className="input100" type="password"
-                                                                       name="password" placeholder="Password"/>
+                                                                       name="password" placeholder="Mật khẩu"/>
                                                                 <span className="focus-input100"></span>
                                                                 <span className="symbol-input100">
 							<i className="fa fa-lock" aria-hidden="true"></i>
@@ -82,7 +82,7 @@ export default function Login() {
 
                                                             <div className="container-login100-form-btn">
                                                                 <button className="login100-form-btn">
-                                                                    Login
+                                                                    Đăng nhập
                                                                 </button>
                                                             </div>
 
