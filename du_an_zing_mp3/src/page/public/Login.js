@@ -34,9 +34,6 @@ export default function Login() {
 
     return (
         <>
-            <div className={'h-[70px] px-[59px] flex items-center'}>
-                <Header/>
-            </div>
             <Formik initialValues={{
                 userName: "",
                 password: ""

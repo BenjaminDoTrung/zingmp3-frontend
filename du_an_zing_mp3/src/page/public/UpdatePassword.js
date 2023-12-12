@@ -9,9 +9,6 @@ export default function UpdatePass() {
 
     return(
         <>
-            <div className={'h-[70px] px-[59px] flex items-center'}>
-                <Header/>
-            </div>
             <Formik
                 initialValues={user}
                 onSubmit={(user1) => {
