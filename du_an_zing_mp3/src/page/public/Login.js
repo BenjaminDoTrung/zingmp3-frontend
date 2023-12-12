@@ -1,8 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import {Field, Form, Formik} from "formik";
 import axios from "axios";
-import {toast, ToastContainer} from "react-toastify";
-import Header from "../../components/Header";
+import {toast} from "react-toastify";
 import "../../modalLogin.css"
 
 export default function Login() {
@@ -34,6 +33,7 @@ export default function Login() {
 
     return (
         <>
+
             <Formik initialValues={{
                 userName: "",
                 password: ""
