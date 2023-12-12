@@ -9,14 +9,20 @@ export default function Login() {
     let navigate = useNavigate();
     function setAcc(value) {
         axios.post('http://localhost:8080/users/login', value).then((res) => {
-            localStorage.setItem("idUser", res.data.id)
-            localStorage.setItem("user", res.data.userName)
-            navigate("/")
-            toast.success("Đăng nhập thành công",{
-                position: toast.POSITION.BOTTOM_RIGHT
-            })
+            console.log(res.data);
+            if (res.data === false){
+                alert("tk bi khoa");
+            }
+            else{
+                localStorage.setItem("idUser", res.data.id)
+                localStorage.setItem("user", res.data.username)
+                navigate("/")
+                toast.success("Đăng nhập thành công", {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                })
+            }
         }).catch(() => {
-            toast.error('Đăng nhập thất bại')
+            toast.error('Thông tin sai')
             navigate("/login")
         })
     }
