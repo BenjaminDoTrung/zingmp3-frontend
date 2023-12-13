@@ -22,8 +22,6 @@ function App() {
   return (
       <>
           <div>
-
-
               <Routes>
                   <Route path={path.PUBLIC} element={<Public/>}>
                       <Route path={path.HOME} element={<Home/>}></Route>
