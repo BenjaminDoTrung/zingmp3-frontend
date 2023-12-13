@@ -26,6 +26,8 @@ const Player = ({setIsShowRightSidebar}) => {
                 apis.apiGetDetailSong(curSongId),
                 apis.apiGetSong(curSongId)
             ])
+            console.log(res2)
+            console.log(res1)
             if (res1.data.err === 0) {
                 setSongInfo(res1.data.data)
             }

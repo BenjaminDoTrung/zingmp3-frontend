@@ -2,11 +2,13 @@ import Header from "../../components/Header";
 import {Field, Form, Formik} from "formik";
 import axios from "axios";
 import {useEffect, useState} from "react";
-
+import "./scc update.css"
+import {useNavigate} from "react-router-dom";
 
 export default function UpdateUser() {
     const id = localStorage.getItem("idUser")
     const [user, setUser] = useState({})
+    const navigate = useNavigate()
     useEffect(() => {
         axios.get('http://localhost:8080/users/' + id).then((res) => {
             console.log(res.data)
@@ -23,12 +25,12 @@ export default function UpdateUser() {
                     }}
                     enableReinitialize={true}>
                     <Form>
-                        <div className="container-fluid px-1 py-5 mx-auto">
+                        <div className="container-fluid px-1 py-5 mx-auto  " >
                             <div className="row d-flex justify-content-center">
                                 <div className="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
                                     <h1>Chỉnh sửa</h1>
                                     <div className="card">
-                                            <div className="row justify-content-between text-left">
+                                            <div className="row justify-content-between text-left ">
                                                 <div className="form-group col-sm-6 flex-column d-flex">
                                                     <label className="form-control-label px-3">Tên hiện thị<span className="text-danger"> *</span></label>
                                                     <Field type="text" name={'userName'} placeholder="Name"/>
@@ -60,6 +62,14 @@ export default function UpdateUser() {
                                             <div className="row justify-content-end">
                                                 <div className="form-group col-sm-6">
                                                     <button className="mb-4" type={"submit"}>Update</button>
+                                                    <button
+                                                        onClick={() =>{
+                                                            navigate('/')
+                                                        }}
+                                                    >
+                                                        Home
+
+                                                    </button>
                                                 </div>
                                             </div>
                                     </div>

@@ -12,6 +12,8 @@ import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { RiPlayListLine } from "react-icons/ri";
+import { IoSettings } from "react-icons/io5";
+import { IoArrowBackOutline } from "react-icons/io5";
 const icons = {
     MdOutlineLibraryMusic,
     LiaChartPieSolid,
@@ -26,7 +28,9 @@ const icons = {
     FaPlay,
     FaPause,
     IoTrashBin,
-    RiPlayListLine
+    RiPlayListLine,
+    IoSettings,
+    IoArrowBackOutline
 
 
 }

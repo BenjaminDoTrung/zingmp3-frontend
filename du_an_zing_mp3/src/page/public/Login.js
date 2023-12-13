@@ -3,6 +3,7 @@ import {Field, Form, Formik} from "formik";
 import axios from "axios";
 import {toast} from "react-toastify";
 import "../../modalLogin.css"
+import {IoArrowBackOutline} from "react-icons/io5";
 
 export default function Login() {
     let navigate = useNavigate();
@@ -101,6 +102,14 @@ export default function Login() {
                                                                     Create your Account
                                                                     <i className="fa fa-long-arrow-right m-l-5"
                                                                        aria-hidden="true"></i>
+                                                                </button>
+                                                                <button
+                                                                onClick={() => {
+                                                                    navigate("/")
+                                                                }}
+                                                                >
+                                                                    <IoArrowBackOutline/>
+
                                                                 </button>
                                                             </div>
                                                         </div>
