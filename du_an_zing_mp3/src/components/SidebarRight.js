@@ -27,12 +27,12 @@ const SidebarRight = () => {
                         onClick={() => setisRecent(prev => !prev)}
                         className={`py-[5px] ${!isRecent && 'bg-main-100'} flex-1 flex justify-center rounded-l-full rounded-r-full items-center`}
                     >
-                        Danh sach phat</span>
+                        Danh sách phát</span>
                     <span
                         onClick={() => setisRecent(prev => !prev)}
                         className={`py-[5px] ${isRecent && 'bg-main-100'} flex-1 flex justify-center rounded-l-full rounded-r-full items-center`}
                     >
-                        Nghe gan day</span>
+                        Nghe gần đây</span>
                 </div>
                 <span className={'p-2 rounded-full hover:bg-main-200 cursor-pointer'}><IoTrashBin size={14}/></span>
             </div>
@@ -46,9 +46,9 @@ const SidebarRight = () => {
                  style='bg-main-500 text-white'
                 />
                 <div className={'flex flex-col text-black pt-[15px] px-2 pb-[5px]'}>
-                    <span className={' text-sm font-bold'}>Tiep theo</span>
+                    <span className={' text-sm font-bold'}>Tiếp theo</span>
                     <span className={'opacity-70 text-xs flex gap-1'}>
-                        <span>Tu playlist</span>
+                        <span>Từ playlist</span>
                         <span className={'font-semibold text-main-500'}>{curSongData?.album?.title}</span>
                     </span>
                 </div>
