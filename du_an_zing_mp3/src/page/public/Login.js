@@ -34,7 +34,6 @@ export default function Login() {
 
     return (
         <>
-
             <Formik initialValues={{
                 userName: "",
                 password: ""
@@ -109,7 +108,6 @@ export default function Login() {
                                                                 }}
                                                                 >
                                                                     <IoArrowBackOutline/>
-
                                                                 </button>
                                                             </div>
                                                         </div>

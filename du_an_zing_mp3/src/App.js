@@ -31,8 +31,6 @@ function App() {
                       <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>
                       <Route path={path.AlBUM_TITLE_PID} element={<Album/>}></Route>
                       <Route path={path.UPDATEPASS} element={<UpdatePass/>}></Route>
-
-
                   </Route>
 
               </Routes>

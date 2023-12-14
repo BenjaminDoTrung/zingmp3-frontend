@@ -1,8 +1,8 @@
 .menu_setting{
-    float: right;
+    /*float: right;*/
     z-index: 1000;
     display: block;
-    margin-top: 15px;
+    margin-top: 120px;
     margin-right: 30px;
     width: 300px;
     height: 430px;
@@ -11,10 +11,10 @@
 
 
 }
-.form_menu{
-    padding-top: 0px;
+/*.form_menu{*/
+/*    padding-top: 0px;*/
 
-}
+/*}*/
 .menu_setting li{
     margin-left: 5px;
     margin-right: 5px;

@@ -6,31 +6,28 @@ import {HiOutlinePlus} from "react-icons/hi";
 import {AiOutlineLogout} from "react-icons/ai";
 import {useNavigate} from "react-router-dom";
 import UpdatePass from "../page/public/UpdatePassword";
-const MenuLogOut = () => {
+    const MenuAdmin = () => {
     const navigate = useNavigate()
     function logOut() {
         localStorage.clear()
         navigate("/")
     }
-    function updatePassword(){
-        navigate("/updatePassword")
-    }
-    function updateProfile(){
-        navigate("/updateProfile")
+    function userList(){
+        navigate("/userList")
     }
     return (
         <>
             <div className="menu-logout">
                 <ul>
-                    <li onClick={updateProfile}>
+                    <li onClick={userList}>
                         <div className="use-icon">
                             <CiSettings style={{width:20, height:20}} />
                         </div>
                         <div className="use-content">
-                            Sửa thông tin
+                            Quản lý người dùng
                         </div>
                     </li>
-                    <li onClick={updatePassword}>
+                    <li>
                         <div className="use-icon">
                             <TbPasswordUser style={{width:20, height:20}} />
                         </div>
@@ -40,10 +37,10 @@ const MenuLogOut = () => {
                     </li>
                     <li>
                         <div className="use-icon">
-                            <HiOutlinePlus style={{width:20, height:20}} />
+                            <TbPasswordUser style={{width:20, height:20}} />
                         </div>
                         <div className="use-content">
-                            Thêm bài hát
+                            ...
                         </div>
                     </li>
                     <li onClick={logOut}>
@@ -60,4 +57,4 @@ const MenuLogOut = () => {
     );
 };
 
-export default MenuLogOut;
+export default MenuAdmin;

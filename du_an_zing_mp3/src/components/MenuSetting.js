@@ -10,25 +10,16 @@ import {CiStopSign1} from "react-icons/ci";
 import {FiPhone} from "react-icons/fi";
 import {SlArrowRight} from "react-icons/sl";
 import "../css_component/menuSetting.css"
+import {useNavigate} from "react-router-dom";
 
 
 const MenuSetting = (props) => {
+    const navigate = useNavigate();
     console.log(props.name)
     return (
         <>
             <div className="menu_setting">
                 <ul className="form_menu">
-                    <li>
-                        <div className="icon">
-                            <AiOutlinePlayCircle />
-                        </div>
-                        <div className="content">
-                            Trình phát nhạc
-                        </div>
-                        <div className="icon" style={{marginLeft:"auto"}}>
-                            <SlArrowRight />
-                        </div>
-                    </li>
                     <li className= "li-form">
                             <div className="icon">
                                 <VscSymbolInterface />
