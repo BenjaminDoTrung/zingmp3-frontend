@@ -18,10 +18,14 @@ const Header = () => {
     const navigate = useNavigate()
     const id = localStorage.getItem("idUser")
     let [user, setUser] = useState({})
-    useEffect(() => {
-        axios.get('http://localhost:8080/users/' + id).then((res) => {
-        })
-    }, [])
+
+        useEffect(() => {
+            if (id !== null){
+            axios.get('http://localhost:8080/users/' + id).then((res) => {
+                setUser(res.data.id)
+            })}
+        }, [])
+
 
     const [check, setCheck] = useState(false)
     const [checkSetting, setChecksetting] = useState(false)
