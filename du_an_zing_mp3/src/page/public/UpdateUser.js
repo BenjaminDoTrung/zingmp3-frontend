@@ -8,6 +8,8 @@ import {
     uploadBytes,
     getDownloadURL
 } from "firebase/storage";
+import React from 'react';
+
 
 export default function UpdateUser() {
     const id = localStorage.getItem("idUser")
@@ -38,6 +40,7 @@ export default function UpdateUser() {
         });
     };
 
+
     return (
         <>
             <div className={'h-[70px] px-[59px] flex items-center'}>
@@ -64,30 +67,37 @@ export default function UpdateUser() {
             >
                 <Form>
                     <div className="p-3 my-5 d-flex flex-column w-50">
-                        <div>Name</div>
-                        <div className="form-outline mb-4">
-                            <Field className="form-control" name={'userName'} type='text'/>
-                        </div>
-                        <div>Email</div>
-                        <div className="form-outline mb-4">
-                            <Field className="form-control" name={'email'} type='email'/>
-                        </div>
-                        <div>Phone</div>
-                        <div className="form-outline mb-4">
-                            <Field className="form-control" name={'phone'} type='number'/>
-                        </div>
-                        <div>DOB</div>
-                        <div className="form-outline mb-4">
-                            <Field className="form-control" name={'dayOfBirth'} type='date'/>
-                        </div>
-                        <div>IMG</div>
-                        <div className="form-outline mb-4">
-                            <input id='form2' name="url_img" type='file' onChange={(event)=>{
-                                uploadFile(event.target.files[0], id)
-                            }}/>
-                        </div>
-                        <button className="mb-4" type="submit" >Update</button>
+                    <div style={{ fontWeight: 'bold' }}>Name</div>
+                <div className="form-outline mb-4">
+                    <Field className="form-control" name={'userName'} type='text' />
+                </div>
+                <div style={{ fontWeight: 'bold' }}>Email</div>
+                <div className="form-outline mb-4">
+                    <Field className="form-control" name={'email'} type='email' />
+                </div>
+                <div style={{ fontWeight: 'bold' }}>Phone</div>
+                <div className="form-outline mb-4">
+                    <Field className="form-control" name={'phone'} type='number' />
+                </div>
+                <div style={{ fontWeight: 'bold' }}>DOB</div>
+                <div className="form-outline mb-4">
+                    <Field className="form-control" name={'dayOfBirth'} type='date' />
+                </div>
+                <div style={{ fontWeight: 'bold' }}>IMG</div>
+                <div className="img" style={{ display: 'flex' }}>
+                    <div className="form-outline mb-4">
+                        <input id='form2' name="url_img" type='file' onChange={(event) => {
+                            uploadFile(event.target.files[0], id)
+                        }} />
                     </div>
+                    {user.url_img == null ? <div className="img_update">
+                        <img src="" style={{ width: 170, height: 170 }} />
+                    </div> : <div className="img_update">
+                        <img src={user.url_img} style={{ width: 170, height: 170 }} />
+                    </div>}
+                </div>
+                <button className="mb-4" type="submit" style={{ backgroundColor: 'blue', color: 'white' }}>Update</button>
+            </div>
                 </Form>
             </Formik>
         </>
