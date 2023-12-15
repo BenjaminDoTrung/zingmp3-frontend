@@ -13,6 +13,7 @@ import UpdateUser from "./page/public/UpdateUser";
 import Album from "./page/public/Album";
 import UpdatePass from "./page/public/UpdatePassword";
 import Register from "./page/public/Register";
+import CreateSong from "./components/CreateSong";
 
 function App() {
     const dispatch = useDispatch()
@@ -26,6 +27,7 @@ function App() {
                   <Route path={path.PUBLIC} element={<Public/>}>
                       <Route path={path.HOME} element={<Home/>}></Route>
                       <Route path={path.LOGIN} element={<Login/>}></Route>
+                      <Route path={"/createSong"} element={<CreateSong></CreateSong>}></Route>
                       <Route path={path.REGISTER} element={<Register/>}></Route>
                       <Route path={path.LISTUSER} element={<UserList/>}></Route>
                       <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>
