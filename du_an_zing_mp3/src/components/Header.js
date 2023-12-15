@@ -7,21 +7,38 @@ import MenuLogin from "./MenuLogin";
 import "../css_component/menuSetting.css"
 import MenuSetting from "./MenuSetting";
 import {IoSettings} from "react-icons/io5";
-import React from "react";
+import React, {useEffect, useState} from "react";
+import findById from "../service/FindById";
+import axios from "axios";
+import MenuLogOut from "./MenuLogOut";
+import MenuAdmin from "./MenuAdmin";
 
 const {IoIosArrowRoundBack, IoIosArrowRoundForward, AiOutlineSearch} = icons
 const Header = () => {
     const navigate = useNavigate()
+    const id = localStorage.getItem("idUser")
+    let [user, setUser] = useState({})
 
-    function logOut() {
-        localStorage.clear()
-        navigate("/login")
+        useEffect(() => {
+            if (id !== null){
+            axios.get('http://localhost:8080/users/' + id).then((res) => {
+                setUser(res.data.id)
+            })}
+        }, [])
+
+
+    const [check, setCheck] = useState(false)
+    const [checkSetting, setChecksetting] = useState(false)
+
+    const handleCheck = (isCheck) => {
+        setCheck(isCheck);
     }
 
     if (localStorage.getItem("idUser") !== null) {
         if (localStorage.getItem("user") === "admin") {
             return (
-                <div className={' flex justify-between w-full items-center border border-none'}>
+                <div className={' flex justify-between w-full items-center border border-none'}
+                     style={{zIndex: 100}}>
                     <div className={'flex gap-6 w-full items-center'}>
                         <div className={'flex text-gray-400 gap-4'}>
                             <span><IoIosArrowRoundBack size={24}/></span>
@@ -31,34 +48,95 @@ const Header = () => {
                             <Search/>
                         </div>
                     </div>
-                    <button onClick={logOut}>Logout</button>
-                    <button><Link to={'/userList'} type={"button"} className={"btn btn-default"}
-                                  data-dismiss={"modal"} value={"Cancel"}> List User</Link></button>
+                    <div style={{display: "flex"}}>
+                        <div className="dev_setting">
+                            <button onClick={() => {
+                                setChecksetting(!checkSetting)
 
+                                setCheck(false)
+
+                            }}>
+                                <CiSettings style={{width: 40, height: 40, marginTop: 5}}/>
+                            </button>
+                        </div>
+                        <div className="dev_logout">
+                            <button onClick={() =>{
+                                setCheck(!check)
+                                setChecksetting(false);
+                            }
+
+                            }>
+                                <img src={user.url_img} style={{
+                                    width: 40,
+                                    height: 40,
+                                    marginTop: 5,
+                                    marginLeft: 2,
+                                    marginRight: 30,
+                                    borderRadius: 20
+                                }}/>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="form_menu" >
+                        <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting></MenuSetting> : ""}</div>
+                        <div style={{marginTop: "149px" , position : 'absolute' , marginLeft: '-14%' ,height :'0px'}}> {check ? <MenuAdmin></MenuAdmin> : <></>}</div>
+                    </div>
                 </div>
             )
         } else {
             return (
-                <div className={' flex justify-between w-full items-center border border-none'}>
-                    <div className={'flex gap-6 w-full items-center'}>
-                        <div className={'flex text-gray-400 gap-4'}>
-                            <span><IoIosArrowRoundBack size={24}/></span>
-                            <span><IoIosArrowRoundForward size={24}/></span>
+                <>
+                    <div className={' flex justify-between w-full items-center'}
+                         style={{zIndex: 100}}>
+                        <div className={'flex gap-6 w-full items-center'}>
+                            <div className={'flex text-gray-400 gap-4'}>
+                                <span><IoIosArrowRoundBack size={24}/></span>
+                                <span><IoIosArrowRoundForward size={24}/></span>
+                            </div>
+                            <div className={'w-1/2'}>
+                                <Search/>
+                            </div>
                         </div>
-                        <div className={'w-1/2'}>
-                            <Search/>
+                        <div style={{display: "flex"}}>
+                            <div className="dev_setting">
+                                <button onClick={() => {
+                                    setChecksetting(!checkSetting)
+
+                                        setCheck(false)
+
+                                }}>
+                                    <CiSettings style={{width: 40, height: 40, marginTop: 5}}/>
+                                </button>
+                            </div>
+                            <div className="dev_logout">
+                                <button onClick={() =>{
+                                    setCheck(!check)
+                                    setChecksetting(false);
+                                }
+
+                                }>
+                                    <img src={user.url_img} style={{
+                                        width: 40,
+                                        height: 40,
+                                        marginTop: 5,
+                                        marginLeft: 2,
+                                        marginRight: 30,
+                                        borderRadius: 20
+                                    }}/>
+                                </button>
+                            </div>
+                        </div>
+                        <div className="form_menu" >
+                            <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting></MenuSetting> : ""}</div>
+                            <div style={{marginTop: "149px" , position : 'absolute' , marginLeft: '-14%' ,height :'0px'}}> {check ? <MenuLogOut></MenuLogOut> : <></>}</div>
                         </div>
                     </div>
-                    <button onClick={logOut}>Logout</button>
-                    <button><Link to={'/updateProfile'} type={"button"} className={"btn btn-default"}
-                                  data-dismiss={"modal"} value={"Cancel"}> Update Profile</Link></button>
-                    <button><Link to={'/updatePassword'} type={"button"} className={"btn btn-default"}
-                                  data-dismiss={"modal"} value={"Cancel"}> Update Password</Link></button>
-                </div>)
+                </>
+            )
         }
     } else {
         return (
-            <div className={' flex justify-between w-full items-center border-none'}>
+            <div className={' flex justify-between w-full items-center border-none'} style={{zIndex: 100}}>
                 <div className={'flex gap-6 w-full items-center'}>
                     <div className={'flex text-gray-400 gap-4'}>
                         <span><IoIosArrowRoundBack size={24}/></span>
@@ -68,45 +146,39 @@ const Header = () => {
                         <Search/>
                     </div>
                 </div>
-                <button>
-                    <IoSettings size={32}/>
-                </button>
-                {/*<button*/}
-                {/*    onClick={()=>{navigate("/login")}}><img src={user} alt='' className={'w-[34px] h-[34px]'}/>*/}
-                {/*</button>*/}
-                <div>
-                    <div class="btn-group">
-                        <button type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                            <img src={user} alt='' className={'w-[34px] h-[34px]'}/>
+                <div style={{display: "flex"}}>
+                    <div className="dev_setting">
+                        <button onClick={() => {
+                            setChecksetting(!checkSetting)
+                            setCheck(false)
+
+                        }}>
+                            <CiSettings style={{width: 40, height: 40, marginTop: 5}}/>
                         </button>
-                        <ul className="dropdown-menu">
-                            <li><a className="dropdown-item" href="#">Đăng nhập</a></li>
-                            <li><div className="menuLogin_content">
-                                Đăng ký gói
-                            </div>
-                                <div className="voucher1">
-                                    <h2>
-                                        ZingMP3
-                                    </h2>
-                                    <h3>
-                                        Chỉ từ 11.000 đ/tháng
-                                    </h3>
-                                    <h3>
-                                        Nghe nhạc với chất lượng cao nhất, không quảng cáo
-                                    </h3>
-                                    <a>Tìm hiểu thêm</a>
-                                </div></li>
-                            <li><a className="dropdown-item" href="#">Something else here</a></li>
-                            <li>
-                                <hr className="dropdown-divider"/>
-                            </li>
-                            <li><a className="dropdown-item" href="#">Separated link</a></li>
-                        </ul>
+                    </div>
+                    <div className="dev_logout">
+                        <button onClick={() =>{
+                            setCheck(!check)
+                            setChecksetting(false);
+                        }
+
+                        }>
+                            <img src={user.url_img} style={{
+                                width: 40,
+                                height: 40,
+                                marginTop: 5,
+                                marginLeft: 2,
+                                marginRight: 30,
+                                borderRadius: 20
+                            }}/>
+                        </button>
                     </div>
                 </div>
+                <div className="form_menu" >
+                    <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting></MenuSetting> : ""}</div>
+                    <div style={{marginTop: "19px" , position : 'absolute' , marginLeft: '-17%' ,height :'0px'}}> {check ? <MenuLogin handler={handleCheck}></MenuLogin> : <></>}</div>
+                </div>
             </div>
-
         )
     }
 }

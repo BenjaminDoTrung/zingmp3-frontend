@@ -1,12 +1,17 @@
 import React from 'react';
 import "../css_component/menuLogin.css"
+import {useNavigate} from "react-router-dom";
 
-const MenuLogin = () => {
-
+const MenuLogin = ({ handler }) => {
+    const navigate = useNavigate()
+    function login() {
+        handler(false);
+        navigate("/login")
+    }
     return (
         <>
             <div className="menuLogin">
-                <div className="login">
+                <div onClick={login} className="login">
                     <button className= "button">
                         Login
                     </button>
