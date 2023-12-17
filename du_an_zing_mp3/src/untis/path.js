@@ -6,6 +6,8 @@ const path = {
     LISTUSER: "userList",
     UPDATEUSER: "updateProfile",
     AlBUM_TITLE_PID : 'album/:title/:pid',
-    UPDATEPASS: "updatePassword"
+    UPDATEPASS: "updatePassword",
+    RIGHTSIDEBAR: "rightSidebar",
+    SEARCHBYSONGNAME: "searchBySongName"
 }
 export default path

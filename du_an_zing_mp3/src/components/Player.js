@@ -1,6 +1,6 @@
 
 import {useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import *as apis from '../apis'
 import {CiHeart, CiShuffle} from "react-icons/ci";
 import {IoMdSkipBackward} from "react-icons/io";
@@ -8,6 +8,9 @@ import {MdSkipNext} from "react-icons/md";
 import {IoRepeatOutline} from "react-icons/io5";
 import {BsThreeDots} from "react-icons/bs";
 import {FaPause, FaPlay} from "react-icons/fa";
+import {Button, Drawer} from "antd";
+import {useNavigate} from "react-router-dom";
+import RightSidebar from "./RightSidebar";
 import {RiPlayListLine} from "react-icons/ri";
 
 
@@ -19,7 +22,12 @@ const Player = ({setIsShowRightSidebar}) => {
     const [songInfo, setSongInfo] = useState(null)
     // const [isPlaying , setPlaying] = useState(false)
     const [source, setSource] = useState(null)
+    const navigate = useNavigate()
 
+    const [check, setCheck] = useState(false)
+    const handleCheck = (isCheck) => {
+        setCheck(isCheck);
+    }
     useEffect(() => {
         const fetchDetailSong = async () => {
             const [res1, res2] = await Promise.all([
@@ -38,9 +46,7 @@ const Player = ({setIsShowRightSidebar}) => {
 
     }, [curSongId]);
 
-    useEffect(() => {
 
-    }, [curSongId]);
     const handlePlayMusic = () => {
 
     }
@@ -82,12 +88,21 @@ const Player = ({setIsShowRightSidebar}) => {
             </div>
 
                 <div className={'w-[30%] flex-auto flex items-center justify-end gap-4'}>
-                    <input type={"range"} step={1} min={0} max={100}/>
-                    <span onClick={() => setIsShowRightSidebar(prev => !prev)} className={'p-1 rounded-sm cursor-pointer bg-main-500 opacity-90 hover:opacity-100'}><RiPlayListLine size={20}/></span>
+                    <div className={'w-[30%] flex-auto flex items-center justify-end gap-4'}>
+                        <input type={"range"} step={1} min={0} max={100}/>
+                        <span onClick={() => setIsShowRightSidebar(prev => !prev)} className={'p-1 rounded-sm cursor-pointer bg-main-500 opacity-90 hover:opacity-100'}><RiPlayListLine size={20}/></span>
+                    </div>
+                    {/*<Button type="primary" handlerOpen={handleCheck} onClick={openNow}>*/}
+                    {/*    Open*/}
+                    {/*</Button>*/}
+                    <RightSidebar/>
                 </div>
             </div>
 
             )
+    // function openNow() {
+    //     handlerOpen(true);
+    // }
 
  }
  export default Player
