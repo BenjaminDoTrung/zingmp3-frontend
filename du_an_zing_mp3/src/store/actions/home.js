@@ -6,17 +6,10 @@ import axios from "axios";
 export const getHome = () => async (dispatch) => {
     try {
         const response = await apis.getHome();
-        if (response?.data.err === 0) {
-            dispatch({
-                type: actionTypes.GET_HOME,
-                homeData: response.data
-            })
-        } else {
-            dispatch({
-                type: actionTypes.GET_HOME,
-                homeData: null
-            })
-        }
+        dispatch({
+            type: actionTypes.GET_HOME,
+            homeData: response.data
+        })
     } catch (err) {
         console.log(err);
         dispatch({
