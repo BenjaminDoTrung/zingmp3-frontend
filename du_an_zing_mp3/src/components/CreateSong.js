@@ -60,7 +60,7 @@ export default function CreateSong() {
                     id: ""
                 },
                 id_SongTypes:{
-                    id: ""
+                    id: 1
                 }
             }} onSubmit={(value) => {
                 value.url_img = localStorage.getItem("url_img");
@@ -112,7 +112,7 @@ export default function CreateSong() {
 
                                         <div>
                                             <Field className="form-control form-control-sm"
-                                                   as="select" name={'id_SongTypes.id'} id="type">
+                                                   as="select" name="id_SongTypes.id" id="type">
                                                 {songType.map((i, key) => {
                                                 return (
                                                     <option value={i.id}>{i.name}</option>
