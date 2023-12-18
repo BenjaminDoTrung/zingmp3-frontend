@@ -8,9 +8,12 @@ import path from "./untis/path";
 import Home from "./page/public/Home";
 import Login from "./page/public/Login";
 import * as actions from './store/actions'
-import Register from "./page/public/Register";
 import UserList from "./page/public/UserList";
 import UpdateUser from "./page/public/UpdateUser";
+import Album from "./page/public/Album";
+import UpdatePass from "./page/public/UpdatePassword";
+import Register from "./page/public/Register";
+import CreateSong from "./components/CreateSong";
 
 function App() {
     const dispatch = useDispatch()
@@ -24,24 +27,18 @@ function App() {
                   <Route path={path.PUBLIC} element={<Public/>}>
                       <Route path={path.HOME} element={<Home/>}></Route>
                       <Route path={path.LOGIN} element={<Login/>}></Route>
+                      <Route path={path.CREATESONG} element={<CreateSong></CreateSong>}></Route>
                       <Route path={path.REGISTER} element={<Register/>}></Route>
                       <Route path={path.LISTUSER} element={<UserList/>}></Route>
                       <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>
+                      <Route path={path.AlBUM_TITLE_PID} element={<Album/>}></Route>
+                      <Route path={path.UPDATEPASS} element={<UpdatePass/>}></Route>
                   </Route>
+
               </Routes>
+              <ToastContainer />
           </div>
-          <ToastContainer
-              position={"bottom-right"}
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme={"light"}
-          />
+
       </>
 
   );
