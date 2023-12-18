@@ -4,7 +4,7 @@ import axios from '../axios'
 export const apiGetSong = (sid) => new Promise(async (resolve, reject) => {
     try {
         const response = await axios({
-            url: 'http://localhost:5000/api/song',
+            url: 'http://localhost:8080/songs',
             method: 'get',
             params: { id: sid }
         })

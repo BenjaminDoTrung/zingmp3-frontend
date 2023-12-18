@@ -9,9 +9,8 @@ const Sections = ({data}) => {
     const [check, setCheck] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/users/songs').then((res) => {
+        axios.get('http://localhost:8080/songs').then((res) => {
             return res.data
-            console.log(res.data)
         }).catch(() => {
             setList([])
         })
@@ -34,14 +33,6 @@ const Sections = ({data}) => {
                 <span className={'text-xs'}>TẤT CẢ</span>
             </div>
             <div className={'flex items-start justify-between gap-[28px]'}>
-                <tbody>
-                {list.map((i, key) => (
-                        <h1>i.nameSong</h1>,
-                            <p>i.url_img</p>
-                    )
-                )}
-                </tbody>
-
             </div>
         </div>
     )

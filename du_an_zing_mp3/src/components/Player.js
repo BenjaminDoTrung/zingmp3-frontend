@@ -1,5 +1,5 @@
 
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import *as apis from '../apis'
 import {CiHeart, CiShuffle} from "react-icons/ci";
@@ -9,7 +9,7 @@ import {IoRepeatOutline} from "react-icons/io5";
 import {BsThreeDots} from "react-icons/bs";
 import {FaPause, FaPlay} from "react-icons/fa";
 import {RiPlayListLine} from "react-icons/ri";
-
+import * as actions from "../store/actions";
 
 
 
@@ -19,6 +19,14 @@ const Player = ({setIsShowRightSidebar}) => {
     const [songInfo, setSongInfo] = useState(null)
     // const [isPlaying , setPlaying] = useState(false)
     const [source, setSource] = useState(null)
+    const dispatch = useDispatch
+
+    useEffect(() => {
+        // dispatch(actions.play(true))
+        // audio.src = source
+        // audio.load()
+        // audio.play()
+    }, [curSongId]);
 
     useEffect(() => {
         try {
@@ -41,11 +49,15 @@ const Player = ({setIsShowRightSidebar}) => {
         }
 
     }, [curSongId]);
-
-    useEffect(() => {
-
-    }, [curSongId]);
     const handlePlayMusic = () => {
+        if (isPlaying){
+            audio.pause()
+            dispatch(actions.play(false))
+        }else {
+            audio.play()
+            dispatch(actions.play(true))
+
+        }
 
     }
 

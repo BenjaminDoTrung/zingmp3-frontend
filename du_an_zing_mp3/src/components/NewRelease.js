@@ -1,16 +1,20 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {SongItem} from "./index";
+import * as actions from "../store/actions"
 
 const NewRelease = () => {
     const {latest} = useSelector(state => state.app)
     const [isActive, setisActive] = useState(0)
     const [songs, setSongs] = useState([])
+    const dispatch = useDispatch()
 
     useEffect(() => {
         console.log('latest', latest);
         setSongs(latest);
     }, [isActive, latest]);
+
+
     return (
         <div className='mt-12 px-[59px] flex flex-col gap-5'>
             <div className='flex items-center justify-between'>
@@ -40,7 +44,8 @@ const NewRelease = () => {
 
                 </button>
             </div>
-            <div className={'flex flex-wrap w-full '}>
+            <div
+                  className={'flex flex-wrap w-full '}>
                 {songs?.map(item => (
                     <SongItem key = {item.id}
                     key = {item.id}
