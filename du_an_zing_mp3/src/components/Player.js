@@ -23,6 +23,7 @@ const Player = ({setIsShowRightSidebar}) => {
     // const [isPlaying , setPlaying] = useState(false)
     const [source, setSource] = useState(null)
     const dispatch = useDispatch
+    const [isPlayer, setIsPlayer] = useState(false);
 
     useEffect(() => {
         // dispatch(actions.play(true))
@@ -155,11 +156,16 @@ const Player = ({setIsShowRightSidebar}) => {
                 <div className={'gap-8 flex items-center justify-center'}>
                     <span className={'cursor-pointer'}><CiShuffle size={20}/></span>
                     <span className={'cursor-pointer'}><IoMdSkipBackward size={18}/></span>
-                    <span className={'p-2 border border-gray-700 rounded-full hover:text-main-500 cursor-pointer'}
-                          onClick={handlePlayMusic}
+                    <span onClick={() => {
+                        setIsPlayer(!isPlaying)
+                        {
+                            isPlaying ? handlePause() : handlePlay()
+                        }
+                    }}
+                          className={'p-2 border border-gray-700 rounded-full hover:text-main-500 cursor-pointer'}
                     >
-                        {isPlaying ? <FaPause size={25}/> :<FaPlay size={25}/>}
-                    </span>
+                                    {isPlaying ? <FaPause size={25}/> : <FaPlay size={25}/>}
+                                 </span>
                     <span className={'cursor-pointer'}><MdSkipNext size={24}/></span>
                     <span className={'cursor-pointer'}><IoRepeatOutline size={24}/></span>
                 </div>

@@ -63,7 +63,9 @@ export default function UpdateSong(prop) {
         <>
             <Formik initialValues={
                 songs
-            } onSubmit={(value) => {
+            }
+                    enableReinitialize={true}
+                    onSubmit={(value) => {
                 value.url_img = localStorage.getItem("url_img");
                 value.file_song = localStorage.getItem("url_song");
                 console.log("url_img: ", value.url_img);
