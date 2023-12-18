@@ -8,16 +8,17 @@ import React, {useEffect, useState} from 'react';
 import {storage} from "../FireBase/FireBaseConfig";
 import axios from "axios";
 import {toast} from "react-toastify";
-import {useNavigate} from "react-router-dom";
-export default function UpdateSong({idSongs}) {
+import {useNavigate, useParams} from "react-router-dom";
+export default function UpdateSong(prop) {
     const [uploadedImageUrl, setUploadedImageUrl] = useState(undefined);
     const [uploadedSong, setUploadedSong] = useState()
     const [songsUrl, setSongsUrl] = useState(null);
     const [image, setImage] = useState();
     const [songs,setSongs] = useState({})
     const [songType, setSongType] = useState([])
-    const [idSong, setIdSong] = useState(idSongs);
+    const idSong = useParams();
     const navigate = useNavigate();
+
     const uploadFileImg = (image) => {
         if (image === null) return
         const imageRef = ref(storage, `IMG_ZingMP3/${image.name}`);
@@ -37,10 +38,12 @@ export default function UpdateSong({idSongs}) {
         })
     }, []);
     useEffect(()=>{
-        axios.get("http://localhost:8080/songs/" + idSong).then((res)=>{
+        console.log("moe may", idSong)
+        axios.get("http://localhost:8080/songs/" + idSong.id).then((res)=>{
             setSongs(res.data);
+            console.log("dât ne", res.data)
         })
-    })
+    },[])
 
     const uploadFileSong = (url) => {
         if (url === null) return
@@ -66,6 +69,7 @@ export default function UpdateSong({idSongs}) {
                 console.log("url_song:",value.url_song);
                 console.log("value = ", value);
                 value.user.id = localStorage.getItem("idUser");
+                // if ()
 
                 axios.put("http://localhost:8080/songs", value).then((res)=>{
                     toast.success(" tạo bài hát thành công ", {
@@ -84,7 +88,8 @@ export default function UpdateSong({idSongs}) {
                                                              src={songs.url_img}
                                                              className="img-fluid"/>:
                                             <img name="url_img"
-                                                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                                                 src={songs.url_img == null ? "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                                            : songs.url_img}
                                                  className="img-fluid"/>
                                             }
                                     </div>

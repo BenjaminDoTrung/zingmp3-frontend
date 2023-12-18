@@ -17,7 +17,7 @@ const NewRelease = () => {
 
 
     return (
-        <div className='mt-12 px-[59px] flex flex-col gap-5'>
+        <div className='mt-12 px-[59px] flex flex-col gap-5' style={{color: "white"}}>
             <div className='flex items-center justify-between'>
                 <h3 className='text-[20px] font-bold'>Mới phát hành</h3>
                 <span className='text-xs'>TẤT CẢ</span>

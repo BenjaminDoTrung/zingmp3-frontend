@@ -6,7 +6,7 @@ const SongItem = ({thumbnail, title, artists, sid, releaseDate, order, percent, 
     return (
         <div
 
-            className={'w-[30%] flex-auto flex  p-[10px] gap-10 hover:bg-main-200 rounded-md cursor-pointer'}>
+            className={'w-[30%] flex-auto flex  p-[10px] gap-10 hover:bg-main-200 rounded-md cursor-pointer hover:text-black'}>
             <img
                 onClick={()=>{
                     navigate("/detailSong/"+ sid)
@@ -15,7 +15,7 @@ const SongItem = ({thumbnail, title, artists, sid, releaseDate, order, percent, 
             <div className={'flex flex-col'}>
                 <span className={'text-sm font-semibold'}>{title}</span>
                 <span className={'text-xs text-gray-400'}>{artists}</span>
-                <span className={'text-xs text-gray-700'}>{moment(releaseDate * 1000).fromNow()}</span>
+                <span className={'text-xs text-gray-700'} style={{color: 'white'}}>{moment(releaseDate * 1000).fromNow()}</span>
             </div>
         </div>
     )
