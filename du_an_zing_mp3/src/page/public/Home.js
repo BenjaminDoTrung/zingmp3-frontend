@@ -7,6 +7,7 @@ import Slider from "../../components/Slider";
 import {Sections} from "../../components";
 import {useSelector} from "react-redux";
 import {NewRelease} from "../../components";
+import ListSearchBySongName from "./ListSearchBySongName";
 
 
 const Home = () =>{
@@ -14,7 +15,6 @@ const Home = () =>{
 
     return (
         <div className={'overflow-y-auto w-full'}>
-
             <Slider/>
             {/*<Sections data={friday}/>*/}
             {/*<Sections data={newEveryday}/>*/}

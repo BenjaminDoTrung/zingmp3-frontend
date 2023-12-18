@@ -79,7 +79,7 @@ const Header = () => {
                     </div>
                     <div className="form_menu" >
                         <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting></MenuSetting> : ""}</div>
-                        <div style={{marginTop: "149px" , position : 'absolute' , marginLeft: '-14%' ,height :'0px'}}> {check ? <MenuAdmin></MenuAdmin> : <></>}</div>
+                        <div style={{marginTop: "149px" , position : 'absolute' , marginLeft: '-14%' ,height :'0px'}}> {check ? <MenuAdmin handler={handleCheck}></MenuAdmin> : <></>}</div>
                     </div>
                 </div>
             )
@@ -128,7 +128,7 @@ const Header = () => {
                         </div>
                         <div className="form_menu" >
                             <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting></MenuSetting> : ""}</div>
-                            <div style={{marginTop: "149px" , position : 'absolute' , marginLeft: '-14%' ,height :'0px'}}> {check ? <MenuLogOut></MenuLogOut> : <></>}</div>
+                            <div style={{marginTop: "149px" , position : 'absolute' , marginLeft: '-14%' ,height :'0px'}}> {check ? <MenuLogOut handler={handleCheck}></MenuLogOut> : <></>}</div>
                         </div>
                     </div>
                 </>

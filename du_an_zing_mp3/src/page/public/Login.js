@@ -4,6 +4,7 @@ import axios from "axios";
 import {toast} from "react-toastify";
 import "../../modalLogin.css"
 import {IoArrowBackOutline} from "react-icons/io5";
+import React from "react";
 
 export default function Login() {
     let navigate = useNavigate();
@@ -11,7 +12,7 @@ export default function Login() {
         axios.post('http://localhost:8080/users/login', value).then((res) => {
             console.log(res.data);
             if (res.data === false){
-                alert("tk bi khoa");
+                alert("Tài khoản của bạn đã bị khóa");
             }
             else{
                 localStorage.setItem("idUser", res.data.id)
@@ -67,7 +68,7 @@ export default function Login() {
                                                                        placeholder="Tên đăng nhập"/>
                                                                 <span className="focus-input100"></span>
                                                                 <span className="symbol-input100">
-							<i className="fa fa-envelope" aria-hidden="true"></i>
+							<i className="fa fa-solid fa-user" aria-hidden="true"></i>
 						</span>
                                                             </div>
                                                             <div className="wrap-input100 validate-input"
@@ -86,29 +87,30 @@ export default function Login() {
                                                                 </button>
                                                             </div>
 
-                                                            <div className="text-center p-t-12">
-						<span className="txt1">
-							Forgot
-						</span>
-                                                                <a className="txt2" href="#">
-                                                                    Username / Password?
-                                                                </a>
-                                                            </div>
+                        {/*                                    <div className="text-center p-t-12">*/}
+						{/*<span className="txt1">*/}
+						{/*	Forgot*/}
+						{/*</span>*/}
+                        {/*                                        <a className="txt2" href="#">*/}
+                        {/*                                            Username / Password?*/}
+                        {/*                                        </a>*/}
+                        {/*                                    </div>*/}
                                                             <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
     &client_id=80724656105-fg2ndheoujm7c7dd4ob1i9mq3ebdbjhb.apps.googleusercontent.com&approval_prompt=force">Login With Gmail</a>
                                                             <div>
                                                                 <button onClick={next} className="txt2">
-                                                                    Create your Account
+                                                                    Tạo tài khoản mới
                                                                     <i className="fa fa-long-arrow-right m-l-5"
                                                                        aria-hidden="true"></i>
                                                                 </button>
-                                                                <button
-                                                                onClick={() => {
-                                                                    navigate("/")
-                                                                }}
-                                                                >
-                                                                    <IoArrowBackOutline/>
-                                                                </button>
+                                                                <div>
+                                                                    <button onClick={back} className="txt2">
+
+                                                                        <i className="fa fa-long-arrow-left m-l-5"
+                                                                        ></i>
+                                                                        Quay lại
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -124,7 +126,9 @@ export default function Login() {
             </Formik>
         </>
     )
-
+    function back(){
+        navigate("/")
+    }
 }
 
 

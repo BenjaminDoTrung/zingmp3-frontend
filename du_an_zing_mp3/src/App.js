@@ -14,6 +14,7 @@ import Album from "./page/public/Album";
 import UpdatePass from "./page/public/UpdatePassword";
 import Register from "./page/public/Register";
 import CreateSong from "./components/CreateSong";
+import ListSearchBySongName from "./page/public/ListSearchBySongName";
 
 function App() {
     const dispatch = useDispatch()
@@ -33,6 +34,7 @@ function App() {
                       <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>
                       <Route path={path.AlBUM_TITLE_PID} element={<Album/>}></Route>
                       <Route path={path.UPDATEPASS} element={<UpdatePass/>}></Route>
+                      <Route path={path.SEARCHBYSONGNAME} element={<ListSearchBySongName/>}></Route>
                   </Route>
 
               </Routes>
