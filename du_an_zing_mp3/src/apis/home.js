@@ -5,12 +5,13 @@ import {useEffect} from "react";
 export const getHome = () => new Promise(async (resolve , reject) => {
     try {
         const response = await axios({
-            url: 'http://localhost:5000/api/home',
+            url: 'http://localhost:8080/songs',
             method: 'get'
-        })
+        });
         resolve(response)
     } catch (error) {
-        reject(error)
+        console.log(error);
+        // reject(error);
     }
 })
 
