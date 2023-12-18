@@ -11,7 +11,8 @@ export const apiGetSong = (sid) => new Promise(async (resolve, reject) => {
         resolve(response)
 
     } catch (error) {
-        reject(error)
+        console.log(error)
+        // reject(error)
     }
 })
 export const apiGetDetailSong = (sid) => new Promise(async (resolve, reject) => {
@@ -24,7 +25,8 @@ export const apiGetDetailSong = (sid) => new Promise(async (resolve, reject) => 
         resolve(response)
 
     } catch (error) {
-        reject(error)
+        console.log(error)
+        // reject(error)
     }
 })
 export const apiGetDetailPlaylist = (pid) => new Promise(async (resolve, reject) => {

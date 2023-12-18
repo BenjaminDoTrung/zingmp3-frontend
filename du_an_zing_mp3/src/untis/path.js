@@ -9,5 +9,6 @@ const path = {
     UPDATEPASS: "updatePassword",
     RIGHTSIDEBAR: "rightSidebar",
     SEARCHBYSONGNAME: "searchBySongName"
+    CREATESONG: "create"
 }
 export default path

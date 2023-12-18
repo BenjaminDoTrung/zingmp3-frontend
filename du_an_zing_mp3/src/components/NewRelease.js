@@ -3,17 +3,18 @@ import {useEffect, useState} from "react";
 import {SongItem} from "./index";
 
 const NewRelease = () => {
-    const {newRelease} = useSelector(state => state.app)
+    const {latest} = useSelector(state => state.app)
     const [isActive, setisActive] = useState(0)
     const [songs, setSongs] = useState([])
 
     useEffect(() => {
-        isActive ? setSongs(newRelease.items?.others) : setSongs(newRelease?.items?.vPop)
-    }, [isActive, newRelease]);
+        console.log('latest', latest);
+        setSongs(latest);
+    }, [isActive, latest]);
     return (
         <div className='mt-12 px-[59px] flex flex-col gap-5'>
             <div className='flex items-center justify-between'>
-                <h3 className='text-[20px] font-bold'>{newRelease?.title}</h3>
+                <h3 className='text-[20px] font-bold'>Mới phát hành</h3>
                 <span className='text-xs'>TẤT CẢ</span>
             </div>
             <div className='flex items-center gap-5 text-xs' >
@@ -41,16 +42,14 @@ const NewRelease = () => {
             </div>
             <div className={'flex flex-wrap w-full '}>
                 {songs?.map(item => (
-                    <SongItem key = {item.encodeId}
-                    key = {item.encodeId}
-                    thumbnail={item.thumbnail}
-                    title={item.title}
-                    artists={item.artistsNames}
-                    releaseDate={item.releaseDate}
+                    <SongItem key = {item.id}
+                    key = {item.id}
+                    thumbnail={item.url_img}
+                    title={item.nameSong}
+                    artists={item.singer}
+                    releaseDate={new Date()}
                     />
                 ))}
-
-
             </div>
         </div>
     )

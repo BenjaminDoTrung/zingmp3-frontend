@@ -27,6 +27,25 @@ const Player = ({setIsShowRightSidebar}) => {
         // audio.src = source
         // audio.load()
         // audio.play()
+        try {
+            const fetchDetailSong = async () => {
+                const [res1, res2] = await Promise.all([
+                    apis.apiGetDetailSong(curSongId),
+                    apis.apiGetSong(curSongId)
+                ])
+
+                if (res1.data.err === 0) {
+                    setSongInfo(res1.data.data)
+                }
+                if (res2.data.err === 0) {
+                    setSource(res2.data.data['128'])
+                }
+            }
+            fetchDetailSong();
+        } catch (e) {
+            console.log('Exception in Player', e);
+        }
+
     }, [curSongId]);
 
     useEffect(() => {
