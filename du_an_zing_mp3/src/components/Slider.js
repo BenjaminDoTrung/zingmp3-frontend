@@ -67,7 +67,7 @@ const Slider = () =>{
                 {banner?.map((item, index) => (
                     <img
                         key={item.encodeId}
-                        src={item.banner}
+                        src={item.thumbnail}
                         onClick={() =>handleClickBanner(item)}
                         className={`slider-item flex-1 object-contain w-[30%] rounded-lg ${index <= 2 ? 'block' : 'hidden'}`}
                         alt=''/>

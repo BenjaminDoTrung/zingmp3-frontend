@@ -14,26 +14,25 @@ export default function SongDetail (){
 
     return(
         <>
-            <h1>Song Detail</h1>
-            <table className='table table-hover'>
+            <h1 className={'font-bold flex items-center justify-center mb-5 mt-5'}>Song Detail</h1>
+            <table className="table table-dark">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <td>{detailSong.nameSong}</td>
-                </tr>
-                <tr>
-                    <th>Singer</th>
-                    <td>{detailSong.singer}</td>
-                </tr>
-                <tr>
-                    <th>artists</th>
-                    <td>{detailSong.author}</td>
-                </tr>
-                <tr>
-                    <th>Description</th>
-                    <td>{detailSong.description}</td>
+                    <th scope="col">Name Song</th>
+                    <th scope="col">Singer</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Description</th>
                 </tr>
                 </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">{detailSong.nameSong}</th>
+                    <td>{detailSong.singer}</td>
+                    <td>{detailSong.author}</td>
+                    <td>{detailSong.description}</td>
+                </tr>
+
+                </tbody>
             </table>
             <Link className='btn btn-outline-primary'  to={'/'}>Back Home</Link>
         </>
