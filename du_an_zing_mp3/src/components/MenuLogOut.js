@@ -32,7 +32,7 @@ const MenuLogOut = ({handler}) => {
         <>
             <div className="menu-logout">
                 <ul>
-                    <li onClick={updateProfile}>
+                    <li role="button" onClick={updateProfile}>
                         <div className="use-icon">
                             <CiSettings style={{width:20, height:20}} />
                         </div>
