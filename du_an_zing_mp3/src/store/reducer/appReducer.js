@@ -24,7 +24,7 @@ const appReducer = (state = initState, action) => {
                 newEveryDay: action.homeData?.find(item => item.sectionId === 'hAutoTheme1') || {},
                 top100: action.homeData?.find(item => item.sectionId === 'h100') || {},
                 xone: action.homeData?.find(item => item.sectionId === 'hXone') || {},
-                newMusic: {...action.homeData?.find(item => item.sectionId === 'hAlbum'), title: "Nhac moi"} || {},
+                newMusic: {...action.homeData?.find(item => item.sectionId === 'hAlbum'), title: "Nhạc mới"} || {},
                 newRelease: action.homeData || null,
                 latest: action.homeData || [],
             }
