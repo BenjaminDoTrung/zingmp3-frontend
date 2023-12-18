@@ -25,11 +25,7 @@ const Public = () => {
                             <Outlet />
                         </Scrollbars>
                     </div>
-
                 </div>
-                {isShowRightSidebar && <div className='w-[329px] hidden 1600:flex flex-none border border-green-500 animate-slide-left '>
-                    <SidebarRight />
-                </div>}
             </div>
             <div className='fixed bottom-0 left-0 right-0 h-[90px]'>
                 <Player setIsShowRightSidebar={setIsShowRightSidebar}/>
