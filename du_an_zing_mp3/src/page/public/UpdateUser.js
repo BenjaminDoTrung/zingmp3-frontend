@@ -106,7 +106,7 @@ export default function UpdateUser() {
                                                         </div>
 
                                                         <div className="pt-1 mb-4" style={{height: 50}}>
-                                                            <button className="btn btn-dark btn-lg btn-block" type="button" style={{color: "violet"}}>Update</button>
+                                                            <button className="btn btn-dark btn-lg btn-block" type="button" style={{color: "violet"}}>Chỉnh sửa</button>
                                                         </div>
                                                     </div>
                                                 </div>
