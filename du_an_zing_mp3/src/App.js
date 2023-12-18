@@ -19,6 +19,8 @@ import CreatePlayList from "./components/CreatePlayList";
 import ShowListSong from "./components/ShowListSong";
 import {DetailSong} from "./components";
 import ListSearchBySongName from "./page/public/ListSearchBySongName";
+import ShowPlaylist from "./components/ShowPlaylist";
+import ViewPlaylist from "./components/ViewPlaylist";
 
 
 function App() {
@@ -44,6 +46,9 @@ function App() {
                       <Route path={"showList"} element={<ShowListSong></ShowListSong>}></Route>
                       <Route path={path.DETAILSONG} element={<DetailSong/>}></Route>
                       <Route path={path.SEARCHBYSONGNAME} element={<ListSearchBySongName/>}></Route>
+                      <Route path={"showPlaylist"} element={<ShowPlaylist/>}></Route>
+                      <Route path={"viewPlaylist/:id"} element={<ViewPlaylist/>}></Route>
+
                   </Route>
 
               </Routes>

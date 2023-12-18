@@ -11,6 +11,8 @@ import {FiPhone} from "react-icons/fi";
 import {SlArrowRight} from "react-icons/sl";
 import "../css_component/menuSetting.css"
 import {useNavigate} from "react-router-dom";
+import {HiOutlinePlus} from "react-icons/hi";
+import {RiSlideshow2Line} from "react-icons/ri";
 
 
 const MenuSetting = (props) => {
@@ -73,23 +75,27 @@ const MenuSetting = (props) => {
                             <GoArrowUpRight />
                         </div>
                     </li>
-                    <li>
+                    <li onClick={()=>{
+                        navigate("/showPlaylist")
+                    }}>
                         <div className="icon">
-                            <CiStopSign1 />
+                            <RiSlideshow2Line />
                         </div>
                         <div className="content">
-                            Quảng cáo
+                            D/S PlayList
                         </div>
                         <div className="icon" style={{marginLeft:"auto"}}>
                             <GoArrowUpRight />
                         </div>
                     </li>
-                    <li>
+                    <li onClick={()=>{
+                        navigate("/createPlayList")
+                    }}>
                         <div className="icon">
-                            <FiPhone />
+                            <HiOutlinePlus />
                         </div>
                         <div className="content">
-                            Liên hệ
+                            Thêm Playlist
                         </div>
                         <div className="icon" style={{marginLeft:"auto"}}>
                             <GoArrowUpRight />

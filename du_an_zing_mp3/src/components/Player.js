@@ -20,10 +20,11 @@ const Player = ({setIsShowRightSidebar}) => {
     const audio = new Audio()
     const {curSongId, isPlaying} = useSelector(state => state.music)
     const [songInfo, setSongInfo] = useState(null)
-    // const [isPlaying , setPlaying] = useState(false)
+    const [check , setCheck] = useState(false)
     const [source, setSource] = useState(null)
     const dispatch = useDispatch
     const [isPlayer, setIsPlayer] = useState(false);
+    let [img, setImg] = useState('')
 
     useEffect(() => {
         // dispatch(actions.play(true))
@@ -79,8 +80,9 @@ const Player = ({setIsShowRightSidebar}) => {
         loop: false
     })
     useEffect(() => {
-        axios.get("http://localhost:8080/songs/" + 5).then((res)=>{
+        axios.get("http://localhost:8080/songs/" + 15).then((res)=>{
             state.url = res.data.file_song;
+            setImg(res.data.url_img);
         })
     }, []);
     const handlePlay = () => {
@@ -107,8 +109,8 @@ const Player = ({setIsShowRightSidebar}) => {
     }
     const handleEnded = () => {
         console.log('onEnded')
-        this.setState({ playing: this.state.loop })
-        // state.playing = state.loop
+        // this.setState({ playing: this.state.loop })
+        state.playing = state.loop
     }
     const handleProgress = states => {
         console.log('onProgress', states)
@@ -120,6 +122,7 @@ const Player = ({setIsShowRightSidebar}) => {
     const handleDuration = (duration) => {
         console.log('onDuration', duration)
         this.setState({ duration })
+
     }
     const handleSeekMouseDown = e => {
         this.setState({ seeking: true })
@@ -137,7 +140,9 @@ const Player = ({setIsShowRightSidebar}) => {
     return (
         <div className={'bg-main-400 px-5 h-full flex py-2' }>
             <div className={'w-[30%] flex-auto  flex items-center'}>
-                <img src={songInfo?.thumbnail} alt="" className='w-16 h-16 object-cover rounded-md' />
+                <img src={img ==='' ? "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                    : img
+                } alt="" className='w-16 h-16 object-cover rounded-md' />
                 <div className={'flex flex-col pl-2'}>
                     <span className={'font-semibold text-gray-700 text-sm'}>songInfo</span>
                     <span className={'text-xs text-gray-500'}>artistName</span>
@@ -157,14 +162,14 @@ const Player = ({setIsShowRightSidebar}) => {
                     <span className={'cursor-pointer'}><CiShuffle size={20}/></span>
                     <span className={'cursor-pointer'}><IoMdSkipBackward size={18}/></span>
                     <span onClick={() => {
-                        setIsPlayer(!isPlaying)
+                        setCheck(!check)
                         {
-                            isPlaying ? handlePause() : handlePlay()
+                            check ? handlePause() : handlePlay()
                         }
                     }}
                           className={'p-2 border border-gray-700 rounded-full hover:text-main-500 cursor-pointer'}
                     >
-                                    {isPlaying ? <FaPause size={25}/> : <FaPlay size={25}/>}
+                                    {check ? <FaPause size={25}/> : <FaPlay size={25}/>}
                                  </span>
                     <span className={'cursor-pointer'}><MdSkipNext size={24}/></span>
                     <span className={'cursor-pointer'}><IoRepeatOutline size={24}/></span>
@@ -193,12 +198,12 @@ const Player = ({setIsShowRightSidebar}) => {
                              onSeek={e => console.log('onSeek', e)}
                              onEnded={handleEnded}
                              onError={e => console.log('onError', e)}
-                             onProgress={handleProgress}
-                             onDuration={handleDuration}
+                             // onProgress={handleProgress}
+                             // onDuration={handleDuration}
                              onPlaybackQualityChange={e => console.log('onPlaybackQualityChange', e)}
                 ></ReactPlayer>
                 <div>
-                    progress barr
+                    {/*progress barr*/}
                 </div>
             </div>
 

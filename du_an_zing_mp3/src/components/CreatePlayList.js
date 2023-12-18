@@ -11,15 +11,22 @@ function CreatePlayList(props) {
     return (
         <>
             <Formik initialValues={{
-                namePlayList: ""
-            }} onSubmit={(values)=>{
-                axios.put("http://localhost:8080/playLists" + values).then((res)=>{
+                namePlayList: "",
+                id_user: {
+                    id: localStorage.getItem("idUser")
+                }
+            }}
+                    enableReinitialize={true}
+                    onSubmit={(values)=>{
+
+
+                axios.put("http://localhost:8080/playLists", values).then((res)=>{
                     toast.success("Tạo playlist thành công", {
                         position: toast.POSITION.BOTTOM_RIGHT
                     })
+                    navigate("/")
                 }).catch(() => {
-                    toast.error('Thông tin sai')
-                    navigate("/login")
+                    toast.error('Không thể tạo')
                 })
             }}>
                 <Form>
