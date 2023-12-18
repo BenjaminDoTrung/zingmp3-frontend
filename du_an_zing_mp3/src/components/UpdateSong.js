@@ -8,14 +8,16 @@ import React, {useEffect, useState} from 'react';
 import {storage} from "../FireBase/FireBaseConfig";
 import axios from "axios";
 import {toast} from "react-toastify";
-export default function CreateSong(prop) {
+import {useNavigate} from "react-router-dom";
+export default function UpdateSong({idSongs}) {
     const [uploadedImageUrl, setUploadedImageUrl] = useState(undefined);
     const [uploadedSong, setUploadedSong] = useState()
     const [songsUrl, setSongsUrl] = useState(null);
     const [image, setImage] = useState();
     const [songs,setSongs] = useState({})
     const [songType, setSongType] = useState([])
-    const [idSong, setIdSong] = useState(prop);
+    const [idSong, setIdSong] = useState(idSongs);
+    const navigate = useNavigate();
     const uploadFileImg = (image) => {
         if (image === null) return
         const imageRef = ref(storage, `IMG_ZingMP3/${image.name}`);
@@ -136,7 +138,9 @@ export default function CreateSong(prop) {
 
                                         <div className="button-create" style={{display:"flex", marginLeft: 100}}>
                                             <div style={{textAlign: "center"}}>
-                                                <button type="submit" className="btn btn-primary btn-lg btn-block" style={{width:150}}>quay lại
+                                                <button onClick={()=>{
+                                                    navigate("/")
+                                                }} type="submit" className="btn btn-primary btn-lg btn-block" style={{width:150}}>quay lại
                                                 </button>
                                             </div>
                                             <div style={{textAlign: "center", paddingLeft:10}}>

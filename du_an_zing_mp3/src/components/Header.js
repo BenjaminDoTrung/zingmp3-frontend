@@ -18,11 +18,13 @@ const Header = () => {
     const navigate = useNavigate()
     const id = localStorage.getItem("idUser")
     let [user, setUser] = useState({})
+    let [img,setImg] = useState('');
 
         useEffect(() => {
             if (id !== null){
             axios.get('http://localhost:8080/users/' + id).then((res) => {
                 setUser(res.data.id)
+                setImg(res.data.url_img);
             })}
         }, [])
 
@@ -66,7 +68,7 @@ const Header = () => {
                             }
 
                             }>
-                                <img src={user.url_img} style={{
+                                <img src={img} style={{
                                     width: 40,
                                     height: 40,
                                     marginTop: 5,
@@ -115,7 +117,7 @@ const Header = () => {
                                 }
 
                                 }>
-                                    <img src={user.url_img} style={{
+                                    <img src={img} style={{
                                         width: 40,
                                         height: 40,
                                         marginTop: 5,
@@ -163,13 +165,14 @@ const Header = () => {
                         }
 
                         }>
-                            <img src={user.url_img} style={{
+                            <img src={"https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg"} style={{
                                 width: 40,
                                 height: 40,
                                 marginTop: 5,
                                 marginLeft: 2,
                                 marginRight: 30,
-                                borderRadius: 20
+                                borderRadius: 20,
+                                backgroundColor:"red"
                             }}/>
                         </button>
                     </div>

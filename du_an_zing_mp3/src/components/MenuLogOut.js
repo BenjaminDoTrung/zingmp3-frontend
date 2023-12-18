@@ -38,12 +38,24 @@ const MenuLogOut = () => {
                             Thay đổi mật khẩu
                         </div>
                     </li>
-                    <li>
+                    <li onClick={()=>{
+                        navigate("create")
+                    }}>
                         <div className="use-icon">
                             <HiOutlinePlus style={{width:20, height:20}} />
                         </div>
                         <div className="use-content">
                             Thêm bài hát
+                        </div>
+                    </li>
+                    <li onClick={()=>{
+                        navigate("showList")
+                    }}>
+                        <div className="use-icon">
+                            <HiOutlinePlus style={{width:20, height:20}} />
+                        </div>
+                        <div className="use-content">
+                            D/S bài hát
                         </div>
                     </li>
                     <li onClick={logOut}>

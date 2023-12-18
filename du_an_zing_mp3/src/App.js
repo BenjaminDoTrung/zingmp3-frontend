@@ -14,6 +14,9 @@ import Album from "./page/public/Album";
 import UpdatePass from "./page/public/UpdatePassword";
 import Register from "./page/public/Register";
 import CreateSong from "./components/CreateSong";
+import UpdateSong from "./components/UpdateSong";
+import CreatePlayList from "./components/CreatePlayList";
+import ShowListSong from "./components/ShowListSong";
 
 function App() {
     const dispatch = useDispatch()
@@ -33,6 +36,10 @@ function App() {
                       <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>
                       <Route path={path.AlBUM_TITLE_PID} element={<Album/>}></Route>
                       <Route path={path.UPDATEPASS} element={<UpdatePass/>}></Route>
+                      <Route path={"update/:id"} element={<UpdateSong></UpdateSong>}></Route>
+                      <Route path={"createPlayList"} element={<CreatePlayList></CreatePlayList>}></Route>
+                      <Route path={"showList"} element={<ShowListSong></ShowListSong>}></Route>
+
                   </Route>
 
               </Routes>
