@@ -8,6 +8,7 @@ const path = {
     AlBUM_TITLE_PID : 'album/:title/:pid',
     UPDATEPASS: "updatePassword",
     CREATESONG: "create",
-    DETAILSONG: "detailSong/:id"
+    DETAILSONG: "detailSong/:id",
+    SEARCHBYSONGNAME: "searchBySongName/:id"
 }
 export default path
