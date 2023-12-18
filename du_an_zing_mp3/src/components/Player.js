@@ -10,6 +10,7 @@ import {BsThreeDots} from "react-icons/bs";
 import {FaPause, FaPlay} from "react-icons/fa";
 import {RiPlayListLine} from "react-icons/ri";
 import * as actions from "../store/actions";
+import RightSidebar from "./RightSidebar";
 
 
 
@@ -99,7 +100,7 @@ const Player = ({setIsShowRightSidebar}) => {
 
                 <div className={'w-[30%] flex-auto flex items-center justify-end gap-4'}>
                     <input type={"range"} step={1} min={0} max={100}/>
-                    <span onClick={() => setIsShowRightSidebar(prev => !prev)} className={'p-1 rounded-sm cursor-pointer bg-main-500 opacity-90 hover:opacity-100'}><RiPlayListLine size={20}/></span>
+                    <RightSidebar/>
                 </div>
             </div>
 

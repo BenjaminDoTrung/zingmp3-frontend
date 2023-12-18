@@ -18,6 +18,12 @@ const MenuLogOut = () => {
     function updateProfile(){
         navigate("/updateProfile")
     }
+
+    function createSong(){
+        navigate("/create")
+    }
+
+
     return (
         <>
             <div className="menu-logout">
@@ -42,7 +48,7 @@ const MenuLogOut = () => {
                         <div className="use-icon">
                             <HiOutlinePlus style={{width:20, height:20}} />
                         </div>
-                        <div className="use-content">
+                        <div onClick={createSong} className="use-content">
                             Thêm bài hát
                         </div>
                     </li>
