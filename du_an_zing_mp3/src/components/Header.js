@@ -53,13 +53,11 @@ const Header = () => {
                     </div>
                     <div style={{display: "flex"}}>
                         <div className="dev_setting">
-                            <button onClick={() => {
+                            <button type="button text-white" onClick={() => {
                                 setChecksetting(!checkSetting)
-
                                 setCheck(false)
-
                             }}>
-                                <CiSettings style={{width: 40, height: 40, marginTop: 5}}/>
+                                <CiSettings style={{width: 40, height: 40, marginTop: 5, fill: 'white'}}/>
                             </button>
                         </div>
                         <div className="dev_logout">
@@ -103,13 +101,11 @@ const Header = () => {
                         </div>
                         <div style={{display: "flex"}}>
                             <div className="dev_setting">
-                                <button onClick={() => {
+                                <button type="button text-white" onClick={() => {
                                     setChecksetting(!checkSetting)
-
                                         setCheck(false)
-
                                 }}>
-                                    <CiSettings style={{width: 40, height: 40, marginTop: 5}}/>
+                                    <CiSettings style={{width: 40, height: 40, marginTop: 5, fill: "white"}}/>
                                 </button>
                             </div>
                             <div className="dev_logout">
@@ -153,12 +149,11 @@ const Header = () => {
                 </div>
                 <div style={{display: "flex"}}>
                     <div className="dev_setting">
-                        <button onClick={() => {
+                        <button type="button" onClick={() => {
                             setChecksetting(!checkSetting)
                             setCheck(false)
-
                         }}>
-                            <CiSettings style={{width: 40, height: 40, marginTop: 5}}/>
+                            <CiSettings style={{width: 40, height: 40, marginTop: 5, fill: "white"}}/>
                         </button>
                     </div>
                     <div className="dev_logout">

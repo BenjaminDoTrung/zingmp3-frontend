@@ -79,7 +79,7 @@ const Player = ({setIsShowRightSidebar}) => {
         loop: false
     })
     useEffect(() => {
-        axios.get("http://localhost:8080/songs/" + 15).then((res)=>{
+        axios.get("http://localhost:8080/songs/" + 5).then((res)=>{
             state.url = res.data.file_song;
         })
     }, []);
@@ -152,7 +152,7 @@ const Player = ({setIsShowRightSidebar}) => {
 
                 </div>
             </div>
-            <div className={'w-[40%] flex-auto flex items-center justify-center flex-col gap-4  py-2'}>
+            <div className={'w-[40%] flex-auto flex items-center justify-center flex-col'}>
                 <div className={'gap-8 flex items-center justify-center'}>
                     <span className={'cursor-pointer'}><CiShuffle size={20}/></span>
                     <span className={'cursor-pointer'}><IoMdSkipBackward size={18}/></span>
@@ -170,7 +170,7 @@ const Player = ({setIsShowRightSidebar}) => {
                     <span className={'cursor-pointer'}><IoRepeatOutline size={24}/></span>
                 </div>
                 <ReactPlayer id="songt"
-                             className='react-player'
+                             className='react-player hidden'
                              width='100%'
                              height='100%'
                              url= {state.url}

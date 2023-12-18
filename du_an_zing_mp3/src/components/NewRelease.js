@@ -39,7 +39,7 @@ const NewRelease = () => {
                         setisActive(1)
                     }}
                     type={'button'}
-                    className={`py-1 px-4 rounded-l-full rounded-r-full border border-gray-400 bg-transparent ${isActive === 1 && 'bg-main-500 text-white'}`}
+                    className={`py-1 px-4 rounded-l-full rounded-r-full border border-gray-400 text-white bg-transparent ${isActive === 1 && 'bg-main-500'}`}
                 >
                     QUỐC TẾ
 
