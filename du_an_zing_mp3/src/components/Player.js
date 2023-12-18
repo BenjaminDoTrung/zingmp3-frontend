@@ -11,6 +11,8 @@ import {FaPause, FaPlay} from "react-icons/fa";
 import {RiPlayListLine} from "react-icons/ri";
 import * as actions from "../store/actions";
 import RightSidebar from "./RightSidebar";
+import axios from "axios";
+import ReactPlayer from "react-player";
 
 
 
@@ -61,7 +63,75 @@ const Player = ({setIsShowRightSidebar}) => {
         }
 
     }
+    let [state, setState] = useState({
+        url: null,
+        pip: false,
+        playing: true,
+        controls: false,
+        light: false,
+        volume: 0.8,
+        muted: false,
+        played: 0,
+        loaded: 0,
+        duration: 0,
+        playbackRate: 1.0,
+        loop: false
+    })
+    useEffect(() => {
+        axios.get("http://localhost:8080/songs/" + 15).then((res)=>{
+            state.url = res.data.file_song;
+        })
+    }, []);
+    const handlePlay = () => {
+        console.log('onPlay')
+        // this.setState({ playing: true })
+        state.playing = true;
+    }
+    const handleEnablePIP = () => {
+        console.log('onEnablePIP')
+        this.setState({ pip: true })
+    }
+    const handleDisablePIP = () => {
+        console.log('onDisablePIP')
+        this.setState({ pip: false })
+    }
+    const handlePause = () => {
+        console.log('onPause')
+        // this.setState({ playing: false })
+        state.playing = false;
+    }
+    const handleOnPlaybackRateChange = (speed) => {
+        this.setState({ playbackRate: parseFloat(speed) })
+        // state.playbackRate = parseFloat(speed);
+    }
+    const handleEnded = () => {
+        console.log('onEnded')
+        this.setState({ playing: this.state.loop })
+        // state.playing = state.loop
+    }
+    const handleProgress = states => {
+        console.log('onProgress', states)
+        // We only want to update time slider if we are not currently seeking
+        if (!states.seeking) {
+            this.setState(states)
+        }
+    }
+    const handleDuration = (duration) => {
+        console.log('onDuration', duration)
+        this.setState({ duration })
+    }
+    const handleSeekMouseDown = e => {
+        this.setState({ seeking: true })
+    }
 
+    const handleSeekChange = e => {
+        this.setState({ played: parseFloat(e.target.value) })
+    }
+
+    const handleSeekMouseUp = e => {
+        this.setState({ seeking: false })
+        this.player.seekTo(parseFloat(e.target.value))
+    }
 
     return (
         <div className={'bg-main-400 px-5 h-full flex py-2' }>
@@ -93,6 +163,34 @@ const Player = ({setIsShowRightSidebar}) => {
                     <span className={'cursor-pointer'}><MdSkipNext size={24}/></span>
                     <span className={'cursor-pointer'}><IoRepeatOutline size={24}/></span>
                 </div>
+                <ReactPlayer id="songt"
+                             className='react-player'
+                             width='100%'
+                             height='100%'
+                             url= {state.url}
+                             pip={state.pip}
+                             playing={state.playing}
+                             controls={state.controls}
+                             light={state.light}
+                             loop={state.loop}
+                             playbackRate={state.playbackRate}
+                             volume={state.volume}
+                             muted={state.muted}
+                             onReady={() => console.log('onReady')}
+                             onStart={() => console.log('onStart')}
+                             onPlay={handlePlay}
+                             onEnablePIP={handleEnablePIP}
+                             onDisablePIP={handleDisablePIP}
+                             onPause={handlePause}
+                             onBuffer={() => console.log('onBuffer')}
+                             onPlaybackRateChange={handleOnPlaybackRateChange}
+                             onSeek={e => console.log('onSeek', e)}
+                             onEnded={handleEnded}
+                             onError={e => console.log('onError', e)}
+                             onProgress={handleProgress}
+                             onDuration={handleDuration}
+                             onPlaybackQualityChange={e => console.log('onPlaybackQualityChange', e)}
+                ></ReactPlayer>
                 <div>
                     progress barr
                 </div>

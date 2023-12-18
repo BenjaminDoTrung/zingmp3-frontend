@@ -36,9 +36,10 @@ export default function UpdateSong(prop) {
         axios.get("http://localhost:8080/songTypes").then((res)=>{
             setSongType(res.data);
         })
+
     }, []);
     useEffect(()=>{
-        console.log("moe may", idSong)
+        console.log("id: ", idSong.id)
         axios.get("http://localhost:8080/songs/" + idSong.id).then((res)=>{
             setSongs(res.data);
             console.log("dât ne", res.data)

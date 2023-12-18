@@ -39,8 +39,7 @@ const RightSidebar = () => {
             <Button type="primary" onClick={showDrawer}>
                 Open
             </Button>
-            <div style={{inset:"none", backgroundColor:'120822'}}>
-            <Drawer  autoFocus={false} title="Basic Drawer" placement="right" onClose={onClose} open={open}>
+            <Drawer mask={false} autoFocus={false} title="Basic Drawer" placement="right" onClose={onClose} open={open}>
                 <div className={"modal.hidden"}>
                     <div className={'flex flex-col text-xs w-full'}>
                         <div
@@ -93,7 +92,6 @@ const RightSidebar = () => {
                     </div>
                 </div>
             </Drawer>
-            </div>
         </>
     );
 };
