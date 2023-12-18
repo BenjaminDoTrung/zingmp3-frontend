@@ -30,24 +30,26 @@ export default function UpdatePass() {
             }
                 enableReinitialize={true}>
                 <Form>
-                    <div className="p-3 my-5 d-flex flex-column w-50">
-                        <div>Password old</div>
-                        <div className="form-outline mb-4">
-                            <Field className="form-control" name={'oldpassword'} type='password' required/>
-
+                    <div className="d-flex justify-content-center">
+                        <div className="card mt-5 w-25">
+                            <div className="card-header">Đổi mật khẩu</div>
+                            <div className="card-body">
+                                <div className="form-outline mb-4">
+                                    <label htmlFor="oldpassword">Mật khẩu cũ</label>
+                                    <Field className="form-control" id="oldpassword" name={'oldpassword'} type='password' placeholder="Nhập mật khẩu cũ" required/>
+                                </div>
+                                <div className="form-outline mb-4">
+                                    <label htmlFor="newpassword">Mật khẩu mới</label>
+                                    <Field className="form-control" id="newpassword" name={'newpassword'} type='password' placeholder="Nhập mật khẩu mới"/>
+                                    <ErrorMessage className={'text-danger'} name="newpassword" component="div"/>
+                                </div>
+                                <div className="form-outline mb-4">
+                                    <label htmlFor="newpassword">Nhập lại mật khẩu</label>
+                                    <Field className="form-control" id="confirmedPassword" name={'confirmedPassword'}  placeholder="Nhập lại mật khẩu" type='password'/>
+                                </div>
+                                <button className="btn btn-primary btn-block" type={"submit"}>Cập nhật</button>
+                            </div>
                         </div>
-                        <div>Password new</div>
-                        <div className="form-outline mb-4">
-                            <Field className="form-control" name={'newpassword'} type='password'/>
-                            <ErrorMessage  className={'formik-error-message'} name="newpassword" component="div"/>
-
-                        </div>
-                        <div>ConfirmedPassword new</div>
-                        <div className="form-outline mb-4">
-                            <Field className="form-control" name={'confirmedPassword'} type='password'/>
-                        </div>
-                        {/*<div  style={check ? {color: "red"} : {display : 'none'}}> <p>mật khẩu nhập lại không đúng</p></div>*/}
-                        <button className="mb-4" type={"submit"}>Update</button>
                     </div>
                 </Form>
             </Formik>

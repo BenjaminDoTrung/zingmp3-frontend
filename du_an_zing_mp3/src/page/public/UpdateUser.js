@@ -76,6 +76,9 @@ export default function UpdateUser() {
                                 <div className="row d-flex justify-content-center align-items-center h-100">
                                     <div className="col col-xl-10">
                                         <div className="card">
+                                            <div className="card-header">
+                                                Cập nhật thông tin cá nhân
+                                            </div>
                                             <div className="row no-gutters">
                                                 <div className="col-md-4">
                                                     {user.url_img == null ? <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
@@ -85,10 +88,6 @@ export default function UpdateUser() {
                                                 </div>
                                                 <div className="col-md-8">
                                                     <div className="card-body">
-                                                        <div className="d-flex align-items-center mb-3 pb-1">
-                                                            <span className="h1 fw-bold mb-0">Cập nhật thông tin cá nhân</span>
-                                                        </div>
-
                                                         <div className="form-group mb-2">
                                                             <label className="" htmlFor="form2Example17">Địa chỉ email</label>
                                                             <Field name="email" type="email" id="form2Example17" placeholder="Nhập địa chỉ email" class="form-control form-control-lg" />
