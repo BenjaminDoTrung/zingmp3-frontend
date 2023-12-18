@@ -19,9 +19,10 @@ const Home = () =>{
             {/*<Sections data={friday}/>*/}
             {/*<Sections data={newEveryday}/>*/}
             <NewRelease/>
-            <Sections data={top100}/>
-            <Sections data={xone}/>
+            {/*<Sections data={top100}/>*/}
+            {/*<Sections data={xone}/>*/}
             <Sections data={newMusic}/>
+
 
 
 
@@ -29,4 +30,6 @@ const Home = () =>{
         </div>
     )
 }
+
+
 export default Home
