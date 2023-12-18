@@ -2,6 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {SongItem} from "./index";
 import * as actions from "../store/actions"
+import {Link} from "react-router-dom";
 
 const NewRelease = () => {
     const {latest} = useSelector(state => state.app)
@@ -45,14 +46,17 @@ const NewRelease = () => {
                 </button>
             </div>
             <div
+
                   className={'flex flex-wrap w-full '}>
                 {songs?.map(item => (
-                    <SongItem key = {item.id}
+                    <SongItem
+                        sid={item.id}
                     key = {item.id}
                     thumbnail={item.url_img}
                     title={item.nameSong}
                     artists={item.singer}
                     releaseDate={new Date()}
+
                     />
                 ))}
             </div>
