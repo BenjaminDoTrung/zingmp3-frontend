@@ -104,31 +104,31 @@ export default function Register() {
 					<span className="login100-form-title">
 						Đăng ký Zingmp3
 					</span>
-                                                                <ErrorMessage  className={'formik-error-message'} name="userName" component="div"/>
+                                                                <ErrorMessage style={{color:'red'}}  className={'formik-error-message'} name="userName" component="div"/>
                                                                 <div className="wrap-input100 validate-input">
                                                                     <Field className="input100" type="text" name="userName" placeholder="Tên tài khoản"/>
                                                                     <span className="focus-input100"></span>
                                                                     <span className="symbol-input100">
-							<i className="fa fa-envelope" aria-hidden="true"></i>
+							<i className="fa fa-solid fa-user" aria-hidden="true"></i>
 						</span>
                                                                 </div>
-                                                                <ErrorMessage  className={'formik-error-message'} name="password" component="div"/>
+                                                                <ErrorMessage style={{color:'red'}}  className={'formik-error-message'} name="password" component="div"/>
                                                                 <div className="wrap-input100 validate-input">
                                                                     <Field className="input100" type="password" name="password" placeholder="Mật khẩu"/>
                                                                     <span className="focus-input100"></span>
                                                                     <span className="symbol-input100">
-							<i className="fa fa-envelope" aria-hidden="true"></i>
+							<i className="fa fa-lock" aria-hidden="true"></i>
 						</span>
                                                                 </div>
-                                                                <ErrorMessage  className={'formik-error-message'} name="confirmedPassword" component="div"/>
+                                                                <ErrorMessage style={{color:'red'}}  className={'formik-error-message'} name="password" component="div"/>
                                                                 <div className="wrap-input100 validate-input">
                                                                     <Field className="input100" type="password" name="confirmedPassword" placeholder="Nhập lại mật khẩu"/>
                                                                     <span className="focus-input100"></span>
                                                                     <span className="symbol-input100">
-							<i className="fa fa-envelope" aria-hidden="true"></i>
+							<i className="fa fa-lock" aria-hidden="true"></i>
 						</span>
                                                                 </div>
-                                                                <ErrorMessage  className={'formik-error-message'} name="email" component="div"/>
+                                                                <ErrorMessage style={{color:'red'}}  className={'formik-error-message'} name="email" component="div"/>
                                                                 <div className="wrap-input100 validate-input">
                                                                     <Field className="input100" type="email" name="email" placeholder="Email"/>
                                                                     <span className="focus-input100"></span>
@@ -142,14 +142,14 @@ export default function Register() {
                                                                     </button>
                                                                 </div>
 
-                                                                <div className="text-center p-t-12">
-						<span className="txt1">
-							Forgot
-						</span>
-                                                                    <a className="txt2" href="#">
-                                                                        Username / Password?
-                                                                    </a>
-                                                                </div>
+                        {/*                                        <div className="text-center p-t-12">*/}
+						{/*<span className="txt1">*/}
+						{/*	Forgot*/}
+						{/*</span>*/}
+                        {/*                                            <a className="txt2" href="#">*/}
+                        {/*                                                Username / Password?*/}
+                        {/*                                            </a>*/}
+                        {/*                                        </div>*/}
                                                                 <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
     &client_id=80724656105-fg2ndheoujm7c7dd4ob1i9mq3ebdbjhb.apps.googleusercontent.com&approval_prompt=force">Login With
                                                                     Gmail</a>
@@ -158,7 +158,7 @@ export default function Register() {
 
                                                                         <i className="fa fa-long-arrow-left m-l-5"
                                                                            ></i>
-                                                                        back
+                                                                        Quay lại
                                                                     </button>
                                                                 </div>
                                                             </div>

@@ -14,9 +14,14 @@ import Album from "./page/public/Album";
 import UpdatePass from "./page/public/UpdatePassword";
 import Register from "./page/public/Register";
 import CreateSong from "./components/CreateSong";
+<<<<<<< HEAD
 import UpdateSong from "./components/UpdateSong";
 import CreatePlayList from "./components/CreatePlayList";
 import ShowListSong from "./components/ShowListSong";
+=======
+import {DetailSong} from "./components";
+import ListSearchBySongName from "./page/public/ListSearchBySongName";
+>>>>>>> 2f48608355f51e17e5503ff8d1827d78fdd0c9a2
 
 function App() {
     const dispatch = useDispatch()
@@ -36,10 +41,15 @@ function App() {
                       <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>
                       <Route path={path.AlBUM_TITLE_PID} element={<Album/>}></Route>
                       <Route path={path.UPDATEPASS} element={<UpdatePass/>}></Route>
+<<<<<<< HEAD
                       <Route path={"update/:id"} element={<UpdateSong></UpdateSong>}></Route>
                       <Route path={"createPlayList"} element={<CreatePlayList></CreatePlayList>}></Route>
                       <Route path={"showList"} element={<ShowListSong></ShowListSong>}></Route>
 
+=======
+                      <Route path={path.DETAILSONG} element={<DetailSong/>}></Route>
+                      <Route path={path.SEARCHBYSONGNAME} element={<ListSearchBySongName/>}></Route>
+>>>>>>> 2f48608355f51e17e5503ff8d1827d78fdd0c9a2
                   </Route>
 
               </Routes>

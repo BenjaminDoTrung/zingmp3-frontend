@@ -6,18 +6,28 @@ import {HiOutlinePlus} from "react-icons/hi";
 import {AiOutlineLogout} from "react-icons/ai";
 import {useNavigate} from "react-router-dom";
 import UpdatePass from "../page/public/UpdatePassword";
-const MenuLogOut = () => {
+const MenuLogOut = ({handler}) => {
     const navigate = useNavigate()
     function logOut() {
+        handler(false);
         localStorage.clear()
         navigate("/")
     }
     function updatePassword(){
+        handler(false);
         navigate("/updatePassword")
     }
     function updateProfile(){
+        handler(false);
         navigate("/updateProfile")
     }
+
+    function createSong(){
+        handler(false);
+        navigate("/create")
+    }
+
+
     return (
         <>
             <div className="menu-logout">
@@ -44,7 +54,7 @@ const MenuLogOut = () => {
                         <div className="use-icon">
                             <HiOutlinePlus style={{width:20, height:20}} />
                         </div>
-                        <div className="use-content">
+                        <div onClick={createSong} className="use-content">
                             Thêm bài hát
                         </div>
                     </li>
