@@ -20,6 +20,7 @@ const Header = () => {
     let [user, setUser] = useState({})
     let [img,setImg] = useState('');
 
+
         useEffect(() => {
             if (id !== null){
             axios.get('http://localhost:8080/users/' + id).then((res) => {
@@ -68,7 +69,8 @@ const Header = () => {
                             }
 
                             }>
-                                <img src={img} style={{
+                                <img src={img === "" ? "https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg":
+                                 img} style={{
                                     width: 40,
                                     height: 40,
                                     marginTop: 5,
@@ -117,7 +119,8 @@ const Header = () => {
                                 }
 
                                 }>
-                                    <img src={img} style={{
+                                    <img src={img === "" ? "https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg":
+                                        img} style={{
                                         width: 40,
                                         height: 40,
                                         marginTop: 5,

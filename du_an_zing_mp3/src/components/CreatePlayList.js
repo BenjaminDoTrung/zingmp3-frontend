@@ -13,7 +13,7 @@ function CreatePlayList(props) {
             <Formik initialValues={{
                 namePlayList: ""
             }} onSubmit={(values)=>{
-                axios.post("http://localhost:8080/playLists" + values).then((res)=>{
+                axios.put("http://localhost:8080/playLists" + values).then((res)=>{
                     toast.success("Tạo playlist thành công", {
                         position: toast.POSITION.BOTTOM_RIGHT
                     })
