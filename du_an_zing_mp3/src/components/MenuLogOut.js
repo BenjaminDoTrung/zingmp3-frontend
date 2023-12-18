@@ -6,18 +6,21 @@ import {HiOutlinePlus} from "react-icons/hi";
 import {AiOutlineLogout} from "react-icons/ai";
 import {useNavigate} from "react-router-dom";
 import UpdatePass from "../page/public/UpdatePassword";
-const MenuLogOut = () => {
+const MenuLogOut = ({ handler }) => {
     const navigate = useNavigate()
     function logOut() {
         localStorage.clear()
         navigate("/")
     }
     function updatePassword(){
+        handler(false);
         navigate("/updatePassword")
     }
     function updateProfile(){
+        handler(false);
         navigate("/updateProfile")
     }
+
     return (
         <>
             <div className="menu-logout">

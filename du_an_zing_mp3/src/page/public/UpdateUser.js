@@ -70,10 +70,17 @@ export default function UpdateUser() {
                                         <div className="card" style={{borderRadius: 1}}>
                                             <div className="row g-0">
                                                 <div className="col-md-6 col-lg-5 d-none d-md-block" style={{height:200}}>
-                                                    {user.url_img == null ? <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                                                    {user.url_img == null ? <img onClick={()=>document.getElementById("form2Example27").click()} src="https://facebookninja.vn/wp-content/uploads/2023/06/anh-dai-dien-mac-dinh-zalo.jpg"
                                                                                  alt="login form" className="img-fluid" /> :
-                                                        <img src= {user.url_img}
-                                                             alt="login form" className="img-fluid" style={{width:400, height: 350, marginTop: 100,paddingLeft: 50}} />}
+                                                        <img onClick={()=>document.getElementById("form2Example27").click()} src= {user.url_img}
+                                                             alt="login form" className="img-fluid" style={{width:400, height: 350, marginTop: 100,paddingLeft: 50}}
+                                                        />}
+                                                    <div className="form-outline mb-4" style={{height: 50}}>
+                                                        <input style={{display:'none'}} name = "img" type="file" id="form2Example27" className="form-control form-control-lg" onChange={(event) => {
+                                                            uploadFile(event.target.files[0], id)
+                                                        }}/>
+                                                        <label className="form-label" htmlFor="form2Example27"></label>
+                                                    </div>
                                                 </div>
                                                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                                                     <div className="card-body p-4 p-lg-5 text-black">
@@ -98,13 +105,6 @@ export default function UpdateUser() {
                                                             <Field name = "dayOfBirth" type="text" id="form2Example27" className="form-control form-control-lg" />
                                                             <label className="form-label" htmlFor="form2Example27">Day Off Birth</label>
                                                         </div>
-                                                        <div className="form-outline mb-4" style={{height: 50}}>
-                                                            <input name = "img" type="file" id="form2Example27" className="form-control form-control-lg" onChange={(event) => {
-                                                                uploadFile(event.target.files[0], id)
-                                                            }}/>
-                                                            <label className="form-label" htmlFor="form2Example27">Img</label>
-                                                        </div>
-
                                                         <div className="pt-1 mb-4" style={{height: 50}}>
                                                             <button className="btn btn-dark btn-lg btn-block" type="button" style={{color: "violet"}}>Update</button>
                                                         </div>
