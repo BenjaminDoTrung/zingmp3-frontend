@@ -3,6 +3,8 @@ import {MdDeleteOutline, MdOutlineBrowserUpdated} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {toast} from "react-toastify";
+import {AiOutlinePlus} from "react-icons/ai";
+import ModalCreatePlayList from "./modanCreatePlayList";
 
 const ShowPlaylist = () => {
     let [list, setList] = useState([])
@@ -27,12 +29,13 @@ const ShowPlaylist = () => {
                 <div className="name_playlist" style={{paddingBottom: 20, fontSize: 30, paddingLeft: 10}}>
                     Danh sách Playlist
                 </div>
+                <button><ModalCreatePlayList/></button>
                 <table className="table" style={{color: "white"}}>
                     <thead>
                     <tr>
                         <th scope="col">STT</th>
                         <th scope="col">Tên Playlist</th>
-                        <th scope="col" colSpan={2}></th>
+                        <th scope="col" colSpan={2}>Thao Tác</th>
                     </tr>
                     </thead>
                     <tbody>
