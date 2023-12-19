@@ -2,10 +2,12 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {AiOutlineMore} from "react-icons/ai";
 import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 const ShowListSong = () => {
     const [idUser, setIdUser] = useState(localStorage.getItem("idUser"))
     const [list, setList] = useState([]);
+    const navigate = useNavigate()
     useEffect(() => {
         axios.get("http://localhost:8080/songs/showByIdUser/" + idUser).then((res) => {
             setList(res.data);
@@ -26,6 +28,9 @@ const ShowListSong = () => {
                                     <div className="col-sm-3" style={{marginBottom: 30}}>
                                         <div className="top100_content" style={{paddingLeft: 30}}>
                                             <img
+                                                onClick={()=>{
+                                                    navigate("/update/" + i.id)
+                                                }}
                                                 style={{width:215, height: 200, borderRadius:10}}
                                                 src={i.url_img == null ? "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_jpeg/cover/a/3/6/a/a36a7d1fecd4333c96def2d3f71a6b9b.jpg"
                                                     : i.url_img} />

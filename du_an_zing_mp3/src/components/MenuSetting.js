@@ -15,9 +15,13 @@ import {HiOutlinePlus} from "react-icons/hi";
 import {RiSlideshow2Line} from "react-icons/ri";
 
 
-const MenuSetting = (props) => {
+const MenuSetting = ({handler}) => {
     const navigate = useNavigate();
-    console.log(props.name)
+    function showList(){
+        handler(false);
+        navigate("/showPlaylist")
+    }
+
     return (
         <>
             <div className="menu_setting">
@@ -75,9 +79,7 @@ const MenuSetting = (props) => {
                             <GoArrowUpRight />
                         </div>
                     </li>
-                    <li onClick={()=>{
-                        navigate("/showPlaylist")
-                    }}>
+                    <li onClick={showList}>
                         <div className="icon">
                             <RiSlideshow2Line />
                         </div>

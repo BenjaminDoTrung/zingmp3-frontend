@@ -59,6 +59,7 @@ const MenuLogOut = ({handler}) => {
                         </div>
                     </li>
                     <li onClick={()=>{
+                        handler(false);
                         navigate("showList")
                     }}>
                         <div className="use-icon">

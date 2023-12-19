@@ -11,13 +11,14 @@ const ShowPlaylist = () => {
         axios.get("http://localhost:8080/playLists").then((res) => {
             setList(res.data);
         })
-    }, []);
+    }, [list]);
 
     function deletePlaylist(id) {
         axios.delete("http://localhost:8080/playLists/" + id).then((res) => {
             toast.success("Xóa thành công", {
                 position: toast.POSITION.BOTTOM_RIGHT
             })
+            navigate("/showPlaylist")
         })
     }
 
@@ -43,7 +44,9 @@ const ShowPlaylist = () => {
                                 <td onClick={() => {
                                     navigate("/viewPlaylist/" + i.id)
                                 }}>{i.namePlayList}</td>
-                                <td><MdOutlineBrowserUpdated style={{width: 30, height: 30}}/></td>
+                                <td><MdOutlineBrowserUpdated onClick={()=>{
+                                    navigate("/updatePlayList/" + i.id)
+                                }} style={{width: 30, height: 30}}/></td>
                                 <td><MdDeleteOutline onClick={() => {
                                     deletePlaylist(i.id);
                                 }} style={{width: 30, height: 30}}/></td>

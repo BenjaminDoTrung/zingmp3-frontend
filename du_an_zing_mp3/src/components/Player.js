@@ -122,7 +122,6 @@ const Player = ({setIsShowRightSidebar}) => {
     const handleDuration = (duration) => {
         console.log('onDuration', duration)
         this.setState({ duration })
-
     }
     const handleSeekMouseDown = e => {
         this.setState({ seeking: true })

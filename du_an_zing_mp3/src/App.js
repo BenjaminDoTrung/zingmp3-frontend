@@ -21,6 +21,7 @@ import {DetailSong} from "./components";
 import ListSearchBySongName from "./page/public/ListSearchBySongName";
 import ShowPlaylist from "./components/ShowPlaylist";
 import ViewPlaylist from "./components/ViewPlaylist";
+import UpdatePlayList from "./components/UpdatePlayList";
 
 
 function App() {
@@ -48,15 +49,12 @@ function App() {
                       <Route path={path.SEARCHBYSONGNAME} element={<ListSearchBySongName/>}></Route>
                       <Route path={"showPlaylist"} element={<ShowPlaylist/>}></Route>
                       <Route path={"viewPlaylist/:id"} element={<ViewPlaylist/>}></Route>
-
+                      <Route path={"updatePlayList/:id"} element={<UpdatePlayList/>}></Route>
                   </Route>
-
               </Routes>
               <ToastContainer />
           </div>
-
       </>
-
   );
 }
 
