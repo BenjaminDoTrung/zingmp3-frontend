@@ -11,7 +11,7 @@ const ShowPlaylist = () => {
         axios.get("http://localhost:8080/playLists").then((res) => {
             setList(res.data);
         })
-    }, []);
+    }, [list]);
 
     function deletePlaylist(id) {
         axios.delete("http://localhost:8080/playLists/" + id).then((res) => {

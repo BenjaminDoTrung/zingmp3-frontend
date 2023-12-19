@@ -5,15 +5,15 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {IoAddOutline} from "react-icons/io5";
 
-function CreatePlayList(props) {
+function    CreatePlayList(props) {
     const navigate = useNavigate();
-
+    const id_user = localStorage.getItem("idUser")
     return (
         <>
             <Formik initialValues={{
                 namePlayList: "",
-                id_user: {
-                    id: localStorage.getItem("idUser")
+                id_users: {
+                    id: id_user
                 }
             }}
                     enableReinitialize={true}
