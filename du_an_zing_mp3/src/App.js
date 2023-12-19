@@ -48,15 +48,11 @@ function App() {
                       <Route path={path.SEARCHBYSONGNAME} element={<ListSearchBySongName/>}></Route>
                       <Route path={"showPlaylist"} element={<ShowPlaylist/>}></Route>
                       <Route path={"viewPlaylist/:id"} element={<ViewPlaylist/>}></Route>
-
                   </Route>
-
               </Routes>
               <ToastContainer />
           </div>
-
       </>
-
   );
 }
 
