@@ -15,7 +15,6 @@ export default function UpdateUser() {
     const id = localStorage.getItem("idUser")
     const [user, setUser] = useState({})
     const [uploadedImageUrl, setUploadedImageUrl] = useState(undefined);
-    const [image, setImage] = useState(null);
     const [api, contextHolder] = notification.useNotification();
 
     useEffect(() => {

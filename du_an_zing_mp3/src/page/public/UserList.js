@@ -6,21 +6,23 @@ import Header from "../../components/Header";
 export default function UserList() {
     const [list, setList] = useState([]);
     const [check, setCheck] = useState(false);
+    function listNew(list) {
+        if (list !== null){
+            let listNe = [] ;
+            for (let i = 0; i < list.length; i++) {
+                if(list[i].userName.role.name !== "ROLE_ADMIN"){
+                    listNe.push(list[i])
+                }
+            }
+            return listNe ;
+        }
+        return list;
+    }
     useEffect(() => {
         axios.get('http://localhost:8080/users').then(res => {
             setList(listNew(res.data))
         }).catch(()=>{setList([])})
     }, [check])
-
-    function listNew(list) {
-        let listNe = [] ;
-        for (let i = 0; i < list.length; i++) {
-            if(list[i].userName !== "admin"){
-                listNe.push(list[i])
-            }
-        }
-        return listNe ;
-    }
 
     function changeStatus(email) {
         axios.put('http://localhost:8080/users/account_lockout/'+email).then(()=>{})
