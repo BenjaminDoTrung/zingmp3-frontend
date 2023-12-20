@@ -3,7 +3,6 @@ import { Button, Dropdown } from 'antd';
 import {AiOutlineMore} from "react-icons/ai";
 import axios from "axios";
 import {toast} from "react-toastify";
-import UpdateSong from "./UpdateSong";
 import "./hover.css"
 import hoverList from "./Hover";
 const Dropdown_listSong = () => {
@@ -29,7 +28,7 @@ const items = [
     {
         key: '1',
         label: (
-            <div className={"mothaiba"}>
+            <div onClick={addPlayList}>
                 Thêm vào PlayList
             </div>
 
@@ -54,15 +53,11 @@ const items = [
 ];
 
 function addPlayList(){
-    axios.put("http://localhost:8080/songs/add_play_list/" +  + "/"+ i.id).then((res)=>{
-        toast.success("Thêm thành công vào Playlist", {
-            position: toast.POSITION.BOTTOM_RIGHT
-        })
-    })
+
 }
 
 function edit(){
-    UpdateSong
+
 }
 
 function deleteSong(){

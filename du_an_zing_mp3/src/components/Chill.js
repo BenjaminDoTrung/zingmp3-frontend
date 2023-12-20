@@ -23,45 +23,45 @@ const Chill = () => {
                            navigate('/album/'+1)
                        }}
                        className={'flex flex-col items-center'}>
-                       <img src={ban1} alt="" className={'w-[250px] h-[250px] object-contain rounded-lg cursor-pointer'}/>
-                       <span className={'font-bold text-white'}>Tittle</span>
-                       <span className={' text-white'}>Description</span>
+                       <img src={ban1} alt="" className={'w-[200px] h-[200px] object-contain rounded-lg cursor-pointer'}/>
+                       <span className={'font-bold text-white mt-2'}>Tittle</span>
+                       <span className={' text-white mt-2'}>Description</span>
                    </div>
                     <div
                         onClick={() => {
                             navigate('/album/'+1)
                         }}
                         className={'flex flex-col items-center'}>
-                        <img src={ban2} alt="" className={'w-[250px] h-[250px] object-contain rounded-lg cursor-pointer'}/>
-                        <span className={'font-bold text-white '}>Tittle</span>
-                        <span className={' text-white'}>Description</span>
+                        <img src={ban2} alt="" className={'w-[200px] h-[200px] object-contain rounded-lg cursor-pointer'}/>
+                        <span className={'font-bold text-white mt-2'}>Tittle</span>
+                        <span className={' text-white mt-2'}>Description</span>
                     </div>
                     <div
                         onClick={() => {
                             navigate('/album/'+1)
                         }}
                         className={'flex flex-col items-center'}>
-                        <img src={ban3} alt="" className={'w-[250px] h-[250px] object-contain rounded-lg cursor-pointer'}/>
-                        <span className={'font-bold text-white'}>Tittle</span>
-                        <span className={' text-white'}>Description</span>
+                        <img src={ban3} alt="" className={'w-[200px] h-[200px] object-contain rounded-lg cursor-pointer'}/>
+                        <span className={'font-bold text-white mt-2'}>Tittle</span>
+                        <span className={' text-white mt-2'}>Description</span>
                     </div>
                     <div
                         onClick={() => {
                             navigate('/album/'+1)
                         }}
                         className={'flex flex-col items-center'}>
-                        <img src={ban4} alt="" className={'w-[250px] h-[250px] object-contain rounded-lg cursor-pointer'}/>
-                        <span className={'font-bold text-white'}>Tittle</span>
-                        <span className={' text-white'}>Description</span>
+                        <img src={ban4} alt="" className={'w-[200px] h-[200px] object-contain rounded-lg cursor-pointer'}/>
+                        <span className={'font-bold text-white mt-2'}>Tittle</span>
+                        <span className={' text-white mt-2'}>Description</span>
                     </div>
                     <div
                         onClick={() => {
                             navigate('/album/'+1)
                         }}
                         className={'flex flex-col items-center'}>
-                        <img src={ban5} alt="" className={'w-[250px] h-[250px] object-cover rounded-lg cursor-pointer'}/>
-                        <span className={'font-bold text-white '}>Tittle</span>
-                        <span className={' text-white'}>Description</span>
+                        <img src={ban5} alt="" className={'w-[200px] h-[200px] object-cover rounded-lg cursor-pointer'}/>
+                        <span className={'font-bold text-white mt-2 '}>Tittle</span>
+                        <span className={' text-white mt-2'}>Description</span>
                     </div>
                 </div>
             </div>

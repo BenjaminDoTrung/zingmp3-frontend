@@ -71,8 +71,7 @@ const RightSidebar = () => {
 
                                 />
                             ))}
-                            style='bg-main-500 text-white'
-                            />
+
                             <div className={'flex flex-col text-black pt-[15px] px-2 pb-[5px]'}>
                                 <span className={' text-sm font-bold'}>Tiếp theo</span>
                                 <span className={'opacity-70 text-xs flex gap-1'}>
@@ -80,7 +79,7 @@ const RightSidebar = () => {
                         <span className={'font-semibold text-main-500'}>{curSongData?.album?.title}</span>
                     </span>
                             </div>
-                            {playlist && <div className={'flex flex-col'}>
+                            <div className={'flex flex-col'}>
                                 {songs?.map(item => (
                                     <SongItem
                                         sid={item.id}
@@ -92,7 +91,7 @@ const RightSidebar = () => {
 
                                     />
                                 ))}
-                            </div>}
+                            </div>
                         </div>
                     </div>
                 </div>
