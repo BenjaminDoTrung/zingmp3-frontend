@@ -20,7 +20,7 @@ const Public = () => {
                     <div className={'h-[70px] flex-none px-[59px] flex items-center '} style={{backgroundColor:"#32244DFF", color: "white"}}>
                         <Header/>
                     </div >
-                    <div className={'flex-auto w-full'} style={{backgroundColor:"#3C2C52FF"}}>
+                    <div className={'flex-auto w-full h-[1000vh]'} style={{backgroundColor:"#3C2C52FF"}}>
                         <Scrollbars autoHide style={{width:'100%', height:'100%'}}>
                             <Outlet />
                         </Scrollbars>
