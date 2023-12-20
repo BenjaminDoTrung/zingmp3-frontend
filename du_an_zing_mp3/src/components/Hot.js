@@ -17,7 +17,7 @@ const Hot = () => {
                 <span className={'text-xs text-white'}>TẤT CẢ</span>
             </div>
             <div className={'flex items-start justify-between gap-[50px]'}>
-                <div className={'flex gap-2 flex-auto text-sm justify-between'}>
+                <div className={'flex gap-2 flex-auto text-sm justify-between cursor-pointer'}>
                     <div
                         onClick={() => {
                             navigate('/album/'+1)
@@ -31,7 +31,7 @@ const Hot = () => {
                         onClick={() => {
                             navigate('/album/'+1)
                         }}
-                        className={'flex flex-col items-center'}>
+                        className={'flex flex-col items-center cursor-pointer'}>
                         <img src={cs2} alt="" className={'w-[250px] h-[250px] object-contain rounded-lg'}/>
                         <span className={'font-bold text-white '}>J97</span>
                         <span className={' text-white'}>Những ca khúc mới nhất của j97</span>
@@ -40,7 +40,7 @@ const Hot = () => {
                         onClick={() => {
                             navigate('/album/'+1)
                         }}
-                        className={'flex flex-col items-center'}>
+                        className={'flex flex-col items-center cursor-pointer'}>
                         <img src={cs3} alt="" className={'w-[250px] h-[250px] object-contain rounded-lg'}/>
                         <span className={'font-bold text-white'}>Hồ Quang Hiếu</span>
                         <span className={' text-white'}>Những ca khúc hay nhất của Hồ Quang Hiếu</span>
@@ -49,7 +49,7 @@ const Hot = () => {
                         onClick={() => {
                             navigate('/album/'+1)
                         }}
-                        className={'flex flex-col items-center'}>
+                        className={'flex flex-col items-center cursor-pointer'}>
                         <img src={cs4} alt="" className={'w-[250px] h-[250px] object-contain rounded-lg'}/>
                         <span className={'font-bold text-white'}>Sơn Tùng MTP</span>
                         <span className={' text-white'}>Những ca khúc hot nhất của MTP</span>
@@ -58,7 +58,7 @@ const Hot = () => {
                         onClick={() => {
                             navigate('/album/'+1)
                         }}
-                        className={'flex flex-col items-center'}>
+                        className={'flex flex-col items-center cursor-pointer'}>
                         <img src={cs5} alt="" className={'w-[250px] h-[250px] object-cover rounded-lg'}/>
                         <span className={'font-bold text-white '}>Phan Mạnh Quỳnh</span>
                         <span className={' text-white'}>Những ca khúc được yêu thích của PMQ</span>

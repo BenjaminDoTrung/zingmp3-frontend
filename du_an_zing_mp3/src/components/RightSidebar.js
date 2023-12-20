@@ -47,7 +47,7 @@ const RightSidebar = () => {
                                 className={'flex  flex-auto gap-8 justify-center bg-main-200 rounded-l-full rounded-r-full py-[6px] px-[6px] cursor-pointer'}>
                     <span
                         onClick={() => setisRecent(prev => !prev)}
-                        className={`py-[5px] ${!isRecent && 'bg-main-100'} flex-1 flex justify-center rounded-l-full rounded-r-full items-center`}
+                        className={`py-[5px] ${!isRecent && 'bg-main-100'} flex-1 flex justify-choenter rounded-l-full rounded-r-full items-center`}
                     >
                         Danh sách phát</span>
                                 <span
