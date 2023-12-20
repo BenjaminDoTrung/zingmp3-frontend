@@ -10,8 +10,11 @@ import {
 } from "firebase/storage";
 import {storage} from "../FireBase/FireBaseConfig";
 import axios from "axios";
+import {useDispatch} from "react-redux";
+import * as actions from "../store/actions";
 
 const ModalCreateSong = () => {
+    const dispatch = useDispatch();
     const [uploadedImageUrl, setUploadedImageUrl] = useState(undefined);
     const [uploadedSong, setUploadedSong] = useState()
     const [songsUrl, setSongsUrl] = useState(null);
@@ -107,7 +110,8 @@ const ModalCreateSong = () => {
                     axios.post("http://localhost:8080/songs", value).then((res)=>{
                         toast.success("Tạo bài hát thành công", {
                             position: toast.POSITION.BOTTOM_RIGHT
-                        })
+                        });
+                        dispatch(actions.getHome()); // Cập nhật lại danh sách bài hát mới
                     })
                 }}>
                     <Form>
