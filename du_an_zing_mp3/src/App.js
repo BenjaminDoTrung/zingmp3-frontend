@@ -39,7 +39,7 @@ function App() {
                       <Route path={path.REGISTER} element={<Register/>}></Route>
                       <Route path={path.LISTUSER} element={<UserList/>}></Route>
                       <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>
-                      <Route path={path.AlBUM_TITLE_PID} element={<Album/>}></Route>
+                      <Route path={'album'} element={<Album/>}></Route>
                       <Route path={path.UPDATEPASS} element={<UpdatePass/>}></Route>
                       <Route path={"update/:id"} element={<UpdateSong></UpdateSong>}></Route>
                       <Route path={"createPlayList"} element={<CreatePlayList></CreatePlayList>}></Route>
