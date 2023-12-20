@@ -72,26 +72,6 @@ const RightSidebar = () => {
                                 />
                             ))}
 
-                            <div className={'flex flex-col text-black pt-[15px] px-2 pb-[5px]'}>
-                                <span className={' text-sm font-bold'}>Tiếp theo</span>
-                                <span className={'opacity-70 text-xs flex gap-1'}>
-                        <span>Từ playlist</span>
-                        <span className={'font-semibold text-main-500'}>{curSongData?.album?.title}</span>
-                    </span>
-                            </div>
-                            <div className={'flex flex-col'}>
-                                {songs?.map(item => (
-                                    <SongItem
-                                        sid={item.id}
-                                        key = {item.id}
-                                        thumbnail={item.url_img}
-                                        title={item.nameSong}
-                                        artists={item.singer}
-                                        releaseDate={new Date()}
-
-                                    />
-                                ))}
-                            </div>
                         </div>
                     </div>
                 </div>

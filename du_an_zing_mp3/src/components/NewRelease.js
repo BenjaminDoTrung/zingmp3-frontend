@@ -11,7 +11,6 @@ const NewRelease = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log('latest', latest);
         setSongs(latest);
     }, [isActive, latest]);
 
