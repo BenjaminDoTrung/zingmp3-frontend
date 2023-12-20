@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Button, Modal} from 'antd';
 import {AiOutlinePlus} from "react-icons/ai";
 import {ErrorMessage, Field, Form, Formik} from "formik";
@@ -6,6 +6,7 @@ import axios from "axios";
 import {toast} from "react-toastify";
 import {IoAddOutline} from "react-icons/io5";
 import {useNavigate} from "react-router-dom";
+import {AppContext} from "../Context/AppContext";
 
 const ModalCreatePlayList = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,12 +25,14 @@ const ModalCreatePlayList = () => {
     const navigate = useNavigate();
     const id_user = localStorage.getItem("idUser")
     const [listPlaylistCheck, setPlaylistCheck] = useState([]);
+    const {isFlag} = useContext(AppContext);
+    const {toggleFlag} = useContext(AppContext);
 
     useEffect(() => {
         axios.get('http://localhost:8080/playLists').then(res => {
             setPlaylistCheck(findPlaylist(res.data)) ;
         })
-    }, []);
+    }, [ isFlag]);
     function findPlaylist (data) {
         let a = [];
         for (let i = 0; i < data.length; i++) {
@@ -64,12 +67,14 @@ const ModalCreatePlayList = () => {
 
 
                             axios.put("http://localhost:8080/playLists", values).then((res) => {
+                                if (res.data === false){
+                                    toast.error('Không thể tạo')
+
+                                }
                                 toast.success("Tạo playlist thành công", {
                                     position: toast.POSITION.BOTTOM_RIGHT
                                 })
-                                navigate("/")
-                            }).catch(() => {
-                                toast.error('Không thể tạo')
+                               toggleFlag()
                             })
                         }}>
                     <Form>
@@ -81,7 +86,7 @@ const ModalCreatePlayList = () => {
                                 <h5>Tên PlayList</h5>
                                 <ErrorMessage style={{color:'red'}}  className={'formik-error-message'} name="namePlayList" component="div"/>
 
-                                <Field name="namePlayList" type="text" id="inputPassword6" className="form-control"
+                                <Field name="namePlayList" type="text" id="input" className="form-control"
                                        aria-describedby="passwordHelpInline"/><br/>
                                 <div className="col-auto">
                                     <button type="submit" className="btn btn-primary">Thêm</button>

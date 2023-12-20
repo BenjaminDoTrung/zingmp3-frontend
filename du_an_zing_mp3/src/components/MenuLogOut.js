@@ -6,6 +6,7 @@ import {HiOutlinePlus} from "react-icons/hi";
 import {AiOutlineLogout} from "react-icons/ai";
 import {useNavigate} from "react-router-dom";
 import UpdatePass from "../page/public/UpdatePassword";
+import ModalCreateSong from "./CreateSong";
 const MenuLogOut = ({handler}) => {
     const navigate = useNavigate()
     function logOut() {
@@ -24,7 +25,10 @@ const MenuLogOut = ({handler}) => {
 
     function createSong(){
         handler(false);
-        navigate("/create")
+    }
+    function showListSong(){
+        handler(false);
+        navigate('/showList')
     }
 
 
@@ -48,17 +52,15 @@ const MenuLogOut = ({handler}) => {
                             Thay đổi mật khẩu
                         </div>
                     </li>
-                    <li role="button" onClick={createSong}>
+                    <li role="button" >
                         <div className="use-icon">
                             <HiOutlinePlus style={{width:20, height:20}} />
                         </div>
                         <div className="use-content">
-                            Thêm bài hát
+                            <ModalCreateSong></ModalCreateSong>
                         </div>
                     </li>
-                    <li onClick={()=>{
-                        navigate("showList")
-                    }}>
+                    <li role="button" onClick={showListSong}>
                         <div className="use-icon">
                             <HiOutlinePlus style={{width:20, height:20}} />
                         </div>
