@@ -21,6 +21,7 @@ import {DetailSong} from "./components";
 import ListSearchBySongName from "./page/public/ListSearchBySongName";
 import ShowPlaylist from "./components/ShowPlaylist";
 import ViewPlaylist from "./components/ViewPlaylist";
+import {AppProvider} from "./Context/AppContext";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
   return (
       <>
           <div>
+              <AppProvider>
               <Routes>
                   <Route path={path.PUBLIC} element={<Public/>}>
                       <Route path={path.HOME} element={<Home/>}></Route>
@@ -50,7 +52,8 @@ function App() {
                       <Route path={"viewPlaylist/:id"} element={<ViewPlaylist/>}></Route>
                   </Route>
               </Routes>
-              <ToastContainer />
+
+              </AppProvider> <ToastContainer />
           </div>
       </>
   );

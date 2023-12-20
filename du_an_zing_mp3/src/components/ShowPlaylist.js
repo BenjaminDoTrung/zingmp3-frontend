@@ -1,25 +1,29 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {MdDeleteOutline, MdOutlineBrowserUpdated} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {toast} from "react-toastify";
 import {AiOutlinePlus} from "react-icons/ai";
 import ModalCreatePlayList from "./modanCreatePlayList";
+import {AppContext} from "../Context/AppContext";
 
 const ShowPlaylist = () => {
-    let [list, setList] = useState([])
+    let [list, setList] = useState([]);
+    const {toggleFlag } = useContext(AppContext);
+    const {isFlag } = useContext(AppContext);
     let navigate = useNavigate()
     useEffect(() => {
         axios.get("http://localhost:8080/playLists").then((res) => {
             setList(res.data);
         })
-    }, [list]);
+    }, [isFlag]);
 
     function deletePlaylist(id) {
         axios.delete("http://localhost:8080/playLists/" + id).then((res) => {
             toast.success("Xóa thành công", {
                 position: toast.POSITION.BOTTOM_RIGHT
             })
+            toggleFlag() ;
         })
     }
 
@@ -42,7 +46,7 @@ const ShowPlaylist = () => {
                     {list.map((i, key) => {
                         return (
                             <tr>
-                                <th scope="row">{i.id}</th>
+                                <th scope="row">{key +1}</th>
                                 <td onClick={() => {
                                     navigate("/viewPlaylist/" + i.id)
                                 }}>{i.namePlayList}</td>

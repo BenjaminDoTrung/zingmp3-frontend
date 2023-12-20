@@ -10,9 +10,9 @@ const RightSidebar = () => {
     const [open, setOpen] = useState(false);
     const [a, setA] = useState(false);
 
-        const showDrawer = () => {
-            setOpen(true);
-        };
+    const showDrawer = () => {
+        setOpen(true);
+    };
 
     const onClose = () => {
         setOpen(false);
@@ -71,7 +71,7 @@ const RightSidebar = () => {
 
                                 />
                             ))}
-                                style='bg-main-500 text-white'
+                            style='bg-main-500 text-white'
                             />
                             <div className={'flex flex-col text-black pt-[15px] px-2 pb-[5px]'}>
                                 <span className={' text-sm font-bold'}>Tiếp theo</span>
