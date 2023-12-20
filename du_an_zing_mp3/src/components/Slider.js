@@ -68,16 +68,25 @@ const Slider = () =>{
         <div className='w-full overflow-hidden px-[59px]'>
             <div className='flex w-full gap-8 pt-8'>
                     <img
+                        onClick={()=>
+                            navigate('album/'+1)
+                        }
                         src={banner1}
-                        className={'slider-item flex-1 object-contain w-[30%] rounded-lg '}
+                        className={'slider-item flex-1 object-contain w-[30%] rounded-lg cursor-pointer'}
                         alt=''/>
                 <img
+                    onClick={()=>
+                        navigate('album/'+2)
+                }
                     src={banner2}
-                    className={'slider-item flex-1 object-contain w-[30%] rounded-lg '}
+                    className={'slider-item flex-1 object-contain w-[30%] rounded-lg cursor-pointer'}
                     alt=''/>
                 <img
+                    onClick={()=>
+                        navigate('album/'+3)
+                    }
                     src={banner3}
-                    className={'slider-item flex-1 object-contain w-[30%] rounded-lg '}
+                    className={'slider-item flex-1 object-contain w-[30%] rounded-lg cursor-pointer'}
                     alt=''/>
                 )
             </div>
