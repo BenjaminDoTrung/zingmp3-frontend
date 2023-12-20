@@ -50,6 +50,7 @@ function App() {
                       <Route path={"showPlaylist"} element={<ShowPlaylist/>}></Route>
                       <Route path={"viewPlaylist/:id"} element={<ViewPlaylist/>}></Route>
                       <Route path={"updatePlayList/:id"} element={<UpdatePlayList/>}></Route>
+
                   </Route>
               </Routes>
               <ToastContainer />

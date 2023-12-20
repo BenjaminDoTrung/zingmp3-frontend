@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {AiOutlineMore} from "react-icons/ai";
-import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
+import Dropdown_listSong from "./dropdown_listSong";
 
 const ShowListSong = () => {
     const [idUser, setIdUser] = useState(localStorage.getItem("idUser"))
@@ -41,13 +40,9 @@ const ShowListSong = () => {
                                                     </h5>
                                                     <div style={{width:200, marginTop:5}}>Tên ca sĩ: {i.singer}</div>
                                                 </div>
-                                                <AiOutlineMore onClick={()=>{
-                                                    axios.put("http://localhost:8080/songs/add_play_list/" + 2 + "/"+ i.id).then((res)=>{
-                                                        toast.success("Thêm thành công vào Playlist", {
-                                                            position: toast.POSITION.BOTTOM_RIGHT
-                                                        })
-                                                    })
-                                                }} style={{width:20, height:20, marginTop: 40}}/>
+                                                <div>
+                                                 <Dropdown_listSong/>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -60,5 +55,4 @@ const ShowListSong = () => {
         </>
     );
 };
-
 export default ShowListSong;

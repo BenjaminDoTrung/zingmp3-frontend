@@ -9,9 +9,9 @@ const RightSidebar = () => {
     const [open, setOpen] = useState(false);
     const [a, setA] = useState(false);
 
-    const showDrawer = () => {
-        setOpen(true);
-    };
+        const showDrawer = () => {
+            setOpen(true);
+        };
 
     const onClose = () => {
         setOpen(false);
