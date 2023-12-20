@@ -4,14 +4,15 @@ import {IoTrashBin} from "react-icons/io5";
 import {SongItem} from "./index";
 import {useSelector} from "react-redux";
 import {apiGetDetailPlaylist} from "../apis";
+import axios from "axios";
 
 const RightSidebar = () => {
     const [open, setOpen] = useState(false);
     const [a, setA] = useState(false);
 
-        const showDrawer = () => {
-            setOpen(true);
-        };
+    const showDrawer = () => {
+        setOpen(true);
+    };
 
     const onClose = () => {
         setOpen(false);
@@ -24,15 +25,13 @@ const RightSidebar = () => {
     const [isRecent, setisRecent] = useState(false)
     const {curSongData, curAlbumId} = useSelector(state => state.music)
     const {playlist, setPlaylist} = useState()
+    const [songs, setSongs] = useState([])
     useEffect(() => {
-        const fetchDetailPlaylist = async () => {
-            const response = await apiGetDetailPlaylist(curAlbumId)
-            if (response.data?.err === 0) setPlaylist(response.data.data?.songs.items)
+        axios.get("http://localhost:8080/songs/searchByIdPll/" + 1).then((res)=>{
+            setSongs(res.data);
 
-        }
-
-        if (curAlbumId) fetchDetailPlaylist()
-    }, [curAlbumId]);
+        })
+    }, []);
 
     return (
         <>
@@ -61,13 +60,18 @@ const RightSidebar = () => {
                                 size={14}/></span>
                         </div>
                         <div className={'w-full flex-col flex px-2 '}>
-                            <SongItem
-                                thumbnail={curSongData?.thumbnail}
-                                title={curSongData?.title}
-                                artists={curSongData?.artistNames}
-                                sid={curSongData?.encodeId}
-                                sm
-                                style='bg-main-500 text-white'
+                            {songs?.map(item => (
+                                <SongItem
+                                    sid={item.id}
+                                    key = {item.id}
+                                    thumbnail={item.url_img}
+                                    title={item.nameSong}
+                                    artists={item.singer}
+                                    releaseDate={new Date()}
+
+                                />
+                            ))}
+                            style='bg-main-500 text-white'
                             />
                             <div className={'flex flex-col text-black pt-[15px] px-2 pb-[5px]'}>
                                 <span className={' text-sm font-bold'}>Tiếp theo</span>
@@ -77,14 +81,15 @@ const RightSidebar = () => {
                     </span>
                             </div>
                             {playlist && <div className={'flex flex-col'}>
-                                {playlist?.map(item => (
+                                {songs?.map(item => (
                                     <SongItem
-                                        key={item.encodeId}
-                                        thumbnail={item?.thumbnail}
-                                        title={item?.title}
-                                            artists={item?.artistNames}
-                                        sid={item?.encodeId}
-                                        sm
+                                        sid={item.id}
+                                        key = {item.id}
+                                        thumbnail={item.url_img}
+                                        title={item.nameSong}
+                                        artists={item.singer}
+                                        releaseDate={new Date()}
+
                                     />
                                 ))}
                             </div>}

@@ -4,10 +4,11 @@ import * as apis from '../../apis'
 import {GetHome, getHome} from "../../apis";
 import axios from "../../axios";
 import Slider from "../../components/Slider";
-import {Sections} from "../../components";
+import {Chill, Sections} from "../../components";
 import {useSelector} from "react-redux";
 import {NewRelease} from "../../components";
 import ListSearchBySongName from "./ListSearchBySongName";
+import Hot from "../../components/Hot";
 
 
 const Home = () =>{
@@ -21,7 +22,9 @@ const Home = () =>{
             <NewRelease/>
             {/*<Sections data={top100}/>*/}
             {/*<Sections data={xone}/>*/}
-            <Sections data={newMusic}/>
+            {/*<Sections data={newMusic}/>*/}
+            <Chill/>
+            <Hot/>
 
 
 
