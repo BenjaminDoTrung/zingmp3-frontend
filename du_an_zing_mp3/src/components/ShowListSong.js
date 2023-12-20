@@ -5,6 +5,7 @@ import Dropdown_listSong from "./dropdown_listSong";
 const ShowListSong = () => {
     const [idUser, setIdUser] = useState(localStorage.getItem("idUser"))
     const [list, setList] = useState([]);
+
     useEffect(() => {
         axios.get("http://localhost:8080/songs/showByIdUser/" + idUser).then((res) => {
             setList(res.data);
@@ -36,10 +37,9 @@ const ShowListSong = () => {
                                                     <div style={{width:200, marginTop:5}}>Tên ca sĩ: {i.singer}</div>
                                                 </div>
                                                 <div>
-                                                 <Dropdown_listSong/>
+                                                 <Dropdown_listSong id={i.id}/>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 )

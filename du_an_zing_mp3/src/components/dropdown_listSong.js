@@ -1,11 +1,42 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { Button, Dropdown } from 'antd';
 import {AiOutlineMore} from "react-icons/ai";
 import axios from "axios";
 import {toast} from "react-toastify";
 import "./hover.css"
+
 import hoverList from "./Hover";
-const Dropdown_listSong = () => {
+import {AppContext} from "../Context/AppContext";
+const Dropdown_listSong = (prop) => {
+    const items = [
+        {
+            key: '1',
+            label: (
+                <div onClick={addPlayList}>
+                    Thêm vào PlayList
+                </div>
+
+            ),
+        },
+        {
+            key: '2',
+            label: (
+                <a onClick={edit}>
+                    Sửa bài hát
+                </a>
+            ),
+        },
+        {
+            key: '3',
+            label: (
+                <div onClick={() => {
+                    deleteSong(prop.id)
+                }}>
+                    Xóa bài hát
+                </div>
+            ),
+        },
+    ];
     return (
         <>
             <Dropdown
@@ -17,49 +48,28 @@ const Dropdown_listSong = () => {
             >
                 <Button><AiOutlineMore/></Button>
             </Dropdown>
-            <div className={"hien"} style={{display:'block'}}>1123</div>
+            <div className={"hien"} style={{display: 'block'}}>1123</div>
         </>
     )
-}
-
-
-export default Dropdown_listSong;
-const items = [
-    {
-        key: '1',
-        label: (
-            <div onClick={addPlayList}>
-                Thêm vào PlayList
-            </div>
-
-        ),
-    },
-    {
-        key: '2',
-        label: (
-            <a onClick={edit} >
-                Sửa bài hát
-            </a>
-        ),
-    },
-    {
-        key: '3',
-        label: (
-            <a onClick={deleteSong}>
-                Xóa bài hát
-            </a>
-        ),
-    },
-];
-
-function addPlayList(){
 
 }
 
-function edit(){
 
-}
+    function addPlayList() {
 
-function deleteSong(){
+    }
 
-}
+    function edit() {
+
+    }
+
+    function deleteSong(id) {
+
+        axios.delete("http://localhost:8080/songs/" + id).then((res) => {
+            toast.success("Xóa thành công", {
+                position: toast.POSITION.BOTTOM_RIGHT
+            })
+        })
+    }
+
+export default Dropdown_listSong ;
