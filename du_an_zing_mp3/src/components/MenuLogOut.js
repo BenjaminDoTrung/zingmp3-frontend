@@ -48,13 +48,11 @@ const MenuLogOut = ({handler}) => {
                             Thay đổi mật khẩu
                         </div>
                     </li>
-                    <li onClick={()=>{
-                        navigate("create")
-                    }}>
+                    <li role="button" onClick={createSong}>
                         <div className="use-icon">
                             <HiOutlinePlus style={{width:20, height:20}} />
                         </div>
-                        <div onClick={createSong} className="use-content">
+                        <div className="use-content">
                             Thêm bài hát
                         </div>
                     </li>
@@ -68,7 +66,7 @@ const MenuLogOut = ({handler}) => {
                             D/S bài hát
                         </div>
                     </li>
-                    <li onClick={logOut}>
+                    <li role="button" onClick={logOut}>
                         <div className="use-icon">
                             <AiOutlineLogout style={{width:20, height:20}}/>
                         </div>

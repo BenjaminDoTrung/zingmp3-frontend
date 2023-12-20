@@ -7,19 +7,23 @@ import {AiOutlinePlus} from "react-icons/ai";
 import ModalCreatePlayList from "./modanCreatePlayList";
 
 const ShowPlaylist = () => {
-    let [list, setList] = useState([])
+    let [list, setList] = useState([]);
+    let [check, setCheck] = useState(true);
+
     let navigate = useNavigate()
     useEffect(() => {
         axios.get("http://localhost:8080/playLists").then((res) => {
             setList(res.data);
         })
-    }, [list]);
+    }, [check]);
 
     function deletePlaylist(id) {
         axios.delete("http://localhost:8080/playLists/" + id).then((res) => {
             toast.success("Xóa thành công", {
                 position: toast.POSITION.BOTTOM_RIGHT
+
             })
+            setCheck(!check);
         })
     }
 
@@ -42,7 +46,7 @@ const ShowPlaylist = () => {
                     {list.map((i, key) => {
                         return (
                             <tr>
-                                <th scope="row">{i.id}</th>
+                                <th scope="row">{key +1}</th>
                                 <td onClick={() => {
                                     navigate("/viewPlaylist/" + i.id)
                                 }}>{i.namePlayList}</td>

@@ -27,7 +27,7 @@ const RightSidebar = () => {
     useEffect(() => {
         const fetchDetailPlaylist = async () => {
             const response = await apiGetDetailPlaylist(curAlbumId)
-            if (response.data?.err === 0) setPlaylist(response.data.data?.song?.items)
+            if (response.data?.err === 0) setPlaylist(response.data.data?.songs.items)
 
         }
 
@@ -82,7 +82,7 @@ const RightSidebar = () => {
                                         key={item.encodeId}
                                         thumbnail={item?.thumbnail}
                                         title={item?.title}
-                                        artists={item?.artistNames}
+                                            artists={item?.artistNames}
                                         sid={item?.encodeId}
                                         sm
                                     />

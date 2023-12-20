@@ -14,7 +14,7 @@ const ModalCreatePlayList = () => {
         setIsModalOpen(true);
     };
 
-    const handleOk = () => {
+    const  handleOk = () => {
         setIsModalOpen(false);
     };
 
