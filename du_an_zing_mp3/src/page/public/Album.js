@@ -5,24 +5,23 @@ import moment from 'moment'
 import Lists from "../../components/Lists";
 import {useDispatch} from "react-redux";
 import * as actions from '../../store/actions'
+import {SongItem} from "../../components";
+import axios from "axios";
 
 const Album = () => {
-
+    const [songs, setSongs] = useState([])
+    const idPlaylist = useParams();
     const { pid} = useParams()
     const [playlistData, setPlaylistData] = useState([])
     const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(actions.setCurAlbumId(pid))
-        const fetchDetailPlaylist = async () =>{
 
-            const response = await apis.apiGetDetailPlaylist(pid)
-            if(response?.data.err ===0) {
-                setPlaylistData(response.data?.data)
-            }
+        useEffect(() => {
+            axios.get("http://localhost:8080/songs/searchByIdPll/" + idPlaylist.id).then((res)=>{
+                setSongs(res.data);
 
-        }
-        fetchDetailPlaylist()
-    },[pid]);
+            })
+        }, []);
+
     return (
         <div className={'flex gap-8 w-full px-[59px]'}>
             <div className={'flex-none w-1/4 border border-red-500 flex flex-col gap-1'}>
@@ -44,7 +43,21 @@ const Album = () => {
                     <span>{playlistData?.sortDescripton} Des</span>
                 </span>
 
-                    <Lists songs ={playlistData?.song.items} totalDuration ={playlistData.song.totalDuration}/>
+                <div
+
+                    className={'flex flex-wrap w-full '}>
+                    {songs?.map(item => (
+                        <SongItem
+                            sid={item.id}
+                            key = {item.id}
+                            thumbnail={item.url_img}
+                            title={item.nameSong}
+                            artists={item.singer}
+                            releaseDate={new Date()}
+
+                        />
+                    ))}
+                </div>
 
             </div>
         </div>

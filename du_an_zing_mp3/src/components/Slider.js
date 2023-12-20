@@ -4,6 +4,9 @@ import {getArrSlider} from "../untis/fn";
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import * as actions from '../store/actions'
+import banner1 from '../accsets/banner-1.jpg'
+import banner2 from '../accsets/banner-2.jpg'
+import banner3 from '../accsets/banner-3.jpg'
 import {compose} from "redux";
 
 const Slider = () =>{
@@ -64,14 +67,19 @@ const Slider = () =>{
     return (
         <div className='w-full overflow-hidden px-[59px]'>
             <div className='flex w-full gap-8 pt-8'>
-                {banner?.map((item, index) => (
                     <img
-                        key={item.encodeId}
-                        src={item.thumbnail}
-                        onClick={() =>handleClickBanner(item)}
-                        className={`slider-item flex-1 object-contain w-[30%] rounded-lg ${index <= 2 ? 'block' : 'hidden'}`}
+                        src={banner1}
+                        className={'slider-item flex-1 object-contain w-[30%] rounded-lg '}
                         alt=''/>
-                ))}
+                <img
+                    src={banner2}
+                    className={'slider-item flex-1 object-contain w-[30%] rounded-lg '}
+                    alt=''/>
+                <img
+                    src={banner3}
+                    className={'slider-item flex-1 object-contain w-[30%] rounded-lg '}
+                    alt=''/>
+                )
             </div>
         </div>
     )
