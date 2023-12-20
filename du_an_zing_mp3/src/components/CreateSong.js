@@ -50,7 +50,7 @@ const ModalCreateSong = () => {
             });
         });
     };
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(true);
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -62,6 +62,7 @@ const ModalCreateSong = () => {
 
     const handleCancel = () => {
         setIsModalOpen(false);
+        navigate("/")
     };
     const navigate = useNavigate();
     const id_user = localStorage.getItem("idUser")
@@ -81,9 +82,6 @@ const ModalCreateSong = () => {
     }
     return (
         <>
-            <Button style={{backgroundColor:'#32244D',boxShadow:'none'}} type="primary" onClick={showModal}>
-                Thêm PlayList
-            </Button>
             <Modal width={1000} title="Tạo bài hát mới" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
                 <Formik initialValues={{
                     nameSong: "",

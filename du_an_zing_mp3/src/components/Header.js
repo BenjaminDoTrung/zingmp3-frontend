@@ -44,8 +44,8 @@ const Header = () => {
                      style={{zIndex: 100}}>
                     <div className={'flex gap-6 w-full items-center'}>
                         <div className={'flex text-gray-400 gap-4'}>
-                            <span><IoIosArrowRoundBack size={24}/></span>
-                            <span><IoIosArrowRoundForward size={24}/></span>
+                            <button onClick={() => navigate(-1)}><IoIosArrowRoundBack style={{fill: "white"}} size={24}/></button>
+                            <button onClick={() => navigate(1)}><IoIosArrowRoundForward style={{fill: "white"}} size={24}/></button>
                         </div>
                         <div className={'w-1/2'}>
                             <Search/>
@@ -92,8 +92,8 @@ const Header = () => {
                          style={{zIndex: 100}}>
                         <div className={'flex gap-6 w-full items-center'}>
                             <div className={'flex text-gray-400 gap-4'}>
-                                <span><IoIosArrowRoundBack size={24}/></span>
-                                <span><IoIosArrowRoundForward size={24}/></span>
+                                <button onClick={() => navigate(-1)}><IoIosArrowRoundBack style={{fill: "white"}} size={24}/></button>
+                                <button onClick={() => navigate(1)}><IoIosArrowRoundForward style={{fill: "white"}} size={24}/></button>
                             </div>
                             <div className={'w-1/2'}>
                                 <Search/>
@@ -140,8 +140,8 @@ const Header = () => {
             <div className={' flex justify-between w-full items-center border-none'} style={{zIndex: 100}}>
                 <div className={'flex gap-6 w-full items-center'}>
                     <div className={'flex text-gray-400 gap-4'}>
-                        <span><IoIosArrowRoundBack size={24}/></span>
-                        <span><IoIosArrowRoundForward size={24}/></span>
+                        <button onClick={() => navigate(-1)}><IoIosArrowRoundBack style={{fill: "white"}} size={24}/></button>
+                        <button onClick={() => navigate(1)}><IoIosArrowRoundForward style={{fill: "white"}} size={24}/></button>
                     </div>
                     <div className={'w-1/2'}>
                         <Search/>

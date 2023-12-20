@@ -25,6 +25,7 @@ const MenuLogOut = ({handler}) => {
 
     function createSong(){
         handler(false);
+        navigate("/create")
     }
     function showListSong(){
         handler(false);
@@ -52,12 +53,12 @@ const MenuLogOut = ({handler}) => {
                             Thay đổi mật khẩu
                         </div>
                     </li>
-                    <li role="button" >
+                    <li role="button" onClick={createSong}>
                         <div className="use-icon">
                             <HiOutlinePlus style={{width:20, height:20}} />
                         </div>
                         <div className="use-content">
-                            <ModalCreateSong></ModalCreateSong>
+                            Thêm bài hát
                         </div>
                     </li>
                     <li role="button" onClick={showListSong}>
