@@ -1,8 +1,7 @@
 import Slider from "../../components/Slider";
-import {Chill, Sections} from "../../components";
-import {NewRelease} from "../../components";
+import {Chill, NewRelease} from "../../components";
 import Hot from "../../components/Hot";
-import {NewRelease} from "../../components";
+
 
 
 const Home = () =>{
