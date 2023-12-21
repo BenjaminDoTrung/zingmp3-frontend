@@ -66,42 +66,55 @@ const Player = ({setIsShowRightSidebar}) => {
 
     }
     let [state, setState] = useState({
-        url: null,
-        pip: false,
-        playing: true,
+        url: '',
+        playing: false,
         controls: false,
-        light: false,
         volume: 0.8,
-        muted: false,
+        muted: true,
         played: 0,
         loaded: 0,
         duration: 0,
-        playbackRate: 1.0,
+        width: "0px",
+        height: "0px",
         loop: false
     })
     useEffect(() => {
-        axios.get("http://localhost:8080/songs/" + 15).then((res)=>{
+        axios.get("http://localhost:8080/songs/" + 25).then((res)=>{
             state.url = res.data.file_song;
+            setState(prevState => ({...prevState, url: res.data.file_song}));
             setImg(res.data.url_img);
         })
     }, []);
+
+    const onReady = () => {
+        setCheck(true)
+        setState(prevState => ({...prevState, playing: true}));
+    }
     const handlePlay = () => {
         console.log('onPlay')
         // this.setState({ playing: true })
+        // const updateState = {...state, playing: true}
+        // updateState.playing = true
+        // setState(updateState);
+        // console.log("playing: ", state.playing)
         state.playing = true;
+        setState(state);
+        console.log("playing: ", state.playing)
     }
     const handleEnablePIP = () => {
         console.log('onEnablePIP')
-        this.setState({ pip: true })
+        // this.setState({ pip: true })
+        setState(prevState => ({...prevState, pip: true}));
     }
     const handleDisablePIP = () => {
         console.log('onDisablePIP')
-        this.setState({ pip: false })
+        // this.setState({ pip: false })
+        setState(prevState => ({...prevState, pip: true}));
     }
     const handlePause = () => {
         console.log('onPause')
-        // this.setState({ playing: false })
-        state.playing = false;
+        const updateState = {...state, playing: false}
+        setState(updateState);
     }
     const handleOnPlaybackRateChange = (speed) => {
         this.setState({ playbackRate: parseFloat(speed) })
@@ -110,7 +123,7 @@ const Player = ({setIsShowRightSidebar}) => {
     const handleEnded = () => {
         console.log('onEnded')
         // this.setState({ playing: this.state.loop })
-        state.playing = state.loop
+        setState(prevState => ({...prevState, playing: state.loop}));
     }
     const handleProgress = states => {
         console.log('onProgress', states)
@@ -121,21 +134,27 @@ const Player = ({setIsShowRightSidebar}) => {
     }
     const handleDuration = (duration) => {
         console.log('onDuration', duration)
-        this.setState({ duration })
+        setState(duration);
     }
     const handleSeekMouseDown = e => {
-        this.setState({ seeking: true })
+        // this.setState({ seeking: true })
+        setState(prevState => ({...prevState, seeking: true}));
     }
 
     const handleSeekChange = e => {
         this.setState({ played: parseFloat(e.target.value) })
+        setState(prevState => ({...prevState, played: (e.target.value)}));
     }
 
     const handleSeekMouseUp = e => {
         this.setState({ seeking: false })
         this.player.seekTo(parseFloat(e.target.value))
     }
-
+    const handleVolumeChange = e => {
+        // state.volume = e.target.values;
+        setState(prevState => ({...prevState, volume: e.target.values}));
+        console.log("volume", state.volume)
+    }
     return (
         <div className={'bg-main-400 px-5 h-full flex py-2' }>
             <div className={'w-[30%] flex-auto  flex items-center'}>
@@ -174,7 +193,7 @@ const Player = ({setIsShowRightSidebar}) => {
                     <span className={'cursor-pointer'}><IoRepeatOutline size={24}/></span>
                 </div>
                 <ReactPlayer id="songt"
-                             className='react-player hidden'
+                             className='react-player'
                              width='100%'
                              height='100%'
                              url= {state.url}
@@ -197,9 +216,9 @@ const Player = ({setIsShowRightSidebar}) => {
                              onSeek={e => console.log('onSeek', e)}
                              onEnded={handleEnded}
                              onError={e => console.log('onError', e)}
-                             // onProgress={handleProgress}
-                             // onDuration={handleDuration}
-                             onPlaybackQualityChange={e => console.log('onPlaybackQualityChange', e)}
+                    // onProgress={handleProgress}
+                    // onDuration={handleDuration}
+                             onPlaybackQualityChange={e => console.log('onPlaybackQualityChange', e)} // thuộc tính này để callback ra thời lượng của bài hát
                 ></ReactPlayer>
                 <div>
                     {/*progress barr*/}
@@ -207,7 +226,7 @@ const Player = ({setIsShowRightSidebar}) => {
             </div>
 
                 <div className={'w-[30%] flex-auto flex items-center justify-end gap-4'}>
-                    <input type={"range"} step={1} min={0} max={100}/>
+                    <input type='range' min={0} max={state.volume} step='any' onChange={handleVolumeChange} />
                     <RightSidebar/>
                 </div>
             </div>

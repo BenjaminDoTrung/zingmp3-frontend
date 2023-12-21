@@ -10,12 +10,14 @@ import {
 } from "firebase/storage";
 import React from 'react';
 import { Button, notification, Space } from 'antd';
+import {useNavigate} from "react-router-dom";
 
 export default function UpdateUser() {
     const id = localStorage.getItem("idUser")
     const [user, setUser] = useState({})
     const [uploadedImageUrl, setUploadedImageUrl] = useState(undefined);
     const [api, contextHolder] = notification.useNotification();
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios.get('http://localhost:8080/users/' + id).then((res) => {
@@ -64,6 +66,7 @@ export default function UpdateUser() {
                     axios.put("http://localhost:8080/users/"+ id, user1).then((res)=>{
                         localStorage.setItem("user", res.data.username)
                         alert("Cập nhật thành công")
+                        navigate("/")
                     }).catch(()=>{
                         alert("false")
                     })
