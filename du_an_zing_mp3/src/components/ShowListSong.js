@@ -24,27 +24,27 @@ const ShowListSong = () => {
                             console.log("id user", localStorage.getItem("idUser"))
                             console.log("idsong", i.user.id)
 
-                                return (
-                                    <div className="col-sm-3" style={{marginBottom: 30}}>
-                                        <div className="top100_content" style={{paddingLeft: 30}}>
-                                            <img
-                                                style={{width:215, height: 200, borderRadius:10}}
-                                                src={i.url_img == null ? "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_jpeg/cover/a/3/6/a/a36a7d1fecd4333c96def2d3f71a6b9b.jpg"
-                                                    : i.url_img} />
-                                            <div style={{display: "flex"}}>
-                                                <div>
-                                                    <h5 style={{width:200, marginTop:10}}>
-                                                        Tên bài hát: {i.nameSong}
-                                                    </h5>
-                                                    <div style={{width:200, marginTop:5}}>Tên ca sĩ: {i.singer}</div>
-                                                </div>
-                                                <div>
-                                                 <Dropdown_listSong id={i.id}/>
-                                                </div>
+                            return (
+                                <div className="col-sm-3" style={{marginBottom: 30}}>
+                                    <div className="top100_content" style={{paddingLeft: 30}}>
+                                        <img
+                                            style={{width:215, height: 200, borderRadius:10}}
+                                            src={i.url_img == null ? "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_jpeg/cover/a/3/6/a/a36a7d1fecd4333c96def2d3f71a6b9b.jpg"
+                                                : i.url_img} />
+                                        <div style={{display: "flex"}}>
+                                            <div>
+                                                <h5 style={{width:200, marginTop:10}}>
+                                                    Tên bài hát: {i.nameSong}
+                                                </h5>
+                                                <div style={{width:200, marginTop:5}}>Tên ca sĩ: {i.singer}</div>
+                                            </div>
+                                            <div>
+                                                <Dropdown_listSong id={i.id}/>
                                             </div>
                                         </div>
                                     </div>
-                                )
+                                </div>
+                            )
                         })}
                     </div>
                 </div>

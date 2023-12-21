@@ -1,4 +1,3 @@
-import icons from "../untis/icons";
 import {IoTrashBin} from "react-icons/io5";
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
@@ -9,7 +8,6 @@ import axios from "axios";
 const SidebarRight = () => {
     const [songs, setSongs] = useState([])
     const [isRecent, setisRecent] = useState(false)
-    const {curSongData,curAlbumId} = useSelector (state => state.music)
     const {playlist, setPlaylist} = useState()
     useEffect(() => {
         axios.get("http://localhost:8080/songs/searchByIdPll/" + 1).then((res)=>{

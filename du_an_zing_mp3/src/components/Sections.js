@@ -1,4 +1,4 @@
-import {useSelector} from "react-redux";
+
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useEffect, useState} from "react";
@@ -29,8 +29,8 @@ const Sections = ({data}) => {
     return (
         <div className={'mt-12 px-[59px] flex flex-col gap-5'}>
             <div className={'flex items-center justify-between'}>
-                <h3 className={'text-[20px] font-bold text-white'}>{data?.title}</h3>
-                <span className={'text-xs text-white'}>TẤT CẢ</span>
+                {/*<h3 className={'text-[20px] font-bold text-white'}>{data?.title}</h3>*/}
+                {/*<span className={'text-xs text-white'}>TẤT CẢ</span>*/}
             </div>
             <div className={'flex items-start justify-between gap-[28px]'}>
             </div>

@@ -16,12 +16,12 @@ const Album = () => {
     const [playlistData, setPlaylistData] = useState([])
     const dispatch = useDispatch()
 
-        useEffect(() => {
-            axios.get("http://localhost:8080/songs/searchByIdPll/" + idPlaylist.id).then((res)=>{
-                setSongs(res.data);
+    useEffect(() => {
+        axios.get("http://localhost:8080/songs/searchByIdPll/" + idPlaylist.id).then((res)=>{
+            setSongs(res.data);
 
-            })
-        }, []);
+        })
+    }, []);
 
     return (
         <div className={'flex gap-8 w-full px-[59px]'}>
