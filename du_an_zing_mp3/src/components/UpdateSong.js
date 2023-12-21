@@ -18,6 +18,19 @@ export default function UpdateSong(prop) {
     const [songType, setSongType] = useState([])
     const idSong = useParams();
     const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(true);
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
 
     const uploadFileImg = (image) => {
         if (image === null) return
@@ -42,7 +55,6 @@ export default function UpdateSong(prop) {
         console.log("id: ", idSong.id)
         axios.get("http://localhost:8080/songs/" + idSong.id).then((res)=>{
             setSongs(res.data);
-            console.log("dât ne", res.data)
         })
     },[])
 
@@ -52,8 +64,6 @@ export default function UpdateSong(prop) {
         uploadBytes(urlRef, url).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
                 setUploadedImageUrl(url); // Lưu URL sau khi upload thành công vào state mới
-                console.log("image uploaded successfully", url);
-                console.log("image uploaded successfully", uploadedImageUrl);
                 songs.url_img = url;
                 localStorage.setItem("url_song", url);
             });
@@ -61,105 +71,88 @@ export default function UpdateSong(prop) {
     };
     return (
         <>
-            <Formik initialValues={
-                songs
-            }
+            <Formik initialValues={{
+                nameSong: songs.nameSong,
+                singer: songs.singer,
+                author: songs.author,
+                description: songs.description,
+                id_SongTypes: songs.id_SongTypes,
+                file_song: songs.file_song
+            }}
                     enableReinitialize={true}
                     onSubmit={(value) => {
                 value.url_img = localStorage.getItem("url_img");
                 value.file_song = localStorage.getItem("url_song");
-                console.log("url_img: ", value.url_img);
-                console.log("url_song:",value.url_song);
-                console.log("value = ", value);
                 value.user.id = localStorage.getItem("idUser");
-                // if ()
-
                 axios.put("http://localhost:8080/songs", value).then((res)=>{
-                    toast.success(" tạo bài hát thành công ", {
+                    toast.success(" Cập nhật hát thành công ", {
                         position: toast.POSITION.BOTTOM_RIGHT
                     })
                 })
             }}>
                 <Form>
-                    <div className="form_create_song" style={{backgroundColor: "#451855", height:655}}>
-                        <section className="vh-100">
-                            <div className="container py-5 h-100">
-                                <div className="row d-flex align-items-center justify-content-center h-100" style={{color: "white"}}>
-                                    <div className="col-md-8 col-lg-7 col-xl-6">
-                                        <h3 style={{marginLeft: 300, marginBottom:50}}>Create Song</h3>
-                                        {songs !== {} ? <img name="url_img"
-                                                             src={songs.url_img}
-                                                             className="img-fluid"/>:
-                                            <img name="url_img"
-                                                 src={songs.url_img == null ? "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                                            : songs.url_img}
-                                                 className="img-fluid"/>
-                                            }
+                    <div className="card">
+                        <div className="row align-items-center no-gutters">
+                            <div className="col-md-5">
+                                <img name="url_img"
+                                     src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                                     className="img-fluid" alt=""/>
+                            </div>
+                            <div className="col-md-7">
+                                <div className="card-body">
+                                    <div className="form-group mb-2">
+                                        <label className="form-label" htmlFor="nameSong">Tên bài hát (<span className="text-danger">*</span>)</label>
+                                        <Field name="nameSong" type="text" id="nameSong" placeholder="Nhập tên bài hát"
+                                               className="form-control"/>
                                     </div>
-                                    <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                                        <div className="form-outline mb-4" style={{height: 50}}>
-                                            <Field name="nameSong" type="text" id="nameSong"
-                                                   className="form-control form-control-lg"/>
-                                            <label className="form-label" htmlFor="nameSong">Tên Bài Hát</label>
-                                        </div>
-                                        <div className="form-outline mb-4" style={{height: 50}}>
-                                            <Field name="singer" type="text" id="singer"
-                                                   className="form-control form-control-lg"/>
-                                            <label className="form-label" htmlFor="singer">Tên ca sĩ</label>
-                                        </div>
+                                    <div className="form-group mb-2">
+                                        <label className="form-label" htmlFor="singer">Tên ca sĩ</label>
+                                        <Field name="singer" type="text" id="singer" placeholder="Nhập tên ca sĩ"
+                                               className="form-control"/>
+                                    </div>
 
-                                        <div className="form-outline mb-4" style={{height: 50}}>
-                                            <Field name="author" type="text" id="author"
-                                                   className="form-control form-control-lg"/>
-                                            <label className="form-label" htmlFor="author">Tên tác giả</label>
-                                        </div>
-                                        <div className="form-outline mb-4" style={{height: 50}}>
-                                            <Field name="description" type="text" id="description"
-                                                   className="form-control form-control-lg"/>
-                                            <label className="form-label" htmlFor="description">Mô tả</label>
-                                        </div>
+                                    <div className="form-group mb-2">
+                                        <label className="form-label" htmlFor="author">Tên tác giả</label>
+                                        <Field name="author" type="text" id="author" placeholder="Nhập tên tác giả"
+                                               className="form-control"/>
+                                    </div>
+                                    <div className="form-group mb-2">
+                                        <label className="form-label" htmlFor="description">Mô tả</label>
+                                        <Field name="description" component="textarea" id="description" placeholder="Nhập mô tả"
+                                               className="form-control"/>
+                                    </div>
+                                    <div className="form-group mb-2">
+                                        <label className="form-label" htmlFor="type">Thể loại</label>
+                                        <Field className="form-control form-control-sm" placeholder="Chọn thể loại"
+                                               as="select" name="id_SongTypes.id" id="type">
+                                            {songType.map((i, key) => {
+                                                return (
+                                                    <option key={key} value={i.id}>{i.name}</option>
+                                                )
+                                            })}
+                                        </Field>
+                                    </div>
+                                    <div className="form-group mb-2">
+                                        <label className="form-label" htmlFor="url_img">Ảnh</label>
+                                        <input type="file" id="url_img" className="form-control" onChange={(event)=>{
+                                            uploadFileImg(event.target.files[0])
+                                        }}/>
+                                    </div>
+                                    <div className="form-group mb-2">
+                                        <label className="form-label" htmlFor="file_song">File nhạc</label>
+                                        <input type="file" id="file_song" className="form-control" onChange={(event)=>{
+                                            uploadFileSong(event.target.files[0])
+                                            console.log("file nhạc ", event.target.files[0]);
+                                        }}/>
+                                    </div>
 
-                                        <div>
-                                            <Field className="form-control form-control-sm"
-                                                   as="select" name={'id_SongTypes.id'} id="type">
-                                                {songType.map((i, key) => {
-                                                    return (
-                                                        <option value={i.id}>{i.name}</option>
-                                                    )
-                                                })}
-                                            </Field>
-                                            <label className="form-label" htmlFor="type">Type Song</label>
-                                        </div>
-                                        <div className="form-outline mb-4" style={{height: 50}}>
-                                            <input type="file" id="url_img" className="form-control form-control-lg" onChange={(event)=>{
-                                                uploadFileImg(event.target.files[0])
-                                            }}/>
-                                            <label className="form-label" htmlFor="url_img">Ảnh</label>
-                                        </div>
-                                        <div className="form-outline mb-4" style={{height: 50}}>
-                                            <input type="file" id="file_song" className="form-control form-control-lg" onChange={(event)=>{
-                                                uploadFileSong(event.target.files[0])
-                                                console.log("file nhạc ", event.target.files[0]);
-                                            }}/>
-                                            <label className="form-label" htmlFor="file_song">File nhạc</label>
-                                        </div>
-
-                                        <div className="button-create" style={{display:"flex", marginLeft: 100}}>
-                                            <div style={{textAlign: "center"}}>
-                                                <button onClick={()=>{
-                                                    navigate("/")
-                                                }} type="submit" className="btn btn-primary btn-lg btn-block" style={{width:150}}>quay lại
-                                                </button>
-                                            </div>
-                                            <div style={{textAlign: "center", paddingLeft:10}}>
-                                                <button type="submit" className="btn btn-primary btn-lg btn-block" style={{width:150}}>Sửa
-                                                </button>
-                                            </div>
-                                        </div>
+                                    <div className="my-4 text-center">
+                                        <button type="button" className="btn btn-default" onClick={handleCancel}>Quay lại</button>
+                                        <button type="submit" className="btn btn-primary">Cập nhật bài hát</button>
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </div>
                     </div>
                 </Form>
             </Formik>

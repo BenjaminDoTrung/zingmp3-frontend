@@ -1,16 +1,18 @@
 import React, {useContext, useState} from 'react';
-import { Button, Dropdown } from 'antd';
+import {Button, Dropdown} from 'antd';
 import {AiOutlineMore} from "react-icons/ai";
 import axios from "axios";
 import {toast} from "react-toastify";
 import "./hover.css"
-
-import hoverList from "./Hover";
+import swal from "sweetalert";
 import {AppContext} from "../Context/AppContext";
 import {useNavigate} from "react-router-dom";
+
 const Dropdown_listSong = (prop) => {
+    let [checkDelete, setCheckDelete] = useState(false)
+
     const navigate = useNavigate()
-    const {toggleFlag } = useContext(AppContext);
+    const {toggleFlag} = useContext(AppContext);
     const items = [
         {
             key: '1',
@@ -24,7 +26,9 @@ const Dropdown_listSong = (prop) => {
         {
             key: '2',
             label: (
-                <a onClick={edit}>
+                <a onClick={()=>{
+                    edit(prop.id)
+                }}>
                     Sửa bài hát
                 </a>
             ),
@@ -56,23 +60,37 @@ const Dropdown_listSong = (prop) => {
     )
 
 
-
     function addPlayList() {
 
     }
 
-    function edit() {
-
+    function edit(id) {
+      navigate("/update/" + id)
     }
 
     function deleteSong(id) {
-        axios.delete("http://localhost:8080/songs/" + id).then((res) => {
-            toast.success("Xóa thành công", {
-                position: toast.POSITION.BOTTOM_RIGHT,
-            })
-            toggleFlag() ;
+        swal({
+            text: "Bạn có muốn xóa bài hát này không?",
+            icon: "info",
+            buttons: {
+                cancel: true,
+                confirm: true
+            },
+        }).then(r => {
+            if (r) {
+                axios.delete("http://localhost:8080/songs/" + id)
+                    .then(() => {
+                            setCheckDelete(!checkDelete)
+                            toggleFlag()
+
+                            toast.success("Xóa thành công!", {autoClose: 700})
+                        }
+                    )
+            }
         })
     }
+
+
 }
 
-export default Dropdown_listSong ;
+export default Dropdown_listSong;

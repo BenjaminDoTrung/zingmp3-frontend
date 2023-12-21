@@ -46,7 +46,7 @@ export default function UpdateUser() {
                 console.log("image uploaded successfully", uploadedImageUrl);
                 user.url_img = url;
                 axios.put("http://localhost:8080/users/" + id, user).then((res) => {
-                    console.log("huong")
+                    console.log("Cập nhật ảnh thành công")
                     alert("huong")
                 })
             });
@@ -107,17 +107,17 @@ export default function UpdateUser() {
                                                    className="form-control"/>
                                         </div>
                                         <div className="form-group mb-2">
-                                            <label className="form-label" htmlFor="email">Địa chỉ email (<span className="text-danger">*</span>)</label>
-                                            <Field name="userName" type="email" id="userName" placeholder="Nhập tên của bạn"
+                                            <label className="form-label" htmlFor="email">Tên đăng nhập (<span className="text-danger">*</span>)</label>
+                                            <Field name="userName" type="text" id="userName" placeholder="Nhập tên của bạn"
                                                    className="form-control"/>
                                         </div>
                                         <div className="form-group mb-2">
-                                            <label className="form-label" htmlFor="email">Địa chỉ email (<span className="text-danger">*</span>)</label>
+                                            <label className="form-label" htmlFor="email">Số điện thoại (<span className="text-danger">*</span>)</label>
                                             <Field name="phone" type="number" id="phone" placeholder="Nhập số điện thoại của bạn"
                                                    className="form-control"/>
                                         </div>
                                         <div className="form-group mb-2">
-                                            <label className="form-label" htmlFor="email">Địa chỉ email (<span className="text-danger">*</span>)</label>
+                                            <label className="form-label" htmlFor="email">Ngày sinh (dd/mm/yyyy) (<span className="text-danger">*</span>)</label>
                                             <Field name="dayOfBirth" type="date" id="dayOfBirth" placeholder="Nhập ngày sinh của bạn"
                                                    className="form-control"/>
                                         </div>
