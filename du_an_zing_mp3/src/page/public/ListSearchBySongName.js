@@ -1,10 +1,6 @@
-import {SongItem} from "../../components";
-import {runInContext as songs} from "lodash";
 import axios from "../../axios";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import moment from "moment/moment";
-
 
 function ShowSearchBySongName(){
     let idSong = useParams();
@@ -55,7 +51,6 @@ function ShowSearchBySongName(){
                     </div>
                 </div>
             </div>
-
         </>
     )
 }export default ShowSearchBySongName

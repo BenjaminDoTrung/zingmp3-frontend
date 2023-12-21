@@ -1,11 +1,17 @@
 import moment from "moment";
 import 'moment/locale/vi'
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {findSongById} from "../service/SongService";
 const SongItem = ({thumbnail, title, artists, sid, releaseDate, order, percent, style, sm}) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch()
     return (
         <div
-
+            onClick={()=>{
+                console.log("sip:", sid)
+                dispatch(findSongById(sid))
+            }}
             className={'w-[30%] flex-auto flex  p-[10px] gap-10 hover:bg-main-200 rounded-md cursor-pointer hover:text-black'}>
             <img
                 onClick={()=>{

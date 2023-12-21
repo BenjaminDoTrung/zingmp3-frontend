@@ -3,7 +3,6 @@ import {Field, Form, Formik} from "formik";
 import axios from "axios";
 import {toast} from "react-toastify";
 import "../../modalLogin.css"
-import {IoArrowBackOutline} from "react-icons/io5";
 import React from "react";
 
 export default function Login() {
@@ -29,12 +28,9 @@ export default function Login() {
             navigate("/login")
         })
     }
-
     function next(){
         navigate("/register")
     }
-
-
     return (
         <>
             <Formik initialValues={{
@@ -57,7 +53,7 @@ export default function Login() {
                                             <div className="limiter">
                                                 <div className="container-login100">
                                                     <div className="wrap-login100">
-                                                        <div className="login100-pic js-tilt" data-tilt>
+                                                        <div className="login100-pic js-tilt">
                                                             <img src="images/img-01.png" alt="IMG"/>
                                                         </div>
                                                         <div className="login100-form validate-form">

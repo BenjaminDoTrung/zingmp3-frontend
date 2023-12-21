@@ -1,4 +1,3 @@
-import icons from "../untis/icons";
 import {IoTrashBin} from "react-icons/io5";
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
@@ -8,7 +7,6 @@ import {apiGetDetailPlaylist} from "../apis";
 const SidebarRight = () => {
 
     const [isRecent, setisRecent] = useState(false)
-    const {curSongData,curAlbumId} = useSelector (state => state.music)
     const {playlist, setPlaylist} = useState()
     useEffect(() => {
         const fetchDetailPlaylist = async () => {

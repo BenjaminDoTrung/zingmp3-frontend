@@ -1,7 +1,6 @@
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import Header from "../../components/Header";
 
 export default function UserList() {
     const [list, setList] = useState([]);
@@ -74,9 +73,4 @@ export default function UserList() {
                 </table>
             </>
         )
-
-        function findAllUsers() {
-
-        }
-
     }
