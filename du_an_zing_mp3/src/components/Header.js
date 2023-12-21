@@ -7,7 +7,7 @@ import MenuLogin from "./MenuLogin";
 import "../css_component/menuSetting.css"
 import MenuSetting from "./MenuSetting";
 import {IoSettings} from "react-icons/io5";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import findById from "../service/FindById";
 import axios from "axios";
 import MenuLogOut from "./MenuLogOut";
@@ -15,9 +15,12 @@ import MenuAdmin from "./MenuAdmin";
 import { FaUserCircle } from "react-icons/fa";
 import {FaRegCircleUser} from "react-icons/fa6";
 import colors from "tailwindcss/colors";
+import {AppContext} from "../Context/AppContext";
 
 const {IoIosArrowRoundBack, IoIosArrowRoundForward, AiOutlineSearch} = icons
 const Header = () => {
+    const {isFlag } = useContext(AppContext);
+
     const navigate = useNavigate()
     const id = localStorage.getItem("idUser")
     let [user, setUser] = useState({})
@@ -28,11 +31,11 @@ const Header = () => {
             if (id !== null){
             axios.get('http://localhost:8080/users/' + id).then((res) => {
                 setUser(res.data)
-                setImg(res.data);
+                setImg(res.data.url_img);
             })}else {
                 navigate("/")
             }
-        }, [])
+        }, [isFlag])
 
 
     const [check, setCheck] = useState(false)

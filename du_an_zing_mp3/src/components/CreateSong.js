@@ -97,7 +97,7 @@ const ModalCreateSong = () => {
                         id: ""
                     },
                     id_SongTypes:{
-                        id: 1
+                        id: ""
                     }
                 }} onSubmit={(value) => {
                     value.url_img = localStorage.getItem("url_img");

@@ -66,11 +66,9 @@ export default function UpdatePass() {
             }
             axios.put('http://localhost:8080/users/changePassword/' + id[0], userPass).then((res) => {
                 alert("Cập nhật thành công")
-            }).catch(() => {
-                alert("cekkon")
             })
         }else {
-            alert("Mật khẩu nhâp lại không chính xác")
+            alert("Không thành công")
         }
     }
 

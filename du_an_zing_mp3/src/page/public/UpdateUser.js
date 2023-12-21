@@ -1,7 +1,7 @@
 
 import {Field, Form, Formik} from "formik";
 import axios from "axios";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {storage} from "../../FireBase/FireBaseConfig";
 import {
     ref,
@@ -10,8 +10,13 @@ import {
 } from "firebase/storage";
 import React from 'react';
 import {Button, Modal, notification, Space} from 'antd';
+import {AppContext} from "../../Context/AppContext";
+import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 export default function UpdateUser() {
+    const navigate = useNavigate()
+    const {toggleFlag} = useContext(AppContext);
     const id = localStorage.getItem("idUser")
     const [user, setUser] = useState({})
     const [uploadedImageUrl, setUploadedImageUrl] = useState(undefined);
@@ -46,8 +51,7 @@ export default function UpdateUser() {
                 console.log("image uploaded successfully", uploadedImageUrl);
                 user.url_img = url;
                 axios.put("http://localhost:8080/users/" + id, user).then((res) => {
-                    console.log("Cập nhật ảnh thành công")
-                    alert("huong")
+                    toast.success("Đã thêm ảnh thành công")
                 })
             });
         });
@@ -79,9 +83,11 @@ export default function UpdateUser() {
                         axios.put("http://localhost:8080/users/" + id, user1).then((res) => {
                             localStorage.setItem("user", res.data.username)
                             alert("Cập nhật thành công")
+                            navigate("/")
                         }).catch(() => {
-                            alert("false")
+                            alert("Cập nhật không thành công")
                         })
+                        toggleFlag()
                     }}
                 >
                     <Form>
