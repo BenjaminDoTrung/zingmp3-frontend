@@ -80,7 +80,7 @@ const Player = ({setIsShowRightSidebar}) => {
         loop: false
     })
     useEffect(() => {
-        axios.get("http://localhost:8080/songs/" + 15).then((res)=>{
+        axios.get("http://localhost:8080/songs/" + 25).then((res)=>{
             state.url = res.data.file_song;
             setImg(res.data.url_img);
         })
