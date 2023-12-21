@@ -12,6 +12,9 @@ import findById from "../service/FindById";
 import axios from "axios";
 import MenuLogOut from "./MenuLogOut";
 import MenuAdmin from "./MenuAdmin";
+import { FaUserCircle } from "react-icons/fa";
+import {FaRegCircleUser} from "react-icons/fa6";
+import colors from "tailwindcss/colors";
 
 const {IoIosArrowRoundBack, IoIosArrowRoundForward, AiOutlineSearch} = icons
 const Header = () => {
@@ -24,9 +27,11 @@ const Header = () => {
         useEffect(() => {
             if (id !== null){
             axios.get('http://localhost:8080/users/' + id).then((res) => {
-                setUser(res.data.id)
-                setImg(res.data.url_img);
-            })}
+                setUser(res.data)
+                setImg(res.data);
+            })}else {
+                navigate("/")
+            }
         }, [])
 
 
@@ -148,30 +153,23 @@ const Header = () => {
                     </div>
                 </div>
                 <div style={{display: "flex"}}>
-                    <div className="dev_setting">
+                    <div className="dev_setting items-center mt-2">
                         <button type="button" onClick={() => {
                             setChecksetting(!checkSetting)
                             setCheck(false)
                         }}>
-                            <CiSettings style={{width: 40, height: 40, marginTop: 5, fill: "white"}}/>
+                            <span className={'text-white'}><CiSettings size={35}/></span>
                         </button>
                     </div>
-                    <div className="dev_logout">
+                    <div className="dev_logout items-center mt-2 ml-2">
                         <button onClick={() =>{
                             setCheck(!check)
                             setChecksetting(false);
                         }
 
-                        }>
-                            <img src={"https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg"} style={{
-                                width: 40,
-                                height: 40,
-                                marginTop: 5,
-                                marginLeft: 2,
-                                marginRight: 30,
-                                borderRadius: 20,
-                                backgroundColor:"red"
-                            }}/>
+                        }><span className={'text-white'}><FaRegCircleUser size={35}/></span>
+                            <div/>
+
                         </button>
                     </div>
                 </div>
