@@ -65,7 +65,7 @@ const Dropdown_listSong = (prop) => {
     }
 
     function edit(id) {
-      navigate("/update/" + id)
+        navigate("/update/" + id)
     }
 
     function deleteSong(id) {

@@ -1,19 +1,19 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {SongItem} from "./index";
-import * as actions from "../store/actions"
-import {Link} from "react-router-dom";
+import store from "../store/Store";
+import {findAllSong} from "../service/SongService";
 
 const NewRelease = () => {
-    const {latest} = useSelector(state => state.app)
     const [isActive, setisActive] = useState(0)
-    const [songs, setSongs] = useState([])
     const dispatch = useDispatch()
-
+    const songs = useSelector((store)=>{
+        console.log("lisst song: ", store.songStore.songs)
+        return store.songStore.songs
+    })
     useEffect(() => {
-        setSongs(latest);
-    }, [isActive, latest]);
-
+        dispatch(findAllSong())
+    }, []);
 
     return (
         <div className='mt-12 px-[59px] flex flex-col gap-5' style={{color: "white"}}>
@@ -46,15 +46,15 @@ const NewRelease = () => {
             </div>
             <div
 
-                  className={'flex flex-wrap w-full '}>
+                className={'flex flex-wrap w-full '}>
                 {songs?.map(item => (
                     <SongItem
                         sid={item.id}
-                    key = {item.id}
-                    thumbnail={item.url_img}
-                    title={item.nameSong}
-                    artists={item.singer}
-                    releaseDate={new Date()}
+                        key = {item.id}
+                        thumbnail={item.url_img}
+                        title={item.nameSong}
+                        artists={item.singer}
+                        releaseDate={new Date()}
 
                     />
                 ))}

@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './App.css';
 import {ToastContainer} from "react-toastify";
 import React, {useEffect} from 'react';
@@ -15,13 +15,14 @@ import UpdatePass from "./page/public/UpdatePassword";
 import Register from "./page/public/Register";
 import CreateSong from "./components/CreateSong";
 import UpdateSong from "./components/UpdateSong";
-import CreatePlayList from "./components/CreatePlayList";
 import ShowListSong from "./components/ShowListSong";
 import {DetailSong} from "./components";
 import ListSearchBySongName from "./page/public/ListSearchBySongName";
 import ShowPlaylist from "./components/ShowPlaylist";
 import ViewPlaylist from "./components/ViewPlaylist";
 import {AppProvider} from "./Context/AppContext";
+import UpdatePlayList from "./components/UpdatePlayList";
+
 
 
 function App() {
@@ -41,18 +42,17 @@ function App() {
                       <Route path={path.REGISTER} element={<Register/>}></Route>
                       <Route path={path.LISTUSER} element={<UserList/>}></Route>
                       <Route path={path.UPDATEUSER} element={<UpdateUser/>}></Route>
-                      <Route path={'album'} element={<Album/>}></Route>
+                      <Route path={'album/:id'} element={<Album/>}></Route>
                       <Route path={path.UPDATEPASS} element={<UpdatePass/>}></Route>
                       <Route path={"update/:id"} element={<UpdateSong></UpdateSong>}></Route>
-                      <Route path={"createPlayList"} element={<CreatePlayList></CreatePlayList>}></Route>
                       <Route path={"showList"} element={<ShowListSong></ShowListSong>}></Route>
                       <Route path={path.DETAILSONG} element={<DetailSong/>}></Route>
                       <Route path={path.SEARCHBYSONGNAME} element={<ListSearchBySongName/>}></Route>
                       <Route path={"showPlaylist"} element={<ShowPlaylist/>}></Route>
                       <Route path={"viewPlaylist/:id"} element={<ViewPlaylist/>}></Route>
+                      <Route path={"updatePlayList/:id"} element={<UpdatePlayList/>}></Route>
                   </Route>
               </Routes>
-
               </AppProvider> <ToastContainer />
           </div>
       </>

@@ -14,7 +14,7 @@ export default function SongDetail (){
 
     return(
         <>
-            <h1 className={'font-bold flex items-center justify-center mb-5 mt-5'}>Song Detail</h1>
+            <h1 className={'font-bold flex items-center justify-center mb-5 mt-5'} style={{color:"white"}}>Song Detail</h1>
             <table className="table table-dark">
                 <thead>
                 <tr>

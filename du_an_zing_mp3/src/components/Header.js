@@ -80,7 +80,7 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="form_menu" >
-                        <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting></MenuSetting> : ""}</div>
+                        <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting handler={handleCheck}></MenuSetting> : <></>}</div>
                         <div style={{marginTop: "149px" , position : 'absolute' , marginLeft: '-14%' ,height :'0px'}}> {check ? <MenuAdmin handler={handleCheck}></MenuAdmin> : <></>}</div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@ const Header = () => {
                             </div>
                         </div>
                         <div className="form_menu" >
-                            <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting></MenuSetting> : ""}</div>
+                            <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting handler={handleCheck}></MenuSetting> : <></>}</div>
                             <div style={{marginTop: "149px" , position : 'absolute' , marginLeft: '-14%' ,height :'0px'}}> {check ? <MenuLogOut handler={handleCheck}></MenuLogOut> : <></>}</div>
                         </div>
                     </div>
@@ -176,7 +176,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="form_menu" >
-                    <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting></MenuSetting> : ""}</div>
+                    <div style={{marginTop: "-91px" , position : 'absolute' , marginLeft: '-23.5%' ,height :'0px'}}>  {checkSetting ? <MenuSetting handler={handleCheck}></MenuSetting> : <></>}</div>
                     <div style={{marginTop: "19px" , position : 'absolute' , marginLeft: '-17%' ,height :'0px'}}> {check ? <MenuLogin handler={handleCheck}></MenuLogin> : <></>}</div>
                 </div>
             </div>
