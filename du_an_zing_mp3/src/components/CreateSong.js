@@ -115,7 +115,8 @@ const ModalCreateSong = () => {
                             <div className="row align-items-center no-gutters">
                                 <div className="col-md-5">
                                     <img name="url_img"
-                                         src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                                         src= {songs.url_img == null? "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                                    : songs.url_img}
                                          className="img-fluid" alt=""/>
                                 </div>
                                 <div className="col-md-7">
