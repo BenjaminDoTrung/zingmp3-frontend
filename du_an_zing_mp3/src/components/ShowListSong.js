@@ -1,16 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import Dropdown_listSong from "./dropdown_listSong";
+import {AppContext} from "../Context/AppContext";
 
 const ShowListSong = () => {
+    const {isFlag } = useContext(AppContext);
+
     const [idUser, setIdUser] = useState(localStorage.getItem("idUser"))
     const [list, setList] = useState([]);
-
     useEffect(() => {
         axios.get("http://localhost:8080/songs/showByIdUser/" + idUser).then((res) => {
             setList(res.data);
         })
-    }, []);
+    }, [isFlag]);
     return (
         <>
             <div style={{backgroundColor: "#3c2452", color:"white"}}>

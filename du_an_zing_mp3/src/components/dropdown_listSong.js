@@ -7,7 +7,10 @@ import "./hover.css"
 
 import hoverList from "./Hover";
 import {AppContext} from "../Context/AppContext";
+import {useNavigate} from "react-router-dom";
 const Dropdown_listSong = (prop) => {
+    const navigate = useNavigate()
+    const {toggleFlag } = useContext(AppContext);
     const items = [
         {
             key: '1',
@@ -52,7 +55,6 @@ const Dropdown_listSong = (prop) => {
         </>
     )
 
-}
 
 
     function addPlayList() {
@@ -64,12 +66,13 @@ const Dropdown_listSong = (prop) => {
     }
 
     function deleteSong(id) {
-
         axios.delete("http://localhost:8080/songs/" + id).then((res) => {
             toast.success("Xóa thành công", {
-                position: toast.POSITION.BOTTOM_RIGHT
+                position: toast.POSITION.BOTTOM_RIGHT,
             })
+            toggleFlag() ;
         })
     }
+}
 
 export default Dropdown_listSong ;

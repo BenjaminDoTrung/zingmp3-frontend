@@ -53,20 +53,20 @@ const ModalCreateSong = () => {
             });
         });
     };
-    const [isModalOpen, setIsModalOpen] = useState(true);
+        const [isModalOpen, setIsModalOpen] = useState(true);
 
-    const showModal = () => {
-        setIsModalOpen(true);
-    };
+        const showModal = () => {
+            setIsModalOpen(true);
+        };
 
-    const  handleOk = () => {
-        setIsModalOpen(false);
-    };
+        const  handleOk = () => {
+            setIsModalOpen(false);
+        };
 
-    const handleCancel = () => {
-        setIsModalOpen(false);
-        navigate("/")
-    };
+        const handleCancel = () => {
+            setIsModalOpen(false);
+            navigate("/")
+        };
     const navigate = useNavigate();
     const id_user = localStorage.getItem("idUser")
     const [listPlaylistCheck, setPlaylistCheck] = useState([]);
@@ -102,11 +102,7 @@ const ModalCreateSong = () => {
                 }} onSubmit={(value) => {
                     value.url_img = localStorage.getItem("url_img");
                     value.file_song = localStorage.getItem("url_song");
-                    console.log("url_img: ", value.url_img);
-                    console.log("url_song:",value.url_song);
-                    console.log("value = ", value);
                     value.user.id = localStorage.getItem("idUser");
-
                     axios.post("http://localhost:8080/songs", value).then((res)=>{
                         toast.success("Tạo bài hát thành công", {
                             position: toast.POSITION.BOTTOM_RIGHT
