@@ -14,7 +14,7 @@ function ViewPlaylist(props) {
     const [listSong, setListSOng] = useState([]);
     const idType = useParams()
     const [type, setType] = useState({})
-    const dispatch = useDispatch
+    const dispatch = useDispatch()
     useEffect(() => {
         axios.get("http://localhost:8080/songs/showListSongByType/" + idType.id).then((res) =>{
             if (res.data === []){
@@ -59,7 +59,9 @@ function ViewPlaylist(props) {
                                 <td>{i.singer}</td>
                                 <td>{i.author}</td>
                                 <td><img src={i.url_img} style={{width:50, height:50}}/></td>
-                                <td><FaEye style={{width:30, height:30}}/></td>
+                                <td><FaEye onClick={() => {
+                                    navigate("/detailSong/"+ i.id)
+                                }} style={{width:30, height:30}}/></td>
                             </tr>
                         )
                     })}

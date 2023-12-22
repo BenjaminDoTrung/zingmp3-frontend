@@ -20,7 +20,7 @@ const Hot = () => {
                 <div className={'flex gap-2  flex-auto text-sm justify-between cursor-pointer'}>
                     <div
                         onClick={() => {
-                            navigate('/album/'+1)
+                            navigate('/showListByNameSinger/'+ "G5R Squad" )
                         }}
                         className={'flex flex-col items-center'}>
                         <img src={cs1} alt="" className={'w-[200px] h-[200px] object-contain rounded-lg'}/>
@@ -29,7 +29,7 @@ const Hot = () => {
                     </div>
                     <div
                         onClick={() => {
-                            navigate('/album/'+1)
+                            navigate('/showListByNameSinger/'+ "J97")
                         }}
                         className={'flex flex-col items-center cursor-pointer'}>
                         <img src={cs2} alt="" className={'w-[200px] h-[200px] object-contain rounded-lg'}/>
@@ -38,7 +38,7 @@ const Hot = () => {
                     </div>
                     <div
                         onClick={() => {
-                            navigate('/album/'+1)
+                            navigate("/showListByNameSinger/"+"Hồ Quang Hiếu")
                         }}
                         className={'flex flex-col items-center cursor-pointer'}>
                         <img src={cs3} alt="" className={'w-[200px] h-[200px] object-contain rounded-lg'}/>
@@ -47,7 +47,7 @@ const Hot = () => {
                     </div>
                     <div
                         onClick={() => {
-                            navigate('/album/'+1)
+                            navigate("/showListByNameSinger/" + "Sơn Tùng MTP")
                         }}
                         className={'flex flex-col items-center cursor-pointer'}>
                         <img src={cs4} alt="" className={'w-[200px] h-[200px] object-contain rounded-lg'}/>
@@ -56,7 +56,7 @@ const Hot = () => {
                     </div>
                     <div
                         onClick={() => {
-                            navigate('/album/'+1)
+                            navigate('/showListByNameSinger/'+"Phan Mạnh Quỳnh")
                         }}
                         className={'flex flex-col items-center cursor-pointer'}>
                         <img src={cs5} alt="" className={'w-[200px] h-[200px] object-cover rounded-lg'}/>

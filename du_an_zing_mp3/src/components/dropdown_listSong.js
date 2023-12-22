@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Button, Dropdown} from 'antd';
 import {AiOutlineMore} from "react-icons/ai";
 import axios from "axios";
@@ -10,16 +10,29 @@ import {useNavigate} from "react-router-dom";
 
 const Dropdown_listSong = (prop) => {
     let [checkDelete, setCheckDelete] = useState(false)
-
+    const [playlists, setPlaylist] = useState([])
+    useEffect(() => {
+        axios.get("http://localhost:8080/playLists").then((res) => {
+            setPlaylist(res.data)
+        })
+    }, []);
     const navigate = useNavigate()
     const {toggleFlag} = useContext(AppContext);
     const items = [
         {
             key: '1',
             label: (
-                <div onClick={addPlayList}>
-                    Thêm vào PlayList
-                </div>
+                <dev>
+                    <select onChange={(e) => {
+                        addPlayList(e.target.value)
+                    }}>
+                        {playlists.map((i,key) => {
+                            return(
+                                <option value={i.id}>{i.namePlayList}</option>
+                            )
+                        })}
+                    </select>
+                </dev>
 
             ),
         },
@@ -59,8 +72,10 @@ const Dropdown_listSong = (prop) => {
     )
 
 
-    function addPlayList() {
-
+    function addPlayList(idPlaylist) {
+        axios.put("http://localhost:8080/songs/addPlayList/"+ prop.idSong + "/" + idPlaylist).then((res) =>{
+            toast.success("Thêm thành công vào playlist")
+        })
     }
 
     function edit(id) {

@@ -23,6 +23,7 @@ import ViewPlaylist from "./components/ViewPlaylist";
 import {AppProvider} from "./Context/AppContext";
 import UpdatePlayList from "./components/UpdatePlayList";
 import ViewSongByType from "./components/ViewSongByType";
+import ShoListSongByNameSinger from "./components/ShoListSongByNameSinger";
 
 
 
@@ -53,6 +54,7 @@ function App() {
                       <Route path={"viewPlaylist/:id"} element={<ViewPlaylist/>}></Route>
                       <Route path={"updatePlayList/:id"} element={<UpdatePlayList/>}></Route>
                       <Route path={"viewSongByType/:id"} element={<ViewSongByType/>}></Route>
+                      <Route path={"showListByNameSinger/:name"} element={<ShoListSongByNameSinger/>}></Route>
                   </Route>
               </Routes>
               </AppProvider> <ToastContainer />
