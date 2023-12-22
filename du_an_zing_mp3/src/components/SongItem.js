@@ -8,23 +8,35 @@ const SongItem = ({thumbnail, title, artists, sid, releaseDate, order, percent, 
     const navigate = useNavigate();
     const dispatch = useDispatch()
     return (
-        <div
-            onClick={()=>{
-                console.log("sip:", sid)
-                dispatch(findSongById(sid))
-            }}
-            className={'w-[30%] flex-auto flex  p-[10px] gap-10 hover:bg-main-200 rounded-md cursor-pointer hover:text-black'}>
-            <img
+        <div className="col-md-4 song-item">
+            <div
                 onClick={()=>{
-                    navigate("/detailSong/"+ sid)
+                    console.log("sip:", sid)
+                    dispatch(findSongById(sid))
                 }}
-                src={thumbnail} alt='' className={`${sm ? 'w-[40px] h-[40px]' : 'w-[60px] h-[60px]'}object-cover rounded-md`}/>
-            <div className={'flex flex-col'}>
-                <span className={'text-sm font-semibold'}>{title}</span>
-                <span className={'text-xs text-gray-400'}>{artists}</span>
-                <span className={'text-xs text-gray-700'} style={{color: 'white'}}>{moment(releaseDate * 1000).fromNow()}</span>
+                className={'group flex p-3 rounded-md hover:bg-main-200 hover:border border-gray-200'}>
+                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md">
+                    <img
+                        onClick={()=>{
+                            navigate("/detailSong/"+ sid)
+                        }}
+                        src={thumbnail} alt='' className="h-full w-full object-cover object-center"/>
+                </div>
+                <div className={'ml-4 flex flex-1 flex-col'}>
+                    <div>
+                        <div className="flex justify-between text-base font-medium">
+                            <h3>
+                                <a href="#" className="text-slate-900 group-hover:text-black font-semibold">{title}</a>
+                            </h3>
+                        </div>
+                        <p className="mb-2 text-slate-500 group-hover:text-black text-sm">{artists}</p>
+                        <p className="mb-0 text-slate-500 group-hover:text-black text-sm">{moment(releaseDate * 1000).fromNow()}</p>
+                    </div>
+                </div>
+                <div className="flex">
+                    <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500"><BiDotsVerticalRounded style={{fill: "white"}}/></button>
+                </div>
             </div>
-            <BiDotsVerticalRounded style={{marginTop:20}}/>
         </div>
     )
 }

@@ -44,9 +44,7 @@ const NewRelease = () => {
 
                 </button>
             </div>
-            <div
-
-                className={'flex flex-wrap w-full '}>
+            <div className={'row'}>
                 {songs?.map(item => (
                     <SongItem
                         sid={item.id}
