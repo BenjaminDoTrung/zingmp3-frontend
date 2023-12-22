@@ -19,6 +19,9 @@ const ShowPlaylist = () => {
             setList(res.data);
         })
     }, [isFlag]);
+    function updatePlaylist(id) {
+        navigate("/updatePlayList/" + id)
+    }
 
     function deletePlaylist(id) {
         axios.delete("http://localhost:8080/playLists/" + id).then((res) => {
@@ -67,10 +70,11 @@ const ShowPlaylist = () => {
                                 <td onClick={() => {
                                     navigate("/viewPlaylist/" + i.id)
                                 }}>
-                                    <button>{i.namePlayList}</button>
+                                    <button style={{color:"white"}}>{i.namePlayList}</button>
                                 </td>
                                 <td>
-                                    <button><MdOutlineBrowserUpdated style={{width: 30, height: 30, color: '#FFFFFF'}}/>
+                                    <button onClick={()=>{updatePlaylist(i.id)}}>
+                                        <MdOutlineBrowserUpdated style={{width: 30, height: 30, color: '#FFFFFF'}}/>
                                     </button>
                                 </td>
                                 <td>

@@ -1,6 +1,5 @@
-
 import {useSelector} from "react-redux";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {CiHeart, CiShuffle} from "react-icons/ci";
 import {IoMdSkipBackward} from "react-icons/io";
 import {MdSkipNext} from "react-icons/md";
@@ -10,24 +9,23 @@ import {FaPause, FaPlay} from "react-icons/fa";
 import {RiPlayListLine} from "react-icons/ri";
 import ReactPlayer from "react-player";
 import {useNavigate} from "react-router-dom";
+import axios from "../axios";
+import {reverseNextSong, transferNextSong} from "../service/SongService";
+
 
 
 
 const Player = (prop) => {
     let [isPlaying, setIsPlaying] = useState(false);
+    const [indexSong, setIndexSong] = useState(3)
     const currentSong = useSelector((store) => {
-        console.log( "song1: ",store.songStore.song)
-        // setIsPlaying(!isPlaying);
         return store.songStore.song;
     })
-
-    let navigate = useNavigate();
-    let [idSong, setIdSong] = useState(prop.idSong)
-    let [img, setImg] = useState("")
+    const [listSong, setListSong] = useState([])
     let [state, setState] = useState({
-        url: currentSong.file_song,
+        url: currentSong?.file_song,
         pip: false,
-        playing: true,
+        playing: false,
         controls: false,
         light: false,
         volume: 0.8,
@@ -36,14 +34,39 @@ const Player = (prop) => {
         loaded: 0,
         duration: 0,
         playbackRate: 1.0,
-        loop: false
+        loop: false,
+        url_img: currentSong?.url_img,
+        seeking: false
     })
+    useEffect(() => {
+        axios.get("http://localhost:8080/songs").then((res)=>{
+            setListSong(res.data);
+        })
+    }, []);
 
-
+    useEffect(() => {
+        console.log("crrent: ",currentSong)
+        console.log("img:", state.url_img)
+        setState({...state, url: currentSong.file_song, url_img: currentSong.url_img})
+    }, [currentSong])
+    const transferNextSong = () => {
+        if (indexSong < listSong.length){
+            setIndexSong(indexSong + 1)
+            state.url = listSong[indexSong].file_song;
+            state.url_img = listSong[indexSong].url_img
+            setState({...state})
+        }
+    }
+    const reverseNextSong = () => {
+        if (indexSong < listSong.length){
+            setIndexSong(indexSong - 1)
+            state.url = listSong[indexSong].file_song;
+            state.url_img = listSong[indexSong].url_img
+            setState({...state})
+        }
+    }
     const handlePlay = () => {
         console.log('onPlay')
-
-        // this.setState({ playing: true })
         state.playing = true;
     }
     const handleEnablePIP = () => {
@@ -80,22 +103,21 @@ const Player = (prop) => {
         this.setState({ duration })
     }
     const handleSeekMouseDown = e => {
-        this.setState({ seeking: true })
+        setState({...state, seeking: true})
     }
 
     const handleSeekChange = e => {
-        this.setState({ played: parseFloat(e.target.value) })
+        setState({...state, played: parseFloat(e.target.value)})
+        console.log(state.played)
     }
 
     const handleSeekMouseUp = e => {
-        this.setState({ seeking: false })
-        this.player.seekTo(parseFloat(e.target.value))
+        setState({...state, seeking: false})
+        setState({...state, played: parseFloat(e.target.value)})
+        console.log(state.volume)
     }
-    const handleVolumeChange = e => {
-        // state.volume = e.target.values;
-        state.volume = e.target.values
-        setState(state)
-        console.log("volume", state.volume)
+    const ref = player => {
+        this.player = player
     }
 
     return (
@@ -104,8 +126,8 @@ const Player = (prop) => {
                 <div className={'w-[30%] flex-auto  flex items-center'}
                      style={{display: "flex", width: 446, height: 65, paddingTop: 7}}>
                     <img style={{width: 65, height: 65}}
-                         src={currentSong.url_img == null ? "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                             : currentSong.url_img
+                         src={state?.url_img == null ? "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                             : state?.url_img
                          }
                          className='w-16 h-16 object-cover rounded-md'/>
                     <div className={'flex flex-col pl-2'} style={{paddingLeft: 10}}>
@@ -126,7 +148,7 @@ const Player = (prop) => {
                     <div style={{paddingTop: 20}}
                          className={'gap-8 flex items-center justify-center'}>
                         <span className={'cursor-pointer'}><CiShuffle size={20}/></span>
-                        <span className={'cursor-pointer'}><IoMdSkipBackward size={18}/></span>
+                        <span className={'cursor-pointer'}><IoMdSkipBackward size={18} onClick={reverseNextSong}/></span>
                         <span onClick={() => {
                             setIsPlaying(!isPlaying)
                             {
@@ -137,14 +159,15 @@ const Player = (prop) => {
                         >
                                     {isPlaying ? <FaPause size={25}/> : <FaPlay size={25}/>}
                                  </span>
-                        <span className={'cursor-pointer'}><MdSkipNext size={24}/></span>
+                        <span className={'cursor-pointer'}><MdSkipNext size={24} onClick={transferNextSong} /></span>
                         <span className={'cursor-pointer'}><IoRepeatOutline size={24}/></span>
                     </div>
-                    <ReactPlayer id="songt"
+                    <ReactPlayer
+                                 id="songt"
                                  className='react-player'
                                  width='100%'
                                  height='100%'
-                                 url= {currentSong.file_song}
+                                 url= {state?.url}
                                  pip={state.pip}
                                  playing={state.playing}
                                  controls={state.controls}
@@ -172,7 +195,11 @@ const Player = (prop) => {
                 <div style={{width: 446, height: 65, paddingTop: 30}}
                      className={'w-[30%] flex-auto flex items-center justify-end gap-4'}>
                     <div style={{float: "right"}}>
-                        <input type='range' min={state.volume} max={2} step='any' onChange={handleVolumeChange}/>
+                        <input type='range' min={0} max={2} step='any'
+                               value={state.played}
+                               onMouseDown={handleSeekMouseDown}
+                               onChange={handleSeekChange}
+                               onMouseUp={handleSeekMouseUp}/>
                         <span
                             className={'p-1 rounded-sm cursor-pointer bg-main-500 opacity-90 hover:opacity-100'}><RiPlayListLine
                             size={20}/></span>

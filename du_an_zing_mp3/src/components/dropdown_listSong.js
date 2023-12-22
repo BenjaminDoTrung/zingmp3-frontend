@@ -55,7 +55,6 @@ const Dropdown_listSong = (prop) => {
             >
                 <Button><AiOutlineMore/></Button>
             </Dropdown>
-            <div className={"hien"} style={{display: 'block'}}>1123</div>
         </>
     )
 

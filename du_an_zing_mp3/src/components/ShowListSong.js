@@ -2,12 +2,18 @@ import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import Dropdown_listSong from "./dropdown_listSong";
 import {AppContext} from "../Context/AppContext";
+import {findSongById} from "../service/SongService";
+import moment from "moment/moment";
+import {BiDotsVerticalRounded} from "react-icons/bi";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
 
 const ShowListSong = () => {
     const {isFlag } = useContext(AppContext);
-
+    const dispatch = useDispatch()
     const [idUser, setIdUser] = useState(localStorage.getItem("idUser"))
     const [list, setList] = useState([]);
+    const navigate = useNavigate()
     useEffect(() => {
         axios.get("http://localhost:8080/songs/showByIdUser/" + idUser).then((res) => {
             setList(res.data);
@@ -16,34 +22,32 @@ const ShowListSong = () => {
     return (
         <>
             <div style={{backgroundColor: "#3c2452", color:"white"}}>
-                <div className="container mt-4" style={{paddingBlock:80}}>
-                    <h1 className="font-weight-bold" style={{marginLeft: 30, fontSize:30}}>Danh sách bài hát</h1>
+                <div className="container mt-4" style={{paddingBlock:50}}>
+                    <h1 className="font-weight-bold" style={{fontSize:30}}>Danh sách bài hát</h1>
                     <div className="row" style={{paddingTop: 40}}>
                         {list.map((i, key) => {
-                            console.log("đếm: ", {i});
-                            console.log("id user", localStorage.getItem("idUser"))
-                            console.log("idsong", i.user.id)
-
                             return (
-                                <div className="col-sm-3" style={{marginBottom: 30}}>
-                                    <div className="top100_content" style={{paddingLeft: 30}}>
-                                        <img
-                                            style={{width:215, height: 200, borderRadius:10}}
-                                            src={i.url_img == null ? "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_jpeg/cover/a/3/6/a/a36a7d1fecd4333c96def2d3f71a6b9b.jpg"
-                                                : i.url_img} />
-                                        <div style={{display: "flex"}}>
-                                            <div>
-                                                <h5 style={{width:200, marginTop:10}}>
-                                                    Tên bài hát: {i.nameSong}
-                                                </h5>
-                                                <div style={{width:200, marginTop:5}}>Tên ca sĩ: {i.singer}</div>
-                                            </div>
-                                            <div>
-                                                <Dropdown_listSong id={i.id}/>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div
+                                onClick={()=>{
+                                    dispatch(findSongById(i.id))
+                                }}
+                                className={'w-[30%] flex-auto flex  p-[10px] gap-10 hover:bg-main-200 rounded-md cursor-pointer hover:text-black'}>
+                                <img
+                                    onClick={()=>{
+                                        navigate("/detailSong/"+ i.id)
+                                    }}
+                                    src={i.url_img == null ? "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_jpeg/cover/a/3/6/a/a36a7d1fecd4333c96def2d3f71a6b9b.jpg"
+                                    : i.url_img}
+                                    alt='' className={'w-[60px] h-[60px]'}/>
+                                <div className={'flex flex-col'}>
+                                    <span className={'text-sm font-semibold'}>{i.nameSong}</span>
+                                    <span className={'text-xs text-gray-400'}>{i.singer}</span>
+                                    <span className={'text-xs text-gray-700'} style={{color: 'white'}}>{i.date}</span>
                                 </div>
+                                <div className={'flex flex-col'}>
+                                    <Dropdown_listSong id={i.id}/>
+                                </div>
+                            </div>
                             )
                         })}
                     </div>

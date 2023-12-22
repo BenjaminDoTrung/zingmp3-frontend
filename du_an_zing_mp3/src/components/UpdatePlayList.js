@@ -32,7 +32,7 @@ function UpdatePlayList(props) {
                             })
                             navigate("/showPlaylist")
                         }).catch(() => {
-                            toast.error('Không thể tạo')
+                            toast.error('Không thể update')
                         })
                     }}>
                 <Form>

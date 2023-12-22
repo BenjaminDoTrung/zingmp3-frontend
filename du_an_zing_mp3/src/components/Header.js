@@ -1,20 +1,15 @@
 import icons from "../untis/icons";
 import Search from "./Search";
 import {Link, useNavigate} from "react-router-dom";
-import user from '../accsets/user.png'
 import {CiSettings} from "react-icons/ci";
 import MenuLogin from "./MenuLogin";
 import "../css_component/menuSetting.css"
 import MenuSetting from "./MenuSetting";
-import {IoSettings} from "react-icons/io5";
 import React, {useContext, useEffect, useState} from "react";
-import findById from "../service/FindById";
 import axios from "axios";
 import MenuLogOut from "./MenuLogOut";
 import MenuAdmin from "./MenuAdmin";
-import { FaUserCircle } from "react-icons/fa";
 import {FaRegCircleUser} from "react-icons/fa6";
-import colors from "tailwindcss/colors";
 import {AppContext} from "../Context/AppContext";
 
 const {IoIosArrowRoundBack, IoIosArrowRoundForward, AiOutlineSearch} = icons
@@ -25,6 +20,7 @@ const Header = () => {
     const id = localStorage.getItem("idUser")
     let [user, setUser] = useState({})
     let [img,setImg] = useState('');
+
 
 
         useEffect(() => {
@@ -44,9 +40,9 @@ const Header = () => {
     const handleCheck = (isCheck) => {
         setCheck(isCheck);
     }
-
+    console.log(localStorage.getItem("role"))
     if (localStorage.getItem("idUser") !== null) {
-        if (localStorage.getItem("user") === "admin") {
+        if (localStorage.getItem("role") === "ROLE_ADMIN") {
             return (
                 <div className={' flex justify-between w-full items-center border border-none'}
                      style={{zIndex: 100}}>
@@ -75,7 +71,7 @@ const Header = () => {
                             }
 
                             }>
-                                <img src={img === "" ? "https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg":
+                                <img src={img === null ? "https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg":
                                  img} style={{
                                     width: 40,
                                     height: 40,
@@ -120,10 +116,8 @@ const Header = () => {
                                 <button onClick={() =>{
                                     setCheck(!check)
                                     setChecksetting(false);
-                                }
-
-                                }>
-                                    <img src={img === "" ? "https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg":
+                                }}>
+                                    <img src={img === null ? "https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg":
                                         img} style={{
                                         width: 40,
                                         height: 40,

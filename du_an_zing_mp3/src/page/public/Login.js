@@ -17,7 +17,8 @@ export default function Login() {
                 localStorage.setItem("idUser", res.data.id)
                 localStorage.setItem("user", res.data.username)
                 localStorage.setItem("user_img", res.data.url_img)
-
+                localStorage.setItem("role", res.data.roles[0].authority)
+                console.log("role:",localStorage.getItem("role"))
                 navigate("/")
                 toast.success("Đăng nhập thành công", {
                     position: toast.POSITION.BOTTOM_RIGHT

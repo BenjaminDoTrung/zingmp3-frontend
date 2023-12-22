@@ -64,12 +64,10 @@ const ModalCreatePlayList = () => {
                         }
                         enableReinitialize={true}
                         onSubmit={(values) => {
-
-
+                            console.log("value playlist:", values)
                             axios.put("http://localhost:8080/playLists", values).then((res) => {
                                 if (res.data === false){
                                     toast.error('Không thể tạo')
-
                                 }
                                 toast.success("Tạo playlist thành công", {
                                     position: toast.POSITION.BOTTOM_RIGHT
@@ -85,7 +83,6 @@ const ModalCreatePlayList = () => {
                             <div className="col-auto">
                                 <h5>Tên PlayList</h5>
                                 <ErrorMessage style={{color:'red'}}  className={'formik-error-message'} name="namePlayList" component="div"/>
-
                                 <Field name="namePlayList" type="text" id="input" className="form-control"
                                        aria-describedby="passwordHelpInline"/><br/>
                                 <div className="col-auto">

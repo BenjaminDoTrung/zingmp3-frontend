@@ -3,6 +3,7 @@ import 'moment/locale/vi'
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {findSongById} from "../service/SongService";
+import {BiDotsVerticalRounded} from "react-icons/bi";
 const SongItem = ({thumbnail, title, artists, sid, releaseDate, order, percent, style, sm}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -23,6 +24,7 @@ const SongItem = ({thumbnail, title, artists, sid, releaseDate, order, percent, 
                 <span className={'text-xs text-gray-400'}>{artists}</span>
                 <span className={'text-xs text-gray-700'} style={{color: 'white'}}>{moment(releaseDate * 1000).fromNow()}</span>
             </div>
+            <BiDotsVerticalRounded style={{marginTop:20}}/>
         </div>
     )
 }
