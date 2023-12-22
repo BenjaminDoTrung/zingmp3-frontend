@@ -14,27 +14,17 @@ export default function SongDetail (){
 
     return(
         <>
-            <h1 className={'font-bold flex items-center justify-center mb-5 mt-5'} style={{color:"white"}}>Song Detail</h1>
-            <table className="table table-dark">
-                <thead>
-                <tr>
-                    <th scope="col">Name Song</th>
-                    <th scope="col">Singer</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Description</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">{detailSong.nameSong}</th>
-                    <td>{detailSong.singer}</td>
-                    <td>{detailSong.author}</td>
-                    <td>{detailSong.description}</td>
-                </tr>
+            <h1 className={'font-bold flex items-center justify-center mb-5 mt-5 text-white'} style={{color:"white"}}>Song Detail</h1>
+           <div className={'flex justify-center items-center'}>
+               <img src={detailSong.url_img} />
+               <div className={'flex flex-col text-white ml-4'}>
+                   <div>Tên bài hát: {detailSong.nameSong}</div>
+                   <div>Ca sĩ: {detailSong.singer}</div>
+                   <div>Tác giả: {detailSong.author}</div>
+                   <div>Lời tựa : {detailSong.description}</div>
+               </div>
+           </div>
 
-                </tbody>
-            </table>
-            <Link className='btn btn-outline-primary'  to={'/'}>Back Home</Link>
         </>
     )
 }
