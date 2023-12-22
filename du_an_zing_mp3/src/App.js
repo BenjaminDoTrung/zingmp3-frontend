@@ -22,6 +22,7 @@ import ShowPlaylist from "./components/ShowPlaylist";
 import ViewPlaylist from "./components/ViewPlaylist";
 import {AppProvider} from "./Context/AppContext";
 import UpdatePlayList from "./components/UpdatePlayList";
+import ViewSongByType from "./components/ViewSongByType";
 
 
 
@@ -51,6 +52,7 @@ function App() {
                       <Route path={"showPlaylist"} element={<ShowPlaylist/>}></Route>
                       <Route path={"viewPlaylist/:id"} element={<ViewPlaylist/>}></Route>
                       <Route path={"updatePlayList/:id"} element={<UpdatePlayList/>}></Route>
+                      <Route path={"viewSongByType/:id"} element={<ViewSongByType/>}></Route>
                   </Route>
               </Routes>
               </AppProvider> <ToastContainer />
