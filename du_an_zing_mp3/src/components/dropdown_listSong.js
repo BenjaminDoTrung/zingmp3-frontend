@@ -8,13 +8,16 @@ import swal from "sweetalert";
 import {AppContext} from "../Context/AppContext";
 import {useNavigate} from "react-router-dom";
 
-const Dropdown_listSong = (prop) => {
+const Dropdown_listSong = ({idSong}) => {
     let [checkDelete, setCheckDelete] = useState(false)
     const [playlists, setPlaylist] = useState([])
+    const idUser = localStorage.getItem("idUser")
     useEffect(() => {
-        axios.get("http://localhost:8080/playLists").then((res) => {
-            setPlaylist(res.data)
-        })
+        if(idUser != null){
+            axios.get("http://localhost:8080/playLists/findByIdUser/" + idUser).then((res) => {
+                setPlaylist(res.data)
+            })
+        }
     }, []);
     const navigate = useNavigate()
     const {toggleFlag} = useContext(AppContext);
@@ -24,8 +27,10 @@ const Dropdown_listSong = (prop) => {
             label: (
                 <dev>
                     <select onChange={(e) => {
+                        console.log("taget", e.target.value)
                         addPlayList(e.target.value)
                     }}>
+                        <option>Thêm vào PlayList</option>
                         {playlists.map((i,key) => {
                             return(
                                 <option value={i.id}>{i.namePlayList}</option>
@@ -40,7 +45,7 @@ const Dropdown_listSong = (prop) => {
             key: '2',
             label: (
                 <a onClick={()=>{
-                    edit(prop.id)
+                    edit(idSong)
                 }}>
                     Sửa bài hát
                 </a>
@@ -50,7 +55,7 @@ const Dropdown_listSong = (prop) => {
             key: '3',
             label: (
                 <div onClick={() => {
-                    deleteSong(prop.id)
+                    deleteSong(idSong)
                 }}>
                     Xóa bài hát
                 </div>
@@ -73,9 +78,11 @@ const Dropdown_listSong = (prop) => {
 
 
     function addPlayList(idPlaylist) {
-        axios.put("http://localhost:8080/songs/addPlayList/"+ prop.idSong + "/" + idPlaylist).then((res) =>{
-            toast.success("Thêm thành công vào playlist")
-        })
+            if (idUser != null) {
+                axios.put("http://localhost:8080/songs/addPlayList/" + idSong + "/" + idPlaylist).then((res) => {
+                    toast.success("Thêm thành công vào playlist")
+                })
+            }
     }
 
     function edit(id) {

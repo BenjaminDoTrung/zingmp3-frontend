@@ -43,7 +43,7 @@ const ShowListSong = () => {
                                     <span className={'text-xs text-gray-700'} style={{color: 'white'}}>{i.date}</span>
                                 </div>
                                 <div className={'flex flex-col'}>
-                                    <Dropdown_listSong id={i.id}/>
+                                    <Dropdown_listSong idSong={i.id}/>
                                 </div>
                             </div>
                             )
