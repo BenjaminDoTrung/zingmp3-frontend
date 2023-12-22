@@ -41,7 +41,7 @@ body, html {
 
 /*---------------------------------------------*/
 a {
-	font-family: Poppins-Regular;
+  font-family: 'Montserrat', sans-serif;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -67,7 +67,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: Poppins-Regular;
+    font-family: 'Montserrat', sans-serif;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -459,4 +459,10 @@ iframe {
     visibility: visible;
     opacity: 1;
   }
+}
+.song-item a {
+  color: #fff;
+}
+.song-item p {
+  color: hsla(0,0%,100%,0.5);
 }
