@@ -19,6 +19,7 @@ export default function UpdateSong(prop) {
     const idSong = useParams();
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(true);
+    const [idUser, setIdUser] = useState(localStorage.getItem("idUser"))
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -77,13 +78,17 @@ export default function UpdateSong(prop) {
                 author: songs.author,
                 description: songs.description,
                 id_SongTypes: songs.id_SongTypes,
-                file_song: songs.file_song
+                file_song: songs.file_song,
+                user: {
+                    id: idUser
+                }
             }}
                     enableReinitialize={true}
                     onSubmit={(value) => {
                 value.url_img = localStorage.getItem("url_img");
                 value.file_song = localStorage.getItem("url_song");
-                value.user.id = localStorage.getItem("idUser");
+                        console.log("value", value)
+                value.user.id = idUser;
                 axios.put("http://localhost:8080/songs", value).then((res)=>{
                     toast.success(" Cập nhật hát thành công ", {
                         position: toast.POSITION.BOTTOM_RIGHT
