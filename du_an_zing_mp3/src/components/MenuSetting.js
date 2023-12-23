@@ -13,6 +13,7 @@ import "../css_component/menuSetting.css"
 import {useNavigate} from "react-router-dom";
 import {HiOutlinePlus} from "react-icons/hi";
 import {RiSlideshow2Line} from "react-icons/ri";
+import ModalCreatePlayList from "./modanCreatePlayList";
 
 
 const MenuSetting = ({handler}) => {
@@ -97,7 +98,7 @@ const MenuSetting = ({handler}) => {
                             <HiOutlinePlus />
                         </div>
                         <div className="content">
-                            Thêm Playlist
+                            <ModalCreatePlayList/>
                         </div>
                         <div className="icon" style={{marginLeft:"auto"}}>
                             <GoArrowUpRight />

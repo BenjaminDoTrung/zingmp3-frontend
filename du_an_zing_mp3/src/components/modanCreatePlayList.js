@@ -56,7 +56,6 @@ const ModalCreatePlayList = () => {
                             require("yup").object().shape({
                                 namePlayList: require("yup")
                                     .string()
-                                    .matches(/^[a-zA-Z0-9_]+$/, "Tên không hợp lệ")
                                     .required("Vui lòng nhập tên Playlist").test('unique', 'Playlist đã tồn tại', (value) => {
                                         return !listPlaylistCheck.includes(value);
                                     }),
@@ -72,6 +71,7 @@ const ModalCreatePlayList = () => {
                                 toast.success("Tạo playlist thành công", {
                                     position: toast.POSITION.BOTTOM_RIGHT
                                 })
+                                navigate("/")
                                toggleFlag()
                             })
                         }}>

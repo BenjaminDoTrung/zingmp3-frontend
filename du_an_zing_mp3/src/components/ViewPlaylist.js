@@ -24,7 +24,7 @@ function ViewPlaylist(props) {
         })
     }, []);
     function deleteSong(idSong, idPlaylist) {
-        axios.delete("http://localhost:8080/playLists/deleteSongInPlaylist/" +idSong + "/" + idPlaylist).then((res)=>{
+        axios.delete("http://localhost:8080/playLists/deleteSongInPlaylist/" + idSong + "/" + idPlaylist).then((res)=>{
             toast.success("Bạn vừa xóa 1 bài hát ra khỏi D/S", {
                 position: toast.POSITION.BOTTOM_RIGHT
             })
@@ -58,7 +58,6 @@ function ViewPlaylist(props) {
                                 <td>{i.singer}</td>
                                 <td>{i.author}</td>
                                 <td><img src={i.url_img} style={{width:50, height:50}}/></td>
-                                <td><MdOutlineBrowserUpdated style={{width:30, height:30}}/></td>
                                 <td><MdDeleteOutline onClick={()=>{
                                     deleteSong(i.id, idPlaylist.id);
                                 }} style={{width:30, height:30}}/></td>

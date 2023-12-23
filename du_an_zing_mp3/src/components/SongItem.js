@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {findSongById} from "../service/SongService";
 import {BiDotsVerticalRounded} from "react-icons/bi";
+import Dropdown_song from "./Dropdown_song";
 const SongItem = ({thumbnail, title, artists, sid, releaseDate, order, percent, style, sm}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -34,7 +35,7 @@ const SongItem = ({thumbnail, title, artists, sid, releaseDate, order, percent, 
                     </div>
                 </div>
                 <div className="flex">
-                    <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500"><BiDotsVerticalRounded style={{fill: "white"}}/></button>
+                    <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500"><Dropdown_song idSong={sid}/></button>
                 </div>
             </div>
         </div>
