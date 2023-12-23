@@ -3,37 +3,32 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 export default function UserList() {
+    const [listUser, setListUser] = useState([])
     const [list, setList] = useState([]);
     const [check, setCheck] = useState(false);
-    function listNew(list) {
-        if (list !== null){
-            let listNe = [] ;
-            for (let i = 0; i < list.length; i++) {
-                if(list[i].userName.role.name !== "ROLE_ADMIN"){
-                    listNe.push(list[i])
-                }
-            }
-            return listNe ;
-        }
-        return list;
-    }
+
     useEffect(() => {
         axios.get('http://localhost:8080/users').then(res => {
-            setList(listNew(res.data))
-        }).catch(()=>{setList([])})
-    }, [check])
+            for (let i = 0; i < res.data.length; i++) {
+                if (res.data[i].roles.id != "ROLE_ADMIN"){
+                    listUser.push(res.data[i])
+                }
+            }
+            setList(listUser)
+            console.log("list ne:", list)
+        })
+    }, [])
 
     function changeStatus(email) {
-        axios.put('http://localhost:8080/users/account_lockout/'+email).then(()=>{})
+        axios.put('http://localhost:8080/users/account_lockout/'+ email).then(()=>{})
     }
         return (
             <>
-                <div>
-                    <button><Link to={'/Login'} type={"button"} className={"btn btn-default"}
-                                  data-dismiss={"modal"} value={"Cancel"}> Logout</Link></button>
+                <div style={{color: "white", marginTop: 20, marginBottom: 20, fontSize: 20, marginLeft: 10}}>
+                    Danh sách người dùng
                 </div>
 
-                <table className="table table-striped">
+                <table className="table table-striped" style={{color: "white"}}>
                     <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -50,11 +45,11 @@ export default function UserList() {
                             <tr>
                                 <th scope="row">{key + 1}</th>
                                 <td>{i.email}</td>
-                                <td>{i.url_img}</td>
+                                <td><img src={i.url_img} style={{width:60, height: 60}} /></td>
                                 <td>{i.dayOfBirth}</td>
                                 <td>{i.phone}</td>
                                 <td>
-                                    <select onChange={(event) =>{changeStatus(i.email)}}>
+                                    <select onChange={() =>{changeStatus(i.email)}}>
                                         {i.enabled === true ? <>
                                             <option>true</option>
                                             <option>false</option>

@@ -9,15 +9,23 @@ import {AppContext} from "../Context/AppContext";
 
 const ShowPlaylist = () => {
     let [checkDelete, setCheckDelete] = useState(false)
-
+    const idUser = localStorage.getItem("idUser")
     let [list, setList] = useState([]);
     const {toggleFlag} = useContext(AppContext);
     const {isFlag} = useContext(AppContext);
     let navigate = useNavigate()
     useEffect(() => {
-        axios.get("http://localhost:8080/playLists").then((res) => {
-            setList(res.data);
-        })
+        if (idUser == null){
+            toast.success("Bạn cần đăng nhập")
+        } else {
+            axios.get("http://localhost:8080/playLists/findByIdUser/" + idUser).then((res) => {
+                if (res.data !== []){
+                    setList(res.data);
+                } else {
+                    toast.success("Bạn chưa có PlayList nào")
+                }
+            })
+        }
     }, [isFlag]);
     function updatePlaylist(id) {
         navigate("/updatePlayList/" + id)

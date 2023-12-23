@@ -3,11 +3,13 @@ import {useEffect, useState} from "react";
 import * as apis from '../../apis'
 import moment from 'moment'
 import Lists from "../../components/Lists";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import * as actions from '../../store/actions'
 import {SongItem} from "../../components";
 import axios from "axios";
 import album from "../../accsets/album.jpg"
+import store from "../../store/Store";
+import {findAllSong} from "../../service/SongService";
 
 const Album = () => {
     const [songs, setSongs] = useState([])
@@ -15,13 +17,15 @@ const Album = () => {
     const { pid} = useParams()
     const [playlistData, setPlaylistData] = useState([])
     const dispatch = useDispatch()
-
+    const listSong = useSelector((store) => {
+        return  store.songStore.songs;
+    })
     useEffect(() => {
-        axios.get("http://localhost:8080/songs/searchByIdPll/" + idPlaylist.id).then((res)=>{
-            setSongs(res.data);
-
-        })
-    }, []);
+       setSongs(listSong)
+    }, [listSong]);
+    useEffect(() => {
+        dispatch(findAllSong())
+    }, [songs]);
 
     return (
         <div className={'flex gap-8 w-full px-[59px]'}>

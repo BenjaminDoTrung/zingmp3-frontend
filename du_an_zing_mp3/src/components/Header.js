@@ -44,7 +44,7 @@ const Header = () => {
     if (localStorage.getItem("idUser") !== null) {
         if (localStorage.getItem("role") === "ROLE_ADMIN") {
             return (
-                <div className={' flex justify-between w-full items-center border border-none'}
+                <div className={' flex justify-between w-full items-center border-none'}
                      style={{zIndex: 100}}>
                     <div className={'flex gap-6 w-full items-center'}>
                         <div className={'flex text-gray-400 gap-4'}>

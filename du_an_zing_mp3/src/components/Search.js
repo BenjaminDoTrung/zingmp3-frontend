@@ -5,19 +5,15 @@ import {useNavigate} from "react-router-dom";
 import {Field, Form, Formik} from "formik";
 import {toast} from "react-toastify";
 import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {searchByName} from "../service/SongService";
 const {AiOutlineSearch} =icons
 const Search = () => {
     let navigate = useNavigate();
-let [idSong,setIdSong] = useState()
-    function searchByName(value) {
-        axios.get('http://localhost:8080/songs/search/'+ value.nameSong).then((res) => {
-            console.log(res.data.nameSong);
-            setIdSong(res.data.id)
-            console.log( "123",res.data.id)
-            navigate("/searchBySongName/"+ res.data.id)
-        }).catch(() => {
-            toast.error('Không có bài hát này')
-        })
+    let [idSong,setIdSong] = useState()
+    const dispatch = useDispatch()
+    function searchByNameSong(value) {
+        dispatch(searchByName(value.nameSong))
     }
     return (
         <>
@@ -26,7 +22,7 @@ let [idSong,setIdSong] = useState()
             }}
                     enableReinitialize={true}
                     onSubmit={(value) => {
-                        searchByName(value)
+                        searchByNameSong(value)
                         console.log(value)
                     }}>
                 <Form>

@@ -6,6 +6,7 @@ import {HiOutlinePlus} from "react-icons/hi";
 import {AiOutlineLogout} from "react-icons/ai";
 import {useNavigate} from "react-router-dom";
 import UpdatePass from "../page/public/UpdatePassword";
+import ModalCreateTypeSong from "./ModalCreateTypeSong";
     const MenuAdmin = ({handler}) => {
     const navigate = useNavigate()
     function logOut() {
@@ -42,7 +43,7 @@ import UpdatePass from "../page/public/UpdatePassword";
                             <TbPasswordUser style={{width:20, height:20}} />
                         </div>
                         <div className="use-content">
-                            ...
+                            <ModalCreateTypeSong/>
                         </div>
                     </li>
                     <li onClick={logOut}>

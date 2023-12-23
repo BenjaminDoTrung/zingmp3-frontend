@@ -24,6 +24,7 @@ import {AppProvider} from "./Context/AppContext";
 import UpdatePlayList from "./components/UpdatePlayList";
 import ViewSongByType from "./components/ViewSongByType";
 import ShoListSongByNameSinger from "./components/ShoListSongByNameSinger";
+import CreatePlayList from "./components/CreatePlayList";
 
 
 

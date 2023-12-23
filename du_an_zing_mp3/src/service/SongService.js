@@ -25,37 +25,10 @@ export const findAllByNameSinger = createAsyncThunk(
     }
 )
 
-// export const transferNextSong = createAsyncThunk(
-//     'songs/transferNextSong',
-//     async (index) => {
-//         const res = await function () {
-//             const [listSong, setListSong] = useState([]);
-//             axios.get("http://localhost:8080/songs").then((res) => {
-//                 setListSong(res.data)
-//             })
-//             if (index < listSong.length){
-//                 index++;
-//                 return listSong[index]
-//             }
-//         }
-//     }
-// )
-// export const reverseNextSong = createAsyncThunk(
-//     'songs/reverseNextSong',
-//     async (index) => {
-//         console.log("iii", index)
-//         const res = await function () {
-//             const [listSong, setListSong] = useState([]);
-//             const [songs, setSongs] = useState({})
-//             console.log("idex", index)
-//             axios.get("http://localhost:8080/songs").then((res) => {
-//                 setListSong(res.data)
-//             })
-//             if (index < listSong.length && index > 0){
-//                 index--;
-//                 setSongs(listSong[index])
-//             }
-//             return res;
-//         }
-//     }
-// )
+export const searchByName = createAsyncThunk(
+    'songs/searchByName',
+    async (nameSong) => {
+        const res = await axios.get("http://localhost:8080/songs/searchByName/" + nameSong);
+        return res.data
+    }
+)
