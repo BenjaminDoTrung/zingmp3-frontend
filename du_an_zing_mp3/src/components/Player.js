@@ -95,6 +95,7 @@ const Player = (prop) => {
     const [volume, setVolume] = useState(0.8);
     const [playing, setPlaying] = useState(true);
     const [seeking, setSeeking] = useState(false);
+    const [nameSong, setNameSong] = useState(currentSong?.nameSong);
 
     const [loaded, setLoaded] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -204,10 +205,10 @@ const Player = (prop) => {
                                 </CoverImage>
                                 <Box sx={{ml: 1.5, minWidth: 0}}>
                                     <Typography variant="caption" color="text.secondary" fontWeight={500}>
-                                        Điều Ước Giáng Sinh
+                                        {currentSong.nameSong === null ? "Điều ước giáng sinh" : currentSong.nameSong}
                                     </Typography>
-                                    <Typography noWrap>
-                                        <b>O.lew</b>
+                                    <Typography>
+                                        <b>{currentSong.singer === null ? "Ca sĩ" : currentSong.singer}</b>
                                     </Typography>
                                 </Box>
                             </Box>

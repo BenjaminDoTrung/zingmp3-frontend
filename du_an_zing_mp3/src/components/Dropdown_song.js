@@ -50,7 +50,7 @@ function DropdownSong({idSong}) {
                 placement="top"
                 arrow
             >
-                <Button><AiOutlineMore/></Button>
+                <Button style={{backgroundColor: "#3C2C52", border: "none", color: "white"}} ><AiOutlineMore/></Button>
             </Dropdown>
         </>
     )

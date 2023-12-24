@@ -92,6 +92,7 @@ const MenuSetting = ({handler}) => {
                         </div>
                     </li>
                     <li onClick={()=>{
+                        handler(false)
                         navigate("/createPlayList")
                     }}>
                         <div className="icon">
@@ -101,7 +102,7 @@ const MenuSetting = ({handler}) => {
                             <ModalCreatePlayList/>
                         </div>
                         <div className="icon" style={{marginLeft:"auto"}}>
-                            <GoArrowUpRight />
+                            <GoArrowUpRight/>
                         </div>
                     </li>
                 </ul>

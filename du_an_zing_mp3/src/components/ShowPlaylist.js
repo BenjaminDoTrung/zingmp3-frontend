@@ -16,7 +16,8 @@ const ShowPlaylist = () => {
     let navigate = useNavigate()
     useEffect(() => {
         if (idUser == null){
-            toast.success("Bạn cần đăng nhập")
+            toast.error("Bạn cần đăng nhập")
+            navigate("/login")
         } else {
             axios.get("http://localhost:8080/playLists/findByIdUser/" + idUser).then((res) => {
                 if (res.data !== []){

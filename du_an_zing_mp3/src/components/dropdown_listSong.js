@@ -71,7 +71,7 @@ const Dropdown_listSong = ({idSong}) => {
                 placement="topRight"
                 arrow
             >
-                <Button><AiOutlineMore/></Button>
+                <Button style={{backgroundColor: "#3C2C52", border: "none", color: "white"}} ><AiOutlineMore/></Button>
             </Dropdown>
         </>
     )

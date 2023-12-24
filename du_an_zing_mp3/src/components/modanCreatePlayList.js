@@ -73,6 +73,9 @@ const ModalCreatePlayList = () => {
                                 })
                                 navigate("/showPlaylist")
                                toggleFlag()
+                            }).catch(() =>{
+                                toast.error(" Bạn cần đăng nhập")
+                                navigate("/login")
                             })
                         }}>
                     <Form>

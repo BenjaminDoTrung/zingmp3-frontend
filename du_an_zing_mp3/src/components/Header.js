@@ -38,6 +38,7 @@ const Header = () => {
     const [checkSetting, setChecksetting] = useState(false)
 
     const handleCheck = (isCheck) => {
+            setChecksetting(false);
         setCheck(isCheck);
     }
     console.log(localStorage.getItem("role"))
