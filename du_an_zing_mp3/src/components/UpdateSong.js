@@ -31,6 +31,7 @@ export default function UpdateSong(prop) {
 
     const handleCancel = () => {
         setIsModalOpen(false);
+        navigate("/showList")
     };
 
     const uploadFileImg = (image) => {
@@ -73,6 +74,7 @@ export default function UpdateSong(prop) {
     return (
         <>
             <Formik initialValues={{
+                id: idSong.id,
                 nameSong: songs.nameSong,
                 singer: songs.singer,
                 author: songs.author,
@@ -87,8 +89,8 @@ export default function UpdateSong(prop) {
                     onSubmit={(value) => {
                 value.url_img = localStorage.getItem("url_img");
                 value.file_song = localStorage.getItem("url_song");
-                        console.log("value", value)
                 value.user.id = idUser;
+                        console.log(value)
                 axios.put("http://localhost:8080/songs", value).then((res)=>{
                     toast.success(" Cập nhật hát thành công ", {
                         position: toast.POSITION.BOTTOM_RIGHT

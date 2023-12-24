@@ -99,6 +99,8 @@ const Player = (prop) => {
     const [loaded, setLoaded] = useState(0);
     const [duration, setDuration] = useState(0);
     const [played, setPlayed] = useState(0);
+    const [currentTime, setCurrentTime] = useState(0);
+    const playerRef = useRef(null);
 
     console.log('---> playing', playing);
     console.log('---> seeking', seeking);
@@ -149,6 +151,7 @@ const Player = (prop) => {
         setPlaying(true);
     }
     const handleProgress = state => {
+        setCurrentTime(state.playedSeconds)
         console.log('onProgress', state)
         // We only want to update time slider if we are not currently seeking
         if (!seeking) {
@@ -243,9 +246,12 @@ const Player = (prop) => {
                                 size="small"
                                 value={duration * played ?? 0}
                                 min={0}
-                                step={0.00000001}
+                                step={0.1}
                                 max={duration}
-                                onChange={(_, value) => setPlayed(value)}
+                                onChange={(_, value) => {
+                                    setCurrentTime(value)
+                                    setPlayed(value)
+                                }}
                                 sx={{
                                     color: theme.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,0.87)',
                                     height: 4,
@@ -332,6 +338,10 @@ const Player = (prop) => {
                 onEnded={handleEnded}
                 onProgress={handleProgress}
                 onDuration={handleDuration}
+                onSeek={(seconds) => setCurrentTime(seconds)}
+                seekTo = {currentTime}
+                onMouseUp={() => playerRef.current.seekTo(parseFloat(currentTime))}
+                onTouchEnd={() => playerRef.current.seekTo(parseFloat(currentTime))}
             />
         </>
     );
