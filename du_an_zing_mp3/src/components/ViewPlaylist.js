@@ -16,11 +16,10 @@ function ViewPlaylist(props) {
             setListSong(res.data);
             console.log("lít r: ", listSong)
         })
-    },[]);
+    },[listSong]);
     useEffect(() => {
         axios.get("http://localhost:8080/playLists/" + idPlaylist.id).then((res)=>{
             setPlayList(res.data);
-            console.log("đâ ", playList)
         })
     }, []);
     function deleteSong(idSong, idPlaylist) {
@@ -53,7 +52,7 @@ function ViewPlaylist(props) {
                             <tr>
                                 <th scope="row">{i.id}</th>
                                 <td onClick={()=>{
-                                    navigate("/viewPlaylist/" + i.id)
+                                    navigate("/detailSong/" + i.id)
                                 }}>{i.nameSong}</td>
                                 <td>{i.singer}</td>
                                 <td>{i.author}</td>
