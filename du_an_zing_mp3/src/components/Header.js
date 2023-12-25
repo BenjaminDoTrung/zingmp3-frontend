@@ -151,7 +151,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div style={{display: "flex"}}>
-                    <div className="dev_setting items-center mt-2">
+                    <div className="dev_setting items-center mt-2 ml-2">
                         <button type="button" onClick={() => {
                             setChecksetting(!checkSetting)
                             setCheck(false)

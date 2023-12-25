@@ -90,7 +90,7 @@ export default function UpdateSong(prop) {
                 value.url_img = localStorage.getItem("url_img");
                 value.file_song = localStorage.getItem("url_song");
                 value.user.id = idUser;
-                        console.log(value)
+                        console.log("xxxx",value)
                 axios.put("http://localhost:8080/songs", value).then((res)=>{
                     toast.success(" Cập nhật hát thành công ", {
                         position: toast.POSITION.BOTTOM_RIGHT

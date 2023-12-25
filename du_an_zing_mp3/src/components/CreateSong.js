@@ -103,6 +103,10 @@ const ModalCreateSong = () => {
                     value.url_img = localStorage.getItem("url_img");
                     value.file_song = localStorage.getItem("url_song");
                     value.user.id = localStorage.getItem("idUser");
+                    if (value.id_SongTypes.id === ""){
+                        value.id_SongTypes.id = 1
+                    }
+                    console.log("idSOngtype: ", value)
                     axios.post("http://localhost:8080/songs", value).then((res)=>{
                         toast.success("Tạo bài hát thành công", {
                             position: toast.POSITION.BOTTOM_RIGHT
