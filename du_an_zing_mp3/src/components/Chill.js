@@ -18,7 +18,7 @@ const Chill = () => {
         axios.get("http://localhost:8080/songTypes").then((res) => {
             setSongType(res.data)
         })
-    }, [songType]);
+    }, []);
     return (
         <div className={'mt-12 px-[59px] flex flex-col gap-5'}>
             <div className={'flex items-center justify-between'}>

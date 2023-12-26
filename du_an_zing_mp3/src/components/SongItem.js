@@ -31,7 +31,6 @@ const SongItem = ({thumbnail, title, artists, sid, releaseDate, order, percent, 
                             </h3>
                         </div>
                         <p className="mb-2 text-slate-500 group-hover:text-black text-sm">{artists}</p>
-                        <p className="mb-0 text-slate-500 group-hover:text-black text-sm">{moment(releaseDate * 1000).fromNow()}</p>
                     </div>
                 </div>
                 <div className="flex">

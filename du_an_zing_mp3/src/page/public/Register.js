@@ -32,7 +32,8 @@ export default function Register() {
         if(values !== null) {
             axios.post('http://localhost:8080/users/register', values)
             .then((res) => {
-                alert("Thành công")
+                toast.warning('Đăng kí thành công', {autoClose : 700})
+
                 // toast.success('Đăng kí thành công vui lòng đăng nhập lại', {autoClose : 700})
                 navigate('/login')
             })

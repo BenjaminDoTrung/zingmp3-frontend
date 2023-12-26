@@ -18,7 +18,7 @@ export default function SongDetail (){
         <>
             <h1 className={'font-bold flex items-center justify-center mb-5 mt-5 text-white'} style={{color:"white"}}>Song Detail</h1>
            <div className={'flex justify-center items-center'}>
-               <img onClick={() =>{
+               <img style={{width: 350, height:350}} onClick={() =>{
                    dispatch(findSongById(id))
                }} src={detailSong.url_img} />
                <div className={'flex flex-col text-white ml-4'}>

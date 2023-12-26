@@ -120,19 +120,21 @@ const Player = (prop) => {
         setUrlImg(currentSong.url_img);
     }, [currentSong])
     const transferNextSong = () => {
-        if (indexSong < listSong.length) {
+        if (indexSong < listSong.length && indexSong >= 0) {
             setIndexSong(indexSong + 1)
             setUrl(listSong[indexSong].file_song);
             setUrlImg(listSong[indexSong].url_img);
+        } else {
+            setIndexSong(3)
         }
         console.log(indexSong);
     }
     const reverseNextSong = () => {
-        if (indexSong < listSong.length) {
+        if (indexSong < listSong.length && indexSong >= 0) {
             setIndexSong(indexSong - 1)
             setUrl(listSong[indexSong].file_song);
             setUrlImg(listSong[indexSong].url_img);
-        }
+        } else {setIndexSong(3)}
         console.log(indexSong);
     }
     const handlePlay = () => {
@@ -168,6 +170,7 @@ const Player = (prop) => {
     }
 
     const handleSeekChange = e => {
+        console.log('handleSeekChange', e.target.value);
         setPlayed(parseFloat(e.target.value));
     }
 
@@ -195,7 +198,7 @@ const Player = (prop) => {
             <Box sx={{width: '100%', overflow: 'hidden'}}>
                 <Widget>
                     <Grid container spacing={{xs: 2, md: 20}} columns={{xs: 4, sm: 8, md: 12}}>
-                        <Grid xs={2} sm={4} md={2}>
+                        <Grid xs={2} sm={4} md={3}>
                             <Box sx={{display: 'flex', alignItems: 'center'}}>
                                 <CoverImage>
                                     <img
@@ -204,16 +207,16 @@ const Player = (prop) => {
                                     />
                                 </CoverImage>
                                 <Box sx={{ml: 1.5, minWidth: 0}}>
-                                    <Typography variant="caption" color="text.secondary" fontWeight={500}>
-                                        {currentSong.nameSong === null ? "Điều ước giáng sinh" : currentSong.nameSong}
+                                    <Typography variant="h6" color="text.secondary" fontWeight={500}>
+                                        {currentSong?.nameSong === null ? "Điều ước giáng sinh" : currentSong?.nameSong}
                                     </Typography>
                                     <Typography>
-                                        <b>{currentSong.singer === null ? "Ca sĩ" : currentSong.singer}</b>
+                                        <b>{currentSong?.singer === null ? "Ca sĩ" : currentSong?.singer}</b>
                                     </Typography>
                                 </Box>
                             </Box>
                         </Grid>
-                        <Grid xs={2} sm={4} md={8}>
+                        <Grid xs={2} sm={4} md={6}>
                             <Box
                                 sx={{
                                     display: 'flex',
@@ -242,57 +245,70 @@ const Player = (prop) => {
                                     <FastForwardRounded fontSize="large" htmlColor={mainIconColor}/>
                                 </IconButton>
                             </Box>
-                            <Slider
-                                aria-label="time-indicator"
-                                size="small"
-                                value={duration * played ?? 0}
-                                min={0}
-                                step={0.1}
-                                max={duration}
-                                onChange={(_, value) => {
-                                    setCurrentTime(value)
-                                    setPlayed(value)
-                                }}
-                                sx={{
-                                    color: theme.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,0.87)',
-                                    height: 4,
-                                    '& .MuiSlider-thumb': {
-                                        width: 8,
-                                        height: 8,
-                                        transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
-                                        '&:before': {
-                                            boxShadow: '0 2px 12px 0 rgba(0,0,0,0.4)',
-                                        },
-                                        '&:hover, &.Mui-focusVisible': {
-                                            boxShadow: `0px 0px 0px 8px ${
-                                                theme.palette.mode === 'dark'
-                                                    ? 'rgb(255 255 255 / 16%)'
-                                                    : 'rgb(0 0 0 / 16%)'
-                                            }`,
-                                        },
-                                        '&.Mui-active': {
-                                            width: 20,
-                                            height: 20,
-                                        },
-                                    },
-                                    '& .MuiSlider-rail': {
-                                        opacity: 0.28,
-                                    },
-                                }}
+                            <input style={{
+                                palette: {
+                                primary: {
+                                main: '#c8e6c9',
+                            },
+                                secondary: "red",
+                            },
+                            }}
+
+                                className="form-control-range"
+                                type='range' min={0} max={0.999999} step='any'
+                                value={played}
+                                onMouseDown={handleSeekMouseDown}
+                                onChange={handleSeekChange}
+                                onMouseUp={handleSeekMouseUp}
                             />
+                            {/*<Slider*/}
+                            {/*    aria-label="time-indicator"*/}
+                            {/*    size="small"*/}
+                            {/*    value={played ?? 0}*/}
+                            {/*    min={0}*/}
+                            {/*    step={1}*/}
+                            {/*    max={duration}*/}
+                            {/*    onChange={(_, value) => handleSeekChange(value)}*/}
+                            {/*    sx={{*/}
+                            {/*        color: theme.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,0.87)',*/}
+                            {/*        height: 4,*/}
+                            {/*        '& .MuiSlider-thumb': {*/}
+                            {/*            width: 8,*/}
+                            {/*            height: 8,*/}
+                            {/*            transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',*/}
+                            {/*            '&:before': {*/}
+                            {/*                boxShadow: '0 2px 12px 0 rgba(0,0,0,0.4)',*/}
+                            {/*            },*/}
+                            {/*            '&:hover, &.Mui-focusVisible': {*/}
+                            {/*                boxShadow: `0px 0px 0px 8px ${*/}
+                            {/*                    theme.palette.mode === 'dark'*/}
+                            {/*                        ? 'rgb(255 255 255 / 16%)'*/}
+                            {/*                        : 'rgb(0 0 0 / 16%)'*/}
+                            {/*                }`,*/}
+                            {/*            },*/}
+                            {/*            '&.Mui-active': {*/}
+                            {/*                width: 20,*/}
+                            {/*                height: 20,*/}
+                            {/*            },*/}
+                            {/*        },*/}
+                            {/*        '& .MuiSlider-rail': {*/}
+                            {/*            opacity: 0.28,*/}
+                            {/*        },*/}
+                            {/*    }}*/}
+                            {/*/>*/}
                             <Box
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'space-between',
-                                    mt: -2,
+                                    mt: 1,
                                 }}
                             >
                                 <TinyText>{formatDuration(duration * played)}</TinyText>
                                 <TinyText>{formatDuration(duration)}</TinyText>
                             </Box>
                         </Grid>
-                        <Grid xs={2} sm={4} md={2}>
+                        <Grid xs={2} sm={4} md={3}>
                             <Stack spacing={2} direction="row" sx={{mb: 1, px: 1}} alignItems="center">
                                 <VolumeDownRounded htmlColor={lightIconColor}/>
                                 <Slider
@@ -341,8 +357,10 @@ const Player = (prop) => {
                 onDuration={handleDuration}
                 onSeek={(seconds) => setCurrentTime(seconds)}
                 seekTo = {currentTime}
-                onMouseUp={() => playerRef.current.seekTo(parseFloat(currentTime))}
-                onTouchEnd={() => playerRef.current.seekTo(parseFloat(currentTime))}
+                onMouseUp={() => {playerRef.current.seekTo(parseFloat(currentTime))
+                    console.log("thời gian", currentTime)}}
+                onTouchEnd={() => {playerRef.current.seekTo(parseFloat(currentTime))
+                    console.log("thời gian", currentTime)}}
             />
         </>
     );

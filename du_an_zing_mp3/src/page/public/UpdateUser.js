@@ -86,10 +86,10 @@ export default function UpdateUser() {
                         onSubmit={(user1) => {
                             axios.put("http://localhost:8080/users/" + id, user1).then((res) => {
                                 localStorage.setItem("user", res.data.username)
-                                alert("Cập nhật thành công")
+                                toast.success("Cập nhật thành công")
                                 navigate("/")
                             }).catch(() => {
-                                alert("Cập nhật không thành công")
+                                toast.error("Cập nhật không thành công")
                             })
                             toggleFlag()
                         }}

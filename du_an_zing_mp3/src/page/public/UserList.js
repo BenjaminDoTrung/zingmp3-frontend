@@ -25,7 +25,9 @@ export default function UserList() {
     function changeStatus(email) {
         axios.put('http://localhost:8080/users/account_lockout/'+ email).then(()=>{})
     }
-       if (roles != "ROLE_ADMIN" && idUser != null){
+    {
+        console.log("check", localStorage.getItem("role"))}
+       if (roles == "ROLE_ADMIN" && idUser != null){
            return (
                <>
                    <div style={{color: "white", marginTop: 20, marginBottom: 20, fontSize: 20, marginLeft: 10}}>

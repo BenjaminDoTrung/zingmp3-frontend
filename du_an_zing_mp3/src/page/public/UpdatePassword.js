@@ -1,9 +1,12 @@
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import axios from "axios";
 import React, {useEffect, useState} from "react";
+import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 
 export default function UpdatePass() {
+    const navigate = useNavigate()
     const id = useState(localStorage.getItem("idUser"));
     const [check , setCheck] = useState(false)
     useEffect(() => {
@@ -24,7 +27,6 @@ export default function UpdatePass() {
                 }
                 onSubmit={(user1) => {
                     updatePassword(user1)
-
                 }
             }
                 enableReinitialize={true}>
@@ -65,10 +67,13 @@ export default function UpdatePass() {
                 confirmedPassword : user1.newpassword ,
             }
             axios.put('http://localhost:8080/users/changePassword/' + id[0], userPass).then((res) => {
-                alert("Cập nhật thành công")
+                toast.success("Cập nhật thành công")
+                navigate('/')
+            }).catch(() => {
+                toast.error("Cập nhật thất bại")
             })
         }else {
-            alert("Không thành công")
+            toast.error("Không thành công")
         }
     }
 
